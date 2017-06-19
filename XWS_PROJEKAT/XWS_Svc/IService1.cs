@@ -13,7 +13,7 @@ namespace XWS_Svc
 	{
 		[OperationContract]
 		string GetData(int value);
-
+		//zdravo svete!!
 		[OperationContract]
 		CompositeType GetDataUsingDataContract(CompositeType composite);
 
