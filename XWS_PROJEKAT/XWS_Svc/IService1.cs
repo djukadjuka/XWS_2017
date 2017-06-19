@@ -28,6 +28,7 @@ namespace XWS_Svc
 		bool boolValue = true;
 		string stringValue = "Hello ";
 
+
 		[DataMember]
 		public bool BoolValue
 		{
