@@ -1,0 +1,9 @@
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\bin\Debug\ConsoleClient.exe.config
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\bin\Debug\ConsoleClient.exe
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\bin\Debug\ConsoleClient.pdb
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\bin\Debug\XWS_Svc.dll
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\bin\Debug\XWS_Svc.pdb
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\bin\Debug\XWS_Svc.dll.config
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\obj\Debug\ConsoleClient.csprojResolveAssemblyReference.cache
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\obj\Debug\ConsoleClient.exe
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ConsoleClient\obj\Debug\ConsoleClient.pdb

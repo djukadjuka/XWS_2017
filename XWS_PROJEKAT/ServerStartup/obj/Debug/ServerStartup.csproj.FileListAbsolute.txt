@@ -1,0 +1,12 @@
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.csprojResolveAssemblyReference.cache
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe.config
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.pdb
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS_Svc.dll
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.pdb
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll.config
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS_Svc.pdb
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS_Svc.dll.config
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.exe
+D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.pdb
