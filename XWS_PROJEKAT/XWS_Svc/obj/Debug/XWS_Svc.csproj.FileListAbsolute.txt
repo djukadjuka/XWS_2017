@@ -1,6 +1,7 @@
 C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.dll.config
 C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.dll
 C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.pdb
-C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.csprojResolveAssemblyReference.cache
 C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.dll
 C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.pdb
+C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.csprojResolveAssemblyReference.cache
+C:\Users\Djuka\Desktop\XWS_REP\XWS_PROJEKAT\XWS_Svc\obj\Debug\XsdGeneratedCode\GeneratedXsdTypes.cs

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PorukaOOdobrenju">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDPoruke" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDPorukeNaloga" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDPorukeOOdobrenju" type="xs:int" />
+      <xs:element minOccurs="0" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" name="ObracunskiRacunBankePoverioca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SWIFTBankePoverioca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SifraValute" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PorukaOOdobrenju" nillable="true" type="tns:PorukaOOdobrenju" />
+</xs:schema>

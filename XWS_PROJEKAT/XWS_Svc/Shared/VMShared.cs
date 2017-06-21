@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Model
+namespace Shared
 {
 	/// <summary>
 	/// Svaka klasa koja predstavlja model podataka treba ovu klasu da implementira.
