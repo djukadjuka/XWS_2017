@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema
+		elementFormDefault="qualified"
+		targetNamespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD"
+		xmlns:tns="http://schemas.datacontract.org/2004/07/Shared.Model.XSD"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="StavkaPreseka.xsd"></xs:include>
+	<xs:complexType name="ListaStavkiPreseka">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="Stavke" type="tns:StavkaPreseka"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Presek">
+		<xs:sequence>
+			<xs:element minOccurs="0" type="tns:ListaStavkiPreseka" name="StavkePreseka"/>
+			<xs:element minOccurs="0" type="xs:int" name="IDPreseka"/>
+			<xs:element minOccurs="0" type="xs:string" name="BrRacuna"/>
+			<xs:element minOccurs="0" type="xs:dateTime" name="DatumNaloga"/>
+			<xs:element minOccurs="0" type="xs:double" name="BrPreseka"/>
+			<xs:element minOccurs="0" type="xs:double" name="PrethodnoStanje"/>
+			<xs:element minOccurs="0" type="xs:double" name="BrPromenaUKorist"/>
+			<xs:element minOccurs="0" type="xs:double" name="UkupnoUKorist"/>
+			<xs:element minOccurs="0" type="xs:double" name="BrPromenaNaTeret"/>
+			<xs:element minOccurs="0" type="xs:double" name="UkupnoNaTeret"/>
+			<xs:element minOccurs="0" type="xs:double" name="NovoStanje"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

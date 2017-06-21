@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+		targetNamespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD"
+		elementFormDefault="qualified"
+		xmlns:tns="http://schemas.datacontract.org/2004/07/Shared.Model.XSD"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="StavkaFakture.xsd"></xs:include>
+	<xs:complexType name="ListaStavkiFakture">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="Stavke" type="tns:StavkaFakture"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Faktura">
+		<xs:sequence>
+			<xs:element name="IDFakture" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="IDPoruke" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="NazivDobavljaca" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="AdresaDobavljaca" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="PIBDobavljaca" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="NazivKupca" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="AdresaKupca" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="PIBKupca" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="BrRacuna" minOccurs="0" type="xs:double"></xs:element>
+			<xs:element name="DatumRacuna" minOccurs="0" type="xs:dateTime"></xs:element>
+			<xs:element name="VrednostRobe" minOccurs="0" type="xs:double"></xs:element>
+			<xs:element name="VrednostUsluga" minOccurs="0" type="xs:double"></xs:element>
+			<xs:element name="UkupnoRobaIUsluge" minOccurs="0" type="xs:double"></xs:element>
+			<xs:element name="UkupanRabat" minOccurs="0" type="xs:double"></xs:element>
+			<xs:element name="UkupanPorez" minOccurs="0" type="xs:double"></xs:element>
+			<xs:element name="OznakaValute" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="IznosZaUplatu" minOccurs="0" type="xs:double"></xs:element>
+			<xs:element name="UplataNaRacun" minOccurs="0" type="xs:string"></xs:element>
+			<xs:element name="DatumValute" minOccurs="0" type="xs:dateTime"></xs:element>
+			<xs:element name="StavkeFakture" minOccurs="0" type="tns:ListaStavkiFakture"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
