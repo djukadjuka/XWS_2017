@@ -827,6 +827,385 @@ namespace XWS_Svc.ContractTypes
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD", IsNullable=true)]
+    public partial class NalogZaPlacanje
+    {
+        
+        private int iDNalogaZaPlacanjeField;
+        
+        private bool iDNalogaZaPlacanjeFieldSpecified;
+        
+        private string iDPorukeField;
+        
+        private string duznikField;
+        
+        private string svrhaPlacanjaField;
+        
+        private string primalacField;
+        
+        private System.DateTime datumNalogaField;
+        
+        private bool datumNalogaFieldSpecified;
+        
+        private System.DateTime datumValuteField;
+        
+        private bool datumValuteFieldSpecified;
+        
+        private string racunDuznikaField;
+        
+        private double modelZaduzenjaField;
+        
+        private bool modelZaduzenjaFieldSpecified;
+        
+        private string pozivNaBrZaduzenjaField;
+        
+        private string racunPoveriocaField;
+        
+        private double modelOdobrenjaField;
+        
+        private bool modelOdobrenjaFieldSpecified;
+        
+        private double pozivNaBrOdobrenjaField;
+        
+        private bool pozivNaBrOdobrenjaFieldSpecified;
+        
+        private double iznosField;
+        
+        private bool iznosFieldSpecified;
+        
+        private string oznakaValuteField;
+        
+        private bool hitnoField;
+        
+        private bool hitnoFieldSpecified;
+        
+        /// <remarks/>
+        public int IDNalogaZaPlacanje
+        {
+            get
+            {
+                return this.iDNalogaZaPlacanjeField;
+            }
+            set
+            {
+                this.iDNalogaZaPlacanjeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IDNalogaZaPlacanjeSpecified
+        {
+            get
+            {
+                return this.iDNalogaZaPlacanjeFieldSpecified;
+            }
+            set
+            {
+                this.iDNalogaZaPlacanjeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string IDPoruke
+        {
+            get
+            {
+                return this.iDPorukeField;
+            }
+            set
+            {
+                this.iDPorukeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Duznik
+        {
+            get
+            {
+                return this.duznikField;
+            }
+            set
+            {
+                this.duznikField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SvrhaPlacanja
+        {
+            get
+            {
+                return this.svrhaPlacanjaField;
+            }
+            set
+            {
+                this.svrhaPlacanjaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Primalac
+        {
+            get
+            {
+                return this.primalacField;
+            }
+            set
+            {
+                this.primalacField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime DatumNaloga
+        {
+            get
+            {
+                return this.datumNalogaField;
+            }
+            set
+            {
+                this.datumNalogaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DatumNalogaSpecified
+        {
+            get
+            {
+                return this.datumNalogaFieldSpecified;
+            }
+            set
+            {
+                this.datumNalogaFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime DatumValute
+        {
+            get
+            {
+                return this.datumValuteField;
+            }
+            set
+            {
+                this.datumValuteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DatumValuteSpecified
+        {
+            get
+            {
+                return this.datumValuteFieldSpecified;
+            }
+            set
+            {
+                this.datumValuteFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RacunDuznika
+        {
+            get
+            {
+                return this.racunDuznikaField;
+            }
+            set
+            {
+                this.racunDuznikaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double ModelZaduzenja
+        {
+            get
+            {
+                return this.modelZaduzenjaField;
+            }
+            set
+            {
+                this.modelZaduzenjaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ModelZaduzenjaSpecified
+        {
+            get
+            {
+                return this.modelZaduzenjaFieldSpecified;
+            }
+            set
+            {
+                this.modelZaduzenjaFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PozivNaBrZaduzenja
+        {
+            get
+            {
+                return this.pozivNaBrZaduzenjaField;
+            }
+            set
+            {
+                this.pozivNaBrZaduzenjaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RacunPoverioca
+        {
+            get
+            {
+                return this.racunPoveriocaField;
+            }
+            set
+            {
+                this.racunPoveriocaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double ModelOdobrenja
+        {
+            get
+            {
+                return this.modelOdobrenjaField;
+            }
+            set
+            {
+                this.modelOdobrenjaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ModelOdobrenjaSpecified
+        {
+            get
+            {
+                return this.modelOdobrenjaFieldSpecified;
+            }
+            set
+            {
+                this.modelOdobrenjaFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double PozivNaBrOdobrenja
+        {
+            get
+            {
+                return this.pozivNaBrOdobrenjaField;
+            }
+            set
+            {
+                this.pozivNaBrOdobrenjaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PozivNaBrOdobrenjaSpecified
+        {
+            get
+            {
+                return this.pozivNaBrOdobrenjaFieldSpecified;
+            }
+            set
+            {
+                this.pozivNaBrOdobrenjaFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double Iznos
+        {
+            get
+            {
+                return this.iznosField;
+            }
+            set
+            {
+                this.iznosField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IznosSpecified
+        {
+            get
+            {
+                return this.iznosFieldSpecified;
+            }
+            set
+            {
+                this.iznosFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string OznakaValute
+        {
+            get
+            {
+                return this.oznakaValuteField;
+            }
+            set
+            {
+                this.oznakaValuteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Hitno
+        {
+            get
+            {
+                return this.hitnoField;
+            }
+            set
+            {
+                this.hitnoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool HitnoSpecified
+        {
+            get
+            {
+                return this.hitnoFieldSpecified;
+            }
+            set
+            {
+                this.hitnoFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1099.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD", IsNullable=true)]
     public partial class PorukaOOdobrenju
     {
         
