@@ -11,6 +11,7 @@ namespace XWS_Svc.Shared.Model.InterfejsiServisa
 	[ServiceContract]
 	public interface ICentralnaBankaService
 	{
-		
+		[OperationContract]
+		void doStuff();
 	}
 }

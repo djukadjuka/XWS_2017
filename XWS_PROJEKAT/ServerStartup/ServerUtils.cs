@@ -77,7 +77,7 @@ namespace ServerStartup
 			CentralnaBankaService.CentralnaBankaService service = new CentralnaBankaService.CentralnaBankaService();
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 
-			svh.AddServiceEndpoint(typeof(IBankaService), wsHttpBinding, httpLocation);
+			svh.AddServiceEndpoint(typeof(ICentralnaBankaService), wsHttpBinding, httpLocation);
 			ServiceMetadataBehavior smb = svh.Description.Behaviors.Find<ServiceMetadataBehavior>();
 
 			if (smb == null)

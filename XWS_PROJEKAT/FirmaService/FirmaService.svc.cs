@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Shared.Model.XSD;
+using System;
 using System.ServiceModel;
+using XWS_Svc.Shared.BP;
 using XWS_Svc.Shared.Model.InterfejsiServisa;
+using System.Collections.Generic;
 
 namespace FirmaService
 {
@@ -9,6 +12,8 @@ namespace FirmaService
     {
         private string nazivFirme;
 		private string bankMessage;
+
+		private Faktura testFaktura;
 
         public FirmaService(string nazivFirme)
         {
@@ -20,6 +25,12 @@ namespace FirmaService
 			this.bankMessage = message;
 		}
 
+		public void InsertIntoFaktura()
+		{
+			testFaktura = new Faktura(1, "Poruka", "Dobavljac1", "DobavljacAddressa1", "123-321", "Kupac1", "AddressaKupac1", "321-123", 123, DateTime.Now, 100, 100, 5, 4321, 1234, "USD", 199, "321-123", DateTime.Now);
+			FakturaDB.InsertIntoFaktura(testFaktura);
+		}
+
 		public string GetData(int value)
         {
             return string.Format("Odgovor od firme:" + nazivFirme + "   Vrednost je: ", value);
@@ -29,21 +40,24 @@ namespace FirmaService
 		{
 			return "Message from bank: ["+this.bankMessage+"]";
 		}
-
-		public FakturaResponse SlanjeFakture(Faktura faktura)
-        {
-            Console.WriteLine("Odgovor od firme:" + nazivFirme + "  Faktura sa id-jem: " + faktura.Idfakture);
-            FakturaResponse fakturaResponse = new FakturaResponse();
-            fakturaResponse.Success = true;
-
-            return fakturaResponse;
-        }
 		
 		public static IBankaService GetIBankaServiceChannel(string fullPathToService)
 		{
 			ChannelFactory<IBankaService> channelFactory = new ChannelFactory<IBankaService>(new WSHttpBinding(SecurityMode.None));
 			IBankaService bs = channelFactory.CreateChannel(new EndpointAddress(fullPathToService));
 			return bs;
+		}
+
+		public string GetOneFaktura(string id)
+		{
+			int fakturaId = Int32.Parse(id);
+
+			return FakturaDB.GetFaktura(fakturaId).ToString();
+		}
+
+		public List<Faktura> GetAllFaktura()
+		{
+			return FakturaDB.GetAllFaktura();
 		}
 	}
 }

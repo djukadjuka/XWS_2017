@@ -13,6 +13,9 @@ namespace CentralnaBankaService
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class CentralnaBankaService : ICentralnaBankaService
 	{
-		
+		public void doStuff()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

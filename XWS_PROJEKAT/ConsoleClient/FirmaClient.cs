@@ -2,6 +2,8 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System;
+using Shared.Model.XSD;
+using System.Collections.Generic;
 
 namespace ConsoleClient
 {
@@ -16,19 +18,30 @@ namespace ConsoleClient
 			Channel.AcceptMessageFromBank(message);
 		}
 
+		public List<Faktura> GetAllFaktura()
+		{
+			return Channel.GetAllFaktura();
+		}
+
 		public string GetData(int value)
         {
            return Channel.GetData(value);
         }
 
+		public string GetOneFaktura(string id)
+		{
+			return this.Channel.GetOneFaktura(id);
+		}
+
+		public void InsertIntoFaktura()
+		{
+			this.Channel.InsertIntoFaktura();
+		}
+
 		public string ReturnMessageFromBank()
 		{
 			return Channel.ReturnMessageFromBank();
 		}
-
-		public FakturaResponse SlanjeFakture(Faktura faktura)
-        {
-            return Channel.SlanjeFakture(faktura);
-        }
+		
     }
 }
