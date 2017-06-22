@@ -1,7 +1,7 @@
 ﻿using FirmaService;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-
+using System;
 
 namespace ConsoleClient
 {
@@ -11,12 +11,22 @@ namespace ConsoleClient
 		{
         }
 
-        public string GetData(int value)
+		public void AcceptMessageFromBank(string message)
+		{
+			Channel.AcceptMessageFromBank(message);
+		}
+
+		public string GetData(int value)
         {
            return Channel.GetData(value);
         }
 
-        public FakturaResponse SlanjeFakture(Faktura faktura)
+		public string ReturnMessageFromBank()
+		{
+			return Channel.ReturnMessageFromBank();
+		}
+
+		public FakturaResponse SlanjeFakture(Faktura faktura)
         {
             return Channel.SlanjeFakture(faktura);
         }

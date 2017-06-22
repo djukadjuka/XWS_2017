@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FirmaMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerUtils.cs" />
+    <Compile Include="StartAllServers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -53,6 +54,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BankaService\BankaService.csproj">
+      <Project>{f4cce17b-609a-4a8e-9235-76c31aa2f099}</Project>
+      <Name>BankaService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FirmaService\FirmaService.csproj">
       <Project>{3eadc036-6631-41f8-a10e-e2cc6707e971}</Project>
       <Name>FirmaService</Name>

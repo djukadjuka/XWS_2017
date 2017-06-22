@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+		targetNamespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD"
+		elementFormDefault="qualified"
+		xmlns:tns="http://schemas.datacontract.org/2004/07/Shared.Model.XSD"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="StavkaGrupnogPlacanja.xsd"></xs:include>
+	
+	<xs:complexType name="StavkeGrupnogPlacanja">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="Stavke" type="tns:StavkaGrupnogPlacanja" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="NalogZaGrupnoPlacanje">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="IDNalogaZaGrupnoPlacanje" type="xs:int"></xs:element>
+			<xs:element minOccurs="0" name="IDPoruke" type="xs:string"></xs:element>
+			<xs:element minOccurs="0" name="SWIFTBankeDuznika" type="xs:string"></xs:element>
+			<xs:element minOccurs="0" name="ObracunskiRacunBankeDuznika" type="xs:string"></xs:element>
+			<xs:element minOccurs="0" name="SWIFTBankePoverioca" type="xs:string"></xs:element>
+			<xs:element minOccurs="0" name="ObracunskiRacunBankePoverioca" type="xs:string"></xs:element>
+			<xs:element minOccurs="0" name="UkupanIznos" type="xs:double"></xs:element>
+			<xs:element minOccurs="0" name="SifraValute" type="xs:string"></xs:element>
+			<xs:element minOccurs="0" name="DatumValute" type="xs:dateTime"></xs:element>
+			<xs:element minOccurs="0" name="Datum" type="xs:dateTime"></xs:element>
+			<xs:element minOccurs="0" name="StavkeGrupnogPlacanja" type="tns:StavkeGrupnogPlacanja"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

@@ -59,15 +59,67 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BP\MySQLUtils.cs" />
+    <Compile Include="Shared\Model\InterfejsiServisa\IBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IFirmaService.cs" />
+    <Compile Include="Shared\Model\XSD\Faktura.cs">
+      <DependentUpon>Faktura.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Model\XSD\NalogZaGrupnoPlacanje.cs">
+      <DependentUpon>NalogZaGrupnoPlacanje.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Model\XSD\NalogZaPlacanje.cs">
+      <DependentUpon>NalogZaPlacanje.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Shared\Model\XSD\PorukaOOdobrenju.cs">
       <DependentUpon>PorukaOOdobrenju.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Model\XSD\PorukaOZaduzenju.cs">
+      <DependentUpon>PorukaOZaduzenju.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Model\XSD\Presek.cs">
+      <DependentUpon>Presek.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Model\XSD\RTGSNalog.cs">
+      <DependentUpon>RTGSNalog.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Model\XSD\ZahtevZaDobijanjeIzvoda.cs">
+      <DependentUpon>ZahtevZaDobijanjeIzvoda.xsd</DependentUpon>
     </Compile>
     <Compile Include="Shared\VMShared.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Shared\Model\XSD\Faktura.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\NalogZaGrupnoPlacanje.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\NalogZaPlacanje.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Shared\Model\XSD\PorukaOOdobrenju.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\PorukaOZaduzenju.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\Presek.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\RTGSNalog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\StavkaFakture.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\StavkaGrupnogPlacanja.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\StavkaPreseka.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Model\XSD\ZahtevZaDobijanjeIzvoda.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

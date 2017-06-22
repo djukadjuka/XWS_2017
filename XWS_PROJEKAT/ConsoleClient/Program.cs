@@ -18,19 +18,18 @@ namespace ConsoleClient
             wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
 
-            var address = new EndpointAddress("http://localhost:8080/FirmaService?wsdl");
+            var address = new EndpointAddress("http://localhost:8080/FirmaA?wsdl");
             var client = new FirmaClient(wsHttpBinding, address);
 
 
             while (true)
             {
-                
-                name = Console.ReadLine();
+				Console.WriteLine("1.Read message from bank.");
+				string command = Console.ReadLine();
+				if(command == "1"){
+					Console.WriteLine(client.ReturnMessageFromBank());
+				}
 
-                
-                Faktura faktura = new Faktura();
-                faktura.Idfakture = 99;
-                faktura.Idporuke = "IDporuka";
             }
         }
     }

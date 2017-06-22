@@ -15,7 +15,11 @@ namespace FirmaService
         [OperationContract]
         FakturaResponse SlanjeFakture(Faktura faktura);
 
-       
+		[OperationContract]
+		string ReturnMessageFromBank();
+
+		[OperationContract]
+		void AcceptMessageFromBank(string message);
     }
 
     [DataContract]
