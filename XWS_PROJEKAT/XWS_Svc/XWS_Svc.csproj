@@ -69,6 +69,7 @@
     <Compile Include="Shared\BP\FakturaDB.cs" />
     <Compile Include="Shared\BP\MySQLUtils.cs" />
     <Compile Include="Shared\BP\StavkaFaktureDB.cs" />
+    <Compile Include="Shared\BP\StavkaPresekaBP.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\ICentralnaBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IFirmaService.cs" />

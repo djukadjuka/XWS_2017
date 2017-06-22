@@ -12,6 +12,15 @@
 			<xs:element name="Primalac" type="xs:string" minOccurs="0"/>
 			<xs:element name="DatumNaloga" type="xs:dateTime" minOccurs="0"/>
 			<xs:element name="DatumValute" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="RacunDuznika" type="xs:string" minOccurs="0"/>
+			<xs:element name="ModelZaduzenja" type="xs:double" minOccurs="0"/>
+			<xs:element name="PozivNaBrZaduzenja" type="xs:string" minOccurs="0"/>
+			<xs:element name="RacunPoverioca" type="xs:string" minOccurs="0"/>
+			<xs:element name="ModelOdobrenja" type="xs:double" minOccurs="0"/>
+			<xs:element name="PozivNaBrojOdobrenja" type="xs:string" minOccurs="0"/>
+			<xs:element name="Iznos" type="xs:double" minOccurs="0"/>
+			<xs:element name="Smer" type="xs:string" minOccurs="0"/>
+			<xs:element name="IDPreseka" type="xs:int" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

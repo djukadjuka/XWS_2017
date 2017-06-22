@@ -27,9 +27,10 @@ namespace XWS_Svc.Shared.BP
 						ret = ReadFromReader(reader);
 						stavke.Add(ret);
 					}
+					reader.Close();
 				}
+				conn.Close();
 			}
-
 			return stavke;
 		}
 
@@ -48,8 +49,9 @@ namespace XWS_Svc.Shared.BP
 
 					reader.Read();
 					stavka = ReadFromReader(reader);
-
+					reader.Close();
 				}
+				conn.Close();
 			}
 
 			return stavka;
@@ -74,7 +76,9 @@ namespace XWS_Svc.Shared.BP
 						ret = ReadFromReader(reader);
 						stavke.Add(ret);
 					}
+					reader.Close();
 				}
+				conn.Close();
 			}
 
 			return stavke;
@@ -145,6 +149,7 @@ namespace XWS_Svc.Shared.BP
 					cmd.Parameters.AddWithValue("@faktura_idFakture", sf.IDFakture);
 					cmd.ExecuteNonQuery();
 				}
+				conn.Close();
 			}
 		}//
 

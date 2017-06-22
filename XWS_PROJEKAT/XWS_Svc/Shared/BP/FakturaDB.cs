@@ -27,7 +27,9 @@ namespace XWS_Svc.Shared.BP
 						ret = ReadFromReader(reader);
 						fakture.Add(ret);
 					}
+					reader.Close();
 				}
+				conn.Close();
 			}
 
 			return fakture;
@@ -49,8 +51,9 @@ namespace XWS_Svc.Shared.BP
 
 					reader.Read();
 					ret = ReadFromReader(reader);
-
+					reader.Close();
 				}
+				conn.Close();
 			}
 
 			return ret;
@@ -120,6 +123,7 @@ namespace XWS_Svc.Shared.BP
 					cmd.Parameters.AddWithValue("@DatumValute", f.DatumValute);
 					cmd.ExecuteNonQuery();
 				}
+				conn.Close();
 			}
 		}//
 
