@@ -82,6 +82,7 @@ namespace XWS_Svc.Shared.BP
 		{
 			StavkaPreseka stavka = new StavkaPreseka();
 
+			stavka.IDStavkePreseka = (int)reader["idstavkepreseka"];
 			stavka.Duznik					= (string)reader["duznik"];
 			stavka.SvrhaPlacanja			= (string)reader["svrhaPlacanja"];
 			stavka.Primalac					= (string)reader["primalac"];
@@ -150,7 +151,7 @@ namespace XWS_Svc.Shared.BP
 					cmd.Parameters.AddWithValue("@iznos",				stavka.Iznos);
 					cmd.Parameters.AddWithValue("@smer",				stavka.Smer);
 					cmd.Parameters.AddWithValue("@presek_idpreseka",	stavka.IDPreseka);
-
+					cmd.ExecuteNonQuery();
 				}
 				conn.Close();
 			}

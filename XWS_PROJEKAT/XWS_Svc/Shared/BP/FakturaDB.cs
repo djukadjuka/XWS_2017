@@ -150,6 +150,8 @@ namespace XWS_Svc.Shared.BP
 			ret.UplataNaRacun = (string)reader["uplatanaracun"];
 			ret.DatumValute = (DateTime)reader["datumvalute"];
 
+			ret.StavkeFakture = (ListaStavkiFakture)StavkaFaktureDB.GetStavkaByFakturaId(ret.IDFakture);
+
 			return ret;
 		}
 	}
