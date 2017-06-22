@@ -288,7 +288,7 @@ namespace Shared.Model.XSD
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private string IDFaktureField;
+        private int IDFaktureField;
         
         private string IDPorukeField;
         
@@ -340,8 +340,8 @@ namespace Shared.Model.XSD
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string IDFakture
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDFakture
         {
             get
             {
@@ -349,7 +349,7 @@ namespace Shared.Model.XSD
             }
             set
             {
-                if ((object.ReferenceEquals(this.IDFaktureField, value) != true))
+                if ((this.IDFaktureField.Equals(value) != true))
                 {
                     this.IDFaktureField = value;
                     this.RaisePropertyChanged("IDFakture");

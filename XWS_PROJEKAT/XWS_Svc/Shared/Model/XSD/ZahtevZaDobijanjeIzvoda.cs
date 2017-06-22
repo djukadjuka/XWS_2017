@@ -16,12 +16,12 @@ namespace Shared.Model.XSD
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ZahtevZaDobijanjeIzvoda", Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD")]
-    public partial class ZahtevZaDobijanjeIzvoda : object, System.Runtime.Serialization.IExtensibleDataObject
+    public partial class ZahtevZaDobijanjeIzvoda : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
     {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private System.DateTime IDZZDIField;
+        private int IDZZDIField;
         
         private string BrRacunaField;
         
@@ -42,7 +42,7 @@ namespace Shared.Model.XSD
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime IDZZDI
+        public int IDZZDI
         {
             get
             {
@@ -50,7 +50,11 @@ namespace Shared.Model.XSD
             }
             set
             {
-                this.IDZZDIField = value;
+                if ((this.IDZZDIField.Equals(value) != true))
+                {
+                    this.IDZZDIField = value;
+                    this.RaisePropertyChanged("IDZZDI");
+                }
             }
         }
         
@@ -63,7 +67,11 @@ namespace Shared.Model.XSD
             }
             set
             {
-                this.BrRacunaField = value;
+                if ((object.ReferenceEquals(this.BrRacunaField, value) != true))
+                {
+                    this.BrRacunaField = value;
+                    this.RaisePropertyChanged("BrRacuna");
+                }
             }
         }
         
@@ -76,7 +84,11 @@ namespace Shared.Model.XSD
             }
             set
             {
-                this.DatumField = value;
+                if ((this.DatumField.Equals(value) != true))
+                {
+                    this.DatumField = value;
+                    this.RaisePropertyChanged("Datum");
+                }
             }
         }
         
@@ -89,7 +101,22 @@ namespace Shared.Model.XSD
             }
             set
             {
-                this.RedniBrPresekaField = value;
+                if ((this.RedniBrPresekaField.Equals(value) != true))
+                {
+                    this.RedniBrPresekaField = value;
+                    this.RaisePropertyChanged("RedniBrPreseka");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null))
+            {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

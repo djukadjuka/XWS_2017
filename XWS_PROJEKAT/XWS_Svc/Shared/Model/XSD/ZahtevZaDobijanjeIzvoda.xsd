@@ -6,7 +6,7 @@
 		xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:complexType name="ZahtevZaDobijanjeIzvoda">
 		<xs:sequence>
-			<xs:element minOccurs="0" name="IDZZDI" type="xs:dateTime" />
+			<xs:element minOccurs="0" name="IDZZDI" type="xs:int" />
 			<xs:element minOccurs="0" name="BrRacuna" nillable="true" type="xs:string" />
 			<xs:element minOccurs="0" name="Datum" nillable="true" type="xs:dateTime" />
 			<xs:element minOccurs="0" name="RedniBrPreseka" type="xs:double" />

@@ -58,6 +58,10 @@
       <Project>{f4cce17b-609a-4a8e-9235-76c31aa2f099}</Project>
       <Name>BankaService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CentralnaBankaService\CentralnaBankaService.csproj">
+      <Project>{de04b8ac-6c00-4cb3-a548-f830803d8f27}</Project>
+      <Name>CentralnaBankaService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FirmaService\FirmaService.csproj">
       <Project>{3eadc036-6631-41f8-a10e-e2cc6707e971}</Project>
       <Name>FirmaService</Name>
