@@ -118,7 +118,7 @@ namespace XWS_Svc.Shared.BP
 			ret.UkupnoNaTeret				= (double)(decimal)reader["ukupnonateret"];
 			ret.NovoStanje					= (double)(decimal)reader["novostanje"];
 
-			ret.StavkePreseka = (ListaStavkiPreseka)StavkaPresekaBP.GetAllStavkaPresekaByPresekId(ret.IDPreseka);
+			ret.StavkePreseka = (ListaStavkiPreseka)StavkaPresekaDB.GetAllStavkaPresekaByPresekId(ret.IDPreseka);
 			
 			return ret;
 		}

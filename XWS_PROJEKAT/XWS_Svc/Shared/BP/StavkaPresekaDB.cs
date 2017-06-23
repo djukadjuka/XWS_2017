@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace XWS_Svc.Shared.BP
 {
-	public class StavkaPresekaBP
+	public class StavkaPresekaDB
 	{
 		public static StavkaPreseka GetStavkaPresekaById(int idStavkaPreseka)
 		{
@@ -121,7 +121,7 @@ namespace XWS_Svc.Shared.BP
 													   ,[smer]
 													   ,[presek_idpreseka])
 												 VALUES
-													    @duznik
+													    (@duznik
 													   ,@svrhaPlacanja
 													   ,@primalac
 													   ,@datumNaloga

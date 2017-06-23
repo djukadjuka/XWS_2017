@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace XWS_Svc.Shared.BP
 {
-	public class StavkaGrupnogPlacanjaBP
+	public class StavkaGrupnogPlacanjaDB
 	{
-		public static List<StavkaGrupnogPlacanja> GetAllStavkaFakture()
+		public static List<StavkaGrupnogPlacanja> GetAllStavkaGrupnogPlacanja()
 		{
 			List<StavkaGrupnogPlacanja> stavke = new List<StavkaGrupnogPlacanja>();
 
@@ -109,7 +109,7 @@ namespace XWS_Svc.Shared.BP
 		}
 
 		//
-		public static void InsertIntoStavkaFakture(StavkaGrupnogPlacanja sgp)
+		public static void InsertIntoStavkaZaGrupnoPlacanje(StavkaGrupnogPlacanja sgp)
 		{
 			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
 			{
@@ -129,7 +129,7 @@ namespace XWS_Svc.Shared.BP
 													   ,[sifravalute]
 													   ,[nalogzagp_idnalogazagp])
 												 VALUES
-														@idnalogazaplacanje
+														(@idnalogazaplacanje
 													   ,@duznik
 													   ,@svrhaplacanja
 													   ,@primalac				
