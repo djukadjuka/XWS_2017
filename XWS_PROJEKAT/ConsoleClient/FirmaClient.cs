@@ -3,6 +3,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System;
 using Shared.Model.XSD;
+using System.Collections.Generic;
 
 namespace ConsoleClient
 {

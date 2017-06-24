@@ -45,11 +45,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -58,8 +66,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\BP\FakturaDB.cs" />
     <Compile Include="Shared\BP\MySQLUtils.cs" />
     <Compile Include="Shared\Model\Banka.cs" />
+    <Compile Include="Shared\BP\NalogZaGrupnoPlacanjeDB.cs" />
+    <Compile Include="Shared\BP\NalogZaPlacanjeDB.cs" />
+    <Compile Include="Shared\BP\PorukaOOdobrenjuDB.cs" />
+    <Compile Include="Shared\BP\PorukaOZaduzenjuDB.cs" />
+    <Compile Include="Shared\BP\PresekDB.cs" />
+    <Compile Include="Shared\BP\RTGSNalogDB.cs" />
+    <Compile Include="Shared\BP\StavkaFaktureDB.cs" />
+    <Compile Include="Shared\BP\StavkaGrupnogPlacanjaDB.cs" />
+    <Compile Include="Shared\BP\StavkaPresekaDB.cs" />
+    <Compile Include="Shared\BP\ZahtevZaDobijanjeIzvodaDB.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\ICentralnaBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IFirmaService.cs" />
@@ -93,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Shared\Model\XSD\Faktura.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -127,7 +147,27 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Shared\Model\ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Shared\BP\Skripte\dbo.faktura.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.nalogzagp.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.nalogzaplacanje.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.porukaoodobrenju.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.porukaozaduzenju.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.presek.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.rtgsnalog.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.sgp.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.stavkafakture.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.stavkapreseka.Table.sql" />
+    <Content Include="Shared\BP\Skripte\dbo.zahtevzadobijanjeizvoda.Table.sql" />
+    <Content Include="Shared\BP\Skripte\sveIkad.sql" />
+    <Content Include="Shared\BP\Skripte\XWS2017.Database.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

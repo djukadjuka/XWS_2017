@@ -40,6 +40,24 @@ namespace Shared.Model.XSD
         
         private System.DateTime DatumValuteField;
         
+        private string RacunDuznikaField;
+        
+        private double ModelZaduzenjaField;
+        
+        private string PozivNaBrZaduzenjaField;
+        
+        private string RacunPoveriocaField;
+        
+        private double ModelOdobrenjaField;
+        
+        private string PozivNaBrojOdobrenjaField;
+        
+        private double IznosField;
+        
+        private string SmerField;
+        
+        private int IDPresekaField;
+        
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
@@ -150,6 +168,159 @@ namespace Shared.Model.XSD
                 {
                     this.DatumValuteField = value;
                     this.RaisePropertyChanged("DatumValute");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string RacunDuznika
+        {
+            get
+            {
+                return this.RacunDuznikaField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.RacunDuznikaField, value) != true))
+                {
+                    this.RacunDuznikaField = value;
+                    this.RaisePropertyChanged("RacunDuznika");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+        public double ModelZaduzenja
+        {
+            get
+            {
+                return this.ModelZaduzenjaField;
+            }
+            set
+            {
+                if ((this.ModelZaduzenjaField.Equals(value) != true))
+                {
+                    this.ModelZaduzenjaField = value;
+                    this.RaisePropertyChanged("ModelZaduzenja");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string PozivNaBrZaduzenja
+        {
+            get
+            {
+                return this.PozivNaBrZaduzenjaField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.PozivNaBrZaduzenjaField, value) != true))
+                {
+                    this.PozivNaBrZaduzenjaField = value;
+                    this.RaisePropertyChanged("PozivNaBrZaduzenja");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
+        public string RacunPoverioca
+        {
+            get
+            {
+                return this.RacunPoveriocaField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.RacunPoveriocaField, value) != true))
+                {
+                    this.RacunPoveriocaField = value;
+                    this.RaisePropertyChanged("RacunPoverioca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+        public double ModelOdobrenja
+        {
+            get
+            {
+                return this.ModelOdobrenjaField;
+            }
+            set
+            {
+                if ((this.ModelOdobrenjaField.Equals(value) != true))
+                {
+                    this.ModelOdobrenjaField = value;
+                    this.RaisePropertyChanged("ModelOdobrenja");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=11)]
+        public string PozivNaBrojOdobrenja
+        {
+            get
+            {
+                return this.PozivNaBrojOdobrenjaField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.PozivNaBrojOdobrenjaField, value) != true))
+                {
+                    this.PozivNaBrojOdobrenjaField = value;
+                    this.RaisePropertyChanged("PozivNaBrojOdobrenja");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=12)]
+        public double Iznos
+        {
+            get
+            {
+                return this.IznosField;
+            }
+            set
+            {
+                if ((this.IznosField.Equals(value) != true))
+                {
+                    this.IznosField = value;
+                    this.RaisePropertyChanged("Iznos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=13)]
+        public string Smer
+        {
+            get
+            {
+                return this.SmerField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.SmerField, value) != true))
+                {
+                    this.SmerField = value;
+                    this.RaisePropertyChanged("Smer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=14)]
+        public int IDPreseka
+        {
+            get
+            {
+                return this.IDPresekaField;
+            }
+            set
+            {
+                if ((this.IDPresekaField.Equals(value) != true))
+                {
+                    this.IDPresekaField = value;
+                    this.RaisePropertyChanged("IDPreseka");
                 }
             }
         }

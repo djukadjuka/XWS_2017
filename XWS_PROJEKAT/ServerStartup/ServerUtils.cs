@@ -27,7 +27,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = HOST_ADDRESS + firmName;
+			string httpLocation = HOST_ADDRESS + "Firme";
 			FirmaService.FirmaService service = new FirmaService.FirmaService(firmName);
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 
@@ -50,7 +50,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = HOST_ADDRESS + bankName;
+			string httpLocation = HOST_ADDRESS + "Banke";
 			BankaService.BankaService service = new BankaService.BankaService(bankName);
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 

@@ -1,17 +1,16 @@
 ﻿using FirmaService;
 using Shared.Model.XSD;
 using System;
-
+using System.Collections.Generic;
 using System.ServiceModel;
 
 
 namespace ConsoleClient
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            
             string name = "";
            
             var wsHttpBinding = new WSHttpBinding(SecurityMode.None);
@@ -96,7 +95,19 @@ namespace ConsoleClient
 
                 }
 
-            }
+			}
         }
+
+		//public static void ListFactures(string name, FirmaClient client)
+		//{
+		//	List<Faktura> allFaktsForFirm = client.GetFakturaByFirmName(name);
+		//	foreach (var f in allFaktsForFirm)
+		//	{
+		//		Console.WriteLine(f);
+		//		Console.WriteLine("[ENTER] for next, [Q] to end.");
+		//		string comm = Console.ReadLine();
+		//		if (comm == "Q" || comm == "q") break;
+		//	}
+		//}
     }
 }
