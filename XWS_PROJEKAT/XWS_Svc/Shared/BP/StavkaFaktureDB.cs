@@ -57,7 +57,7 @@ namespace XWS_Svc.Shared.BP
 			return stavka;
 		}
 
-		public static List<StavkaFakture> GetStavkaByFakturaId(int fakturaId)
+		public static ListaStavkiFakture GetStavkaByFakturaId(int fakturaId)
 		{
 			List<StavkaFakture> stavke = new List<StavkaFakture>();
 
@@ -81,7 +81,12 @@ namespace XWS_Svc.Shared.BP
 				conn.Close();
 			}
 
-			return stavke;
+			ListaStavkiFakture lst = new ListaStavkiFakture();
+			foreach(var st in stavke)
+			{
+				lst.Add(st);
+			}
+			return lst;
 		}
 
 		private static StavkaFakture ReadFromReader(SqlDataReader reader)

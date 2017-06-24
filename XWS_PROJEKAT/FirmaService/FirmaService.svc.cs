@@ -59,5 +59,11 @@ namespace FirmaService
 		{
 			return FakturaDB.GetAllFaktura();
 		}
+
+		public List<Faktura> GetFakturaByFirmName(string firmName)
+		{
+			List<Faktura> faktByFirmName = FakturaDB.GetByNazivKupca(firmName);
+			return faktByFirmName;
+		}
 	}
 }

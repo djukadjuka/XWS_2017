@@ -121,11 +121,41 @@ namespace XWS_Svc.Shared.BP
 					cmd.Parameters.AddWithValue("@IznosZaUplatu", f.IznosZaUplatu);
 					cmd.Parameters.AddWithValue("@UplataNaRacun", f.UplataNaRacun);
 					cmd.Parameters.AddWithValue("@DatumValute", f.DatumValute);
-					cmd.ExecuteNonQuery();
+					int idf = (int)cmd.ExecuteScalar();
+
+					foreach(var stavka in f.StavkeFakture)
+					{
+						stavka.IDFakture = idf;
+						StavkaFaktureDB.InsertIntoStavkaFakture(stavka);
+					}
+
 				}
 				conn.Close();
 			}
 		}//
+
+		public static List<Faktura> GetByNazivKupca(string firmName)
+		{
+			List<Faktura> faktures = new List<Faktura>();
+			using(SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			{
+				conn.Open();
+				string sql = "SELECT * FROM faktura where nazivkupca = @nazivKupca";
+				using (SqlCommand cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddWithValue("@nazivKupca", firmName);
+					SqlDataReader reader = cmd.ExecuteReader();
+					while(reader.Read())
+					{
+						Faktura fakt = ReadFromReader(reader);
+						faktures.Add(fakt);
+					}
+					reader.Close();
+				}
+				conn.Close();
+			}
+			return faktures;
+		}
 
 		private static Faktura ReadFromReader(SqlDataReader reader)
 		{
@@ -150,7 +180,7 @@ namespace XWS_Svc.Shared.BP
 			ret.UplataNaRacun = (string)reader["uplatanaracun"];
 			ret.DatumValute = (DateTime)reader["datumvalute"];
 
-			ret.StavkeFakture = (ListaStavkiFakture)StavkaFaktureDB.GetStavkaByFakturaId(ret.IDFakture);
+			ret.StavkeFakture = StavkaFaktureDB.GetStavkaByFakturaId(ret.IDFakture);
 
 			return ret;
 		}

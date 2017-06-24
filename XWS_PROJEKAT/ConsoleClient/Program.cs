@@ -7,7 +7,7 @@ using System.ServiceModel;
 
 namespace ConsoleClient
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -18,33 +18,49 @@ namespace ConsoleClient
             wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
 
-            var address = new EndpointAddress("http://localhost:8080/FirmaA?wsdl");
+            var address = new EndpointAddress("http://localhost:8080/Firme?wsdl");
             var client = new FirmaClient(wsHttpBinding, address);
 
 
             while (true)
             {
-				Console.WriteLine("1.Read message from bank.");
-				Console.WriteLine("2.Insert Facture.");
-				Console.WriteLine("3.Get One Fakutra.");
-				string command = Console.ReadLine();
-				if(command == "1"){
-					Console.WriteLine(client.ReturnMessageFromBank());
-				}else if(command == "2"){
-					Console.WriteLine("Inserting into database!");
-					client.InsertIntoFaktura();
-					Console.WriteLine("Check your database ;) ...");
-				}else if(command == "3"){
-					Console.WriteLine("ID Fakture : ");
-					string idfakt = Console.ReadLine();
-					Console.WriteLine(client.GetOneFaktura(idfakt));
-				}else if(command == "4"){
-					List<Faktura> fakture = client.GetAllFaktura();
-					foreach(var f in fakture){
-						Console.WriteLine(f);
+				if(name == ""){
+					Console.WriteLine("Your name:");
+					name = Console.ReadLine();
+				}
+
+				if (name == "") continue;
+				else
+				{
+					Console.WriteLine("1.) Check bills to pay.");
+					Console.WriteLine("2.) Sign out.");
+
+					string command = Console.ReadLine();
+					if(command == "1")
+					{
+						ListFactures(name, client);		
+					}else
+					if(command == "2")
+					{
+						name = "";
+					}else
+					{
+						Console.WriteLine("Unrecognized command!");
 					}
 				}
-            }
+			}
         }
+
+		public static void ListFactures(string name, FirmaClient client)
+		{
+			List<Faktura> allFaktsForFirm = client.GetFakturaByFirmName(name);
+			foreach (var f in allFaktsForFirm)
+			{
+				Console.WriteLine(f);
+				Console.WriteLine("[ENTER] for next, [Q] to end.");
+				string comm = Console.ReadLine();
+				if (comm == "Q" || comm == "q") break;
+			}
+		}
     }
 }

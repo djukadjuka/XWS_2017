@@ -296,7 +296,21 @@ namespace Shared.Model.XSD
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
+
+		public override string ToString()
+		{
+			string str = "";
+
+			str += "\tID STAVKE : ["+this.IDStavke+"]\n";
+			str += "\tPRIPADA FAKTURI : [" + this.IDFakture+"]\n";
+			str += "\tROBA/USLUGA : [" + this.NazivRobeIliUsluge+"]\n";
+			str += "\tKOLICINA : [" + this.Kolicina+"]\n";
+			str += "\tVREDNOST : [" + this.Vrednost+"]\n";
+
+
+			return str;
+		}
+	}
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -758,7 +772,21 @@ namespace Shared.Model.XSD
 
 		public override string ToString()
 		{
-			return "" + this.IDFakture + " - " + this.NazivDobavljaca;
+			string str = "";
+
+			str += "----------------FAKTURA : [" + IDFakture + "]\n";
+			str += "NAZIV KUPCA : ["+this.NazivKupca+"]\n";
+			str += "NAZIV DOBAVLJACA : ["+this.NazivDobavljaca+"]\n";
+			str += "PIB DOBAVLJACA : ["+this.PIBDobavljaca+"]\n";
+			str += "PIB KUPCA : ["+this.PIBKupca+"]\n";
+
+			str += "STAVKE : [\n";
+			foreach (var s in this.StavkeFakture)
+			{
+				str += s.ToString();
+			}
+			str += "]";
+			return str;
 		}
 	}
 }

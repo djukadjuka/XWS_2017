@@ -28,5 +28,8 @@ namespace FirmaService
 
 		[OperationContract]
 		List<Faktura> GetAllFaktura();
+
+		[OperationContract]
+		List<Faktura> GetFakturaByFirmName(string firmName);
     }
 }

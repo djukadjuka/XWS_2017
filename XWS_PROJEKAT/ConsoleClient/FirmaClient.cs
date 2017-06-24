@@ -28,6 +28,11 @@ namespace ConsoleClient
            return Channel.GetData(value);
         }
 
+		public List<Faktura> GetFakturaByFirmName(string firmName)
+		{
+			return this.Channel.GetFakturaByFirmName(firmName);
+		}
+
 		public string GetOneFaktura(string id)
 		{
 			return this.Channel.GetOneFaktura(id);
