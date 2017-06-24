@@ -12,14 +12,6 @@ namespace ServerStartup
 {
 	public class ServerUtils
 	{
-		/// <summary>
-		/// -> http://localhost:8080/
-		/// </summary>
-		public static readonly string HOST_ADDRESS = "http://localhost:8080/";
-		/// <summary>
-		/// -> CB/
-		/// </summary>
-		public static readonly string CENTRALNA_BANKA_NAME = "CB/";
 
 		public static ServiceHost CreateFirmaServer(string firmName)
 		{
@@ -27,7 +19,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = HOST_ADDRESS + "Firme";
+			string httpLocation = XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.FIRME_SERVICE_NAME;
 			FirmaService.FirmaService service = new FirmaService.FirmaService(firmName);
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 
@@ -50,7 +42,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = HOST_ADDRESS + "Banke";
+			string httpLocation = XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.BANKE_SERVICE_NAME;
 			BankaService.BankaService service = new BankaService.BankaService(bankName);
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 
@@ -73,7 +65,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = HOST_ADDRESS + CENTRALNA_BANKA_NAME;
+			string httpLocation = XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.CENTRALNA_BANKA_NAME;
 			CentralnaBankaService.CentralnaBankaService service = new CentralnaBankaService.CentralnaBankaService();
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 

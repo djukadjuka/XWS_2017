@@ -81,7 +81,7 @@ namespace XWS_Svc.Shared.BP
 												   ,[oznakavalute]
 												   ,[iznoszauplatu]
 												   ,[uplatanaracun]
-												   ,[datumvalute])
+												   ,[datumvalute]) output inserted.idfakture 
 											 VALUES
 												   (@IDPoruke
 												   ,@NazivDobavljaca
@@ -100,7 +100,7 @@ namespace XWS_Svc.Shared.BP
 												   ,@OznakaValute
 												   ,@IznosZaUplatu
 												   ,@UplataNaRacun
-												   ,@DatumValute)";
+												   ,@DatumValute) SELECT SCOPE_IDENTITY()";
 				conn.Open();
 				using(SqlCommand cmd = new SqlCommand(sql,conn))
 				{
@@ -122,7 +122,8 @@ namespace XWS_Svc.Shared.BP
 					cmd.Parameters.AddWithValue("@IznosZaUplatu", f.IznosZaUplatu);
 					cmd.Parameters.AddWithValue("@UplataNaRacun", f.UplataNaRacun);
 					cmd.Parameters.AddWithValue("@DatumValute", f.DatumValute);
-					int idf = (int)cmd.ExecuteScalar();
+				    Int32 idf = (Int32)cmd.ExecuteScalar();
+                    Console.Write(idf);
 
 					foreach(var stavka in f.StavkeFakture)
 					{

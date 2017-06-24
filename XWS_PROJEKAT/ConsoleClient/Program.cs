@@ -29,7 +29,7 @@ namespace ConsoleClient
 
                 string nazivFirmeA = Console.ReadLine();
 
-                var address = new EndpointAddress("http://localhost:8080/" + nazivFirmeA + "?wsdl");
+                var address = new EndpointAddress(XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.FIRME_SERVICE_NAME + "?wsdl");
                 var client = new FirmaClient(wsHttpBinding, address);
 
                 Console.WriteLine("***************************************");
@@ -57,16 +57,21 @@ namespace ConsoleClient
                     faktura.IDPoruke = "1 IDPoruke";
                     faktura.IznosZaUplatu = 120000.50;
                     faktura.NazivDobavljaca = "1 Dobavljac naziv";
+                    faktura.AdresaDobavljaca = "Adresa 1";
                     faktura.NazivKupca = "1 Kupac naziv";
+                    faktura.AdresaKupca = "Adresa 2";
                     faktura.OznakaValute = "RSD";
-                    faktura.PIBDobavljaca = "1 PIB dobavljaca";
+                    faktura.PIBDobavljaca = "1 PIB dobav";
                     faktura.PIBKupca = "1 PIB kupca";
+                    faktura.BrRacuna =1234567890;
                     faktura.UkupanPorez = 1000;
                     faktura.UkupanRabat = 5000;
                     faktura.UkupnoRobaIUsluge = 2000000;
                     faktura.UplataNaRacun = "123-456789";
                     faktura.VrednostRobe = 1000000;
                     faktura.VrednostUsluga = 500000;
+                    faktura.DatumRacuna = DateTime.Now;
+                    faktura.DatumValute = DateTime.Now;
                     ListaStavkiFakture stavke = new ListaStavkiFakture();
                     StavkaFakture stavka = new StavkaFakture();
                     stavka.IDFakture = 1;
