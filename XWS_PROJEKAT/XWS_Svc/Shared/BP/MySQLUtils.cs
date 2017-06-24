@@ -40,20 +40,26 @@ namespace Shared.BP
 
 		public static SqlConnection NapraviBankaConn()
 		{
-			StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
-			return CreateSQLConnection();
+            //StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            //StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            StandardConnectionString = "Data Source=DESKTOP-560J6HB\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            return CreateSQLConnection();
 		}
 
 		public static SqlConnection NapraviCBConn()
 		{
-			StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
-			return CreateSQLConnection();
+            //StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            //StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            StandardConnectionString = "Data Source=DESKTOP-560J6HB\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            return CreateSQLConnection();
 		}
 
 		public static SqlConnection NapraviFirmaConn()
 		{
-			StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
-			return CreateSQLConnection();
+            //StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            //StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            StandardConnectionString = "Data Source=DESKTOP-560J6HB\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+            return CreateSQLConnection();
 		}
 	}
 }

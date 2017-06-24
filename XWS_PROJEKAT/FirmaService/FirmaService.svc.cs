@@ -47,9 +47,10 @@ namespace FirmaService
         {
             Console.WriteLine("Slanje fakture od " + this.nazivFirme + "  firmi : " + nazivFirme + "   Faktura ID je: " + faktura.IDFakture);
 
+            //IFirmaService fs = GetIFirmaServiceChannel(XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.FIRME_SERVICE_NAME);
+            //IFirmaService fs = GetIFirmaServiceChannel("http://localhost:8080/" + nazivFirme);
 
-            IFirmaService fs = GetIFirmaServiceChannel("http://localhost:8080/" + nazivFirme);
-            fs.AcceptFactureFromFirm(faktura, this.nazivFirme);
+            AcceptFactureFromFirm(faktura, this.nazivFirme);
 
             FakturaResponse fakturaResponse = new FakturaResponse();
             fakturaResponse.Success = true;
@@ -73,9 +74,10 @@ namespace FirmaService
 
         public void AcceptFactureFromFirm(Faktura faktura, string nazivFirme)
         {
-            Dictionary<int, Faktura> fakturaa = new Dictionary<int, Faktura>();
-            fakturaa.Add(faktura.IDFakture, faktura);
-            this.fakture.Add(nazivFirme, fakturaa);
+            XWS_Svc.Shared.BP.FakturaDB.InsertIntoFaktura(faktura);
+            //Dictionary<int, Faktura> fakturaa = new Dictionary<int, Faktura>();
+            //fakturaa.Add(faktura.IDFakture, faktura);
+            //this.fakture.Add(nazivFirme, fakturaa);
         }
 
         public void PrikaziFakture(string nazivFirme)
