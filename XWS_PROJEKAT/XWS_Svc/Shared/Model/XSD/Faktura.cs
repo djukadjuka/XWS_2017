@@ -10,11 +10,10 @@
 
 namespace Shared.Model.XSD
 {
-	using System;
-	using System.Runtime.Serialization;
-
-
-	[System.Diagnostics.DebuggerStepThroughAttribute()]
+    using System.Runtime.Serialization;
+    
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ListaStavkiFakture", Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD", ItemName="Stavke")]
     public class ListaStavkiFakture : System.Collections.Generic.List<Shared.Model.XSD.StavkaFakture>
@@ -26,25 +25,8 @@ namespace Shared.Model.XSD
     [System.Runtime.Serialization.DataContractAttribute(Name="StavkaFakture", Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD")]
     public partial class StavkaFakture : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
     {
-		public StavkaFakture(){ }
-
-		public StavkaFakture(int iDStavke, double redniBr, string nazivRobeIliUsluge, double kolicina, string jedinicaMere, double jedinicnaCena, double vrednost, double procenatRabata, double iznosRabata, double umanjenoZaRabat, double ukupanPorez, int iDFakture)
-		{
-			IDStavke = iDStavke;
-			RedniBr = redniBr;
-			NazivRobeIliUsluge = nazivRobeIliUsluge;
-			Kolicina = kolicina;
-			JedinicaMere = jedinicaMere;
-			JedinicnaCena = jedinicnaCena;
-			Vrednost = vrednost;
-			ProcenatRabata = procenatRabata;
-			IznosRabata = iznosRabata;
-			UmanjenoZaRabat = umanjenoZaRabat;
-			UkupanPorez = ukupanPorez;
-			IDFakture = iDFakture;
-		}
-
-		private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         private int IDStavkeField;
         
@@ -301,11 +283,11 @@ namespace Shared.Model.XSD
 		{
 			string str = "";
 
-			str += "\tID STAVKE : ["+this.IDStavke+"]\n";
-			str += "\tPRIPADA FAKTURI : [" + this.IDFakture+"]\n";
-			str += "\tROBA/USLUGA : [" + this.NazivRobeIliUsluge+"]\n";
-			str += "\tKOLICINA : [" + this.Kolicina+"]\n";
-			str += "\tVREDNOST : [" + this.Vrednost+"]\n";
+			str += "\t-----------------STAVKA:[" + this.IDStavke + "]\n";
+			str += "\tPRIPADA FAKTURI : [" + this.IDFakture + "]\n";
+			str += "\tROBA/USLUGA : [" + this.NazivRobeIliUsluge + "]\n";
+			str += "\tKOLICINA : [" + this.Kolicina + "]\n";
+			str += "\tVREDNOST : [" + this.Vrednost + "]\n";
 
 
 			return str;
@@ -317,8 +299,7 @@ namespace Shared.Model.XSD
     [System.Runtime.Serialization.DataContractAttribute(Name="Faktura", Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD")]
     public partial class Faktura : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
     {
-		
-
+        
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         private int IDFaktureField;
@@ -360,54 +341,10 @@ namespace Shared.Model.XSD
         private System.DateTime DatumValuteField;
         
         private Shared.Model.XSD.ListaStavkiFakture StavkeFaktureField;
-		private object p;
-		private string v1;
-		private string v2;
-		private string v3;
-		private string v4;
-		private string v5;
-		private string v6;
-		private string v7;
-		private int v8;
-		private DateTime dateTime1;
-		private int v9;
-		private int v10;
-		private int v11;
-		private int v12;
-		private int v13;
-		private string v14;
-		private int v15;
-		private string v16;
-		private DateTime dateTime2;
-
-		public Faktura(){
-
-		}
-
-		public Faktura(int iDFaktureField, string iDPorukeField, string nazivDobavljacaField, string adresaDobavljacaField, string pIBDobavljacaField, string nazivKupcaField, string adresaKupcaField, string pIBKupcaField, double brRacunaField, DateTime datumRacunaField, double vrednostRobeField, double vrednostUslugaField, double ukupnoRobaIUslugeField, double ukupanRabatField, double ukupanPorezField, string oznakaValuteField, double iznosZaUplatuField, string uplataNaRacunField, DateTime datumValuteField)
-		{
-			IDFaktureField = iDFaktureField;
-			IDPorukeField = iDPorukeField;
-			NazivDobavljacaField = nazivDobavljacaField;
-			AdresaDobavljacaField = adresaDobavljacaField;
-			PIBDobavljacaField = pIBDobavljacaField;
-			NazivKupcaField = nazivKupcaField;
-			AdresaKupcaField = adresaKupcaField;
-			PIBKupcaField = pIBKupcaField;
-			BrRacunaField = brRacunaField;
-			DatumRacunaField = datumRacunaField;
-			VrednostRobeField = vrednostRobeField;
-			VrednostUslugaField = vrednostUslugaField;
-			UkupnoRobaIUslugeField = ukupnoRobaIUslugeField;
-			UkupanRabatField = ukupanRabatField;
-			UkupanPorezField = ukupanPorezField;
-			OznakaValuteField = oznakaValuteField;
-			IznosZaUplatuField = iznosZaUplatuField;
-			UplataNaRacunField = uplataNaRacunField;
-			DatumValuteField = datumValuteField;
-		}
-
-		public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        
+        private string StatusField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
             {
@@ -759,6 +696,23 @@ namespace Shared.Model.XSD
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=20)]
+        public string Status
+        {
+            get
+            {
+                return this.StatusField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.StatusField, value) != true))
+                {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName)
@@ -775,10 +729,12 @@ namespace Shared.Model.XSD
 			string str = "";
 
 			str += "----------------FAKTURA : [" + IDFakture + "]\n";
-			str += "NAZIV KUPCA : ["+this.NazivKupca+"]\n";
-			str += "NAZIV DOBAVLJACA : ["+this.NazivDobavljaca+"]\n";
-			str += "PIB DOBAVLJACA : ["+this.PIBDobavljaca+"]\n";
-			str += "PIB KUPCA : ["+this.PIBKupca+"]\n";
+			str += "NAZIV KUPCA : [" + this.NazivKupca + "]\n";
+			str += "NAZIV DOBAVLJACA : [" + this.NazivDobavljaca + "]\n";
+			str += "PIB DOBAVLJACA : [" + this.PIBDobavljaca + "]\n";
+			str += "PIB KUPCA : [" + this.PIBKupca + "]\n";
+			str += "STATUS : ["+(this.Status=="0"?"Kreirana":(this.Status=="1"?"Poslata Kupcu":"Placeno"))+"]\n";
+			str += "UKUPNA CENA : ["+this.UkupnoRobaIUsluge+"]\n";
 
 			str += "STAVKE : [\n";
 			foreach (var s in this.StavkeFakture)

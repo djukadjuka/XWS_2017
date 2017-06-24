@@ -32,6 +32,7 @@
 			<xs:element name="UplataNaRacun" minOccurs="0" type="xs:string"></xs:element>
 			<xs:element name="DatumValute" minOccurs="0" type="xs:dateTime"></xs:element>
 			<xs:element name="StavkeFakture" minOccurs="0" type="tns:ListaStavkiFakture"></xs:element>
+			<xs:element name="Status" minOccurs="0" type="xs:string"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
