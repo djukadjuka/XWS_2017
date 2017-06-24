@@ -1,4 +1,5 @@
 ﻿
+using Shared.Model.XSD;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
@@ -13,13 +14,19 @@ namespace FirmaService
         string GetData(int value);
 
         [OperationContract]
-        FakturaResponse SlanjeFakture(Faktura faktura);
+        FakturaResponse SlanjeFakture(Faktura faktura, string nazivFirme);
 
 		[OperationContract]
 		string ReturnMessageFromBank();
 
 		[OperationContract]
 		void AcceptMessageFromBank(string message);
+
+        [OperationContract]
+        void AcceptFactureFromFirm(Faktura faktura, string nazivFirme);
+
+        [OperationContract]
+        void PrikaziFakture(string nazivFirme);
     }
 
     [DataContract]
@@ -38,28 +45,4 @@ namespace FirmaService
 
     }
 
-    [DataContract]
-    public class Faktura
-    {
-      
-        long idfakture;
-        string idporuke;
-
-        [DataMember]
-        public long Idfakture
-        {
-            get { return idfakture; }
-            set { idfakture = value; }
-        }
-
-
-        [DataMember]
-        public string Idporuke
-        {
-            get { return idporuke; }
-            set { idporuke = value; }
-        }
-
-
-    }
 }

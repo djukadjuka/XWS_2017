@@ -2,6 +2,7 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System;
+using Shared.Model.XSD;
 
 namespace ConsoleClient
 {
@@ -11,7 +12,12 @@ namespace ConsoleClient
 		{
         }
 
-		public void AcceptMessageFromBank(string message)
+        public void AcceptFactureFromFirm(Faktura faktura, string nazivFirme)
+        {
+            Channel.AcceptFactureFromFirm(faktura, nazivFirme);
+        }
+
+        public void AcceptMessageFromBank(string message)
 		{
 			Channel.AcceptMessageFromBank(message);
 		}
@@ -21,14 +27,19 @@ namespace ConsoleClient
            return Channel.GetData(value);
         }
 
-		public string ReturnMessageFromBank()
+        public void PrikaziFakture(string nazivFirme)
+        {
+            Channel.PrikaziFakture(nazivFirme); 
+        }
+
+        public string ReturnMessageFromBank()
 		{
 			return Channel.ReturnMessageFromBank();
 		}
 
-		public FakturaResponse SlanjeFakture(Faktura faktura)
+		public FakturaResponse SlanjeFakture(Faktura faktura, string nazivFirme)
         {
-            return Channel.SlanjeFakture(faktura);
+            return Channel.SlanjeFakture(faktura, nazivFirme);
         }
     }
 }
