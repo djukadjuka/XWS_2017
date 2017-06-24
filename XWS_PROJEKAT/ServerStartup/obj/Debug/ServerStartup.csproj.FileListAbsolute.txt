@@ -10,3 +10,21 @@ D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XW
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS_Svc.dll.config
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.exe
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe.config
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS_Svc.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.dll.config
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.dll.config
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll.config
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS_Svc.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS_Svc.dll.config
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.csprojResolveAssemblyReference.cache
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.exe
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.pdb

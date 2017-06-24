@@ -12,3 +12,14 @@ D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.dll.config
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.dll
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.dll.config
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\XWS_Svc.pdb
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\EntityFramework.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\EntityFramework.xml
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.csprojResolveAssemblyReference.cache
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\obj\Debug\XsdGeneratedCode\GeneratedXsdTypes.cs
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.dll
+C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\XWS_Svc\obj\Debug\XWS_Svc.pdb
