@@ -68,6 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BP\FakturaDB.cs" />
     <Compile Include="Shared\BP\MySQLUtils.cs" />
+    <Compile Include="Shared\Model\Banka.cs" />
     <Compile Include="Shared\BP\NalogZaGrupnoPlacanjeDB.cs" />
     <Compile Include="Shared\BP\NalogZaPlacanjeDB.cs" />
     <Compile Include="Shared\BP\PorukaOOdobrenjuDB.cs" />
@@ -81,6 +82,8 @@
     <Compile Include="Shared\Model\InterfejsiServisa\IBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\ICentralnaBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IFirmaService.cs" />
+    <Compile Include="Shared\Model\propfull.cs" />
+    <Compile Include="Shared\Model\Racun.cs" />
     <Compile Include="Shared\Model\XSD\Faktura.cs">
       <DependentUpon>Faktura.xsd</DependentUpon>
     </Compile>

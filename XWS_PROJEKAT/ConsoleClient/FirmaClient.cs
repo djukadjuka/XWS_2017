@@ -13,14 +13,14 @@ namespace ConsoleClient
 		{
         }
 
-		public void AcceptMessageFromBank(string message)
+        public void AcceptFactureFromFirm(Faktura faktura, string nazivFirme)
+        {
+            Channel.AcceptFactureFromFirm(faktura, nazivFirme);
+        }
+
+        public void AcceptMessageFromBank(string message)
 		{
 			Channel.AcceptMessageFromBank(message);
-		}
-
-		public List<Faktura> GetAllFaktura()
-		{
-			return Channel.GetAllFaktura();
 		}
 
 		public string GetData(int value)
@@ -28,25 +28,19 @@ namespace ConsoleClient
            return Channel.GetData(value);
         }
 
-		public List<Faktura> GetFakturaByFirmName(string firmName)
-		{
-			return this.Channel.GetFakturaByFirmName(firmName);
-		}
+        public void PrikaziFakture(string nazivFirme)
+        {
+            Channel.PrikaziFakture(nazivFirme); 
+        }
 
-		public string GetOneFaktura(string id)
-		{
-			return this.Channel.GetOneFaktura(id);
-		}
-
-		public void InsertIntoFaktura()
-		{
-			this.Channel.InsertIntoFaktura();
-		}
-
-		public string ReturnMessageFromBank()
+        public string ReturnMessageFromBank()
 		{
 			return Channel.ReturnMessageFromBank();
 		}
-		
+
+		public FakturaResponse SlanjeFakture(Faktura faktura, string nazivFirme)
+        {
+            return Channel.SlanjeFakture(faktura, nazivFirme);
+        }
     }
 }

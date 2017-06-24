@@ -13,23 +13,36 @@ namespace FirmaService
 
         [OperationContract]
         string GetData(int value);
-		
+
+        [OperationContract]
+        FakturaResponse SlanjeFakture(Faktura faktura, string nazivFirme);
+
 		[OperationContract]
 		string ReturnMessageFromBank();
 
 		[OperationContract]
-		void InsertIntoFaktura();
-
-		[OperationContract]
 		void AcceptMessageFromBank(string message);
 
-		[OperationContract]
-		string GetOneFaktura(string id);
+        [OperationContract]
+        void AcceptFactureFromFirm(Faktura faktura, string nazivFirme);
 
-		[OperationContract]
-		List<Faktura> GetAllFaktura();
+        [OperationContract]
+        void PrikaziFakture(string nazivFirme);
+    }
 
-		[OperationContract]
-		List<Faktura> GetFakturaByFirmName(string firmName);
+    [DataContract]
+    public class FakturaResponse
+    {
+
+        bool success;
+
+        [DataMember]
+        public bool Success
+        {
+            get { return success; }
+            set { success = value; }
+        }
+
+
     }
 }
