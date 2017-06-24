@@ -15,7 +15,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<Presek> GetAllPresek()
 		{
 			List<Presek> preseci = new List<Presek>();
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM presek";
@@ -40,7 +40,7 @@ namespace XWS_Svc.Shared.BP
 		public static Presek GetPresek(int idPreseka)
 		{
 			Presek ret;
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM presek WHERE idpreseka= @idpreseka";
@@ -63,7 +63,7 @@ namespace XWS_Svc.Shared.BP
 		//
 		public static void InsertIntoPresek(Presek f)
 		{
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				string sql = @"INSERT INTO [dbo].[presek]
 											   ([brracuna]

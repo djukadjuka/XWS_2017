@@ -14,7 +14,7 @@ namespace XWS_Svc.Shared.BP
 		public static ZahtevZaDobijanjeIzvoda GetZahtevZaDobijanjeIzvodaById(int idZahteva)
 		{
 			ZahtevZaDobijanjeIzvoda zahtev = new ZahtevZaDobijanjeIzvoda();
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = "SELECT * FROM zahtevzadobijanjeizvoda WHERE idzzdi = @idzzdi";
@@ -34,7 +34,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<ZahtevZaDobijanjeIzvoda> GetAllZahtevZaDobijanjeIzvoda()
 		{
 			List<ZahtevZaDobijanjeIzvoda> zahtevi = new List<ZahtevZaDobijanjeIzvoda>();
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = "SELECT * FROM zahtevzadobijanjeizvoda";
@@ -67,7 +67,7 @@ namespace XWS_Svc.Shared.BP
 
 		public static void InsertZahtevZaDobijanjeIzvoda(ZahtevZaDobijanjeIzvoda zahtev)
 		{
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"INSERT INTO [dbo].[zahtevzadobijanjeizvoda]

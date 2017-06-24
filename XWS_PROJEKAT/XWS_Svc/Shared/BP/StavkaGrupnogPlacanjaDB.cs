@@ -15,7 +15,7 @@ namespace XWS_Svc.Shared.BP
 		{
 			List<StavkaGrupnogPlacanja> stavke = new List<StavkaGrupnogPlacanja>();
 
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM sgp";
@@ -39,7 +39,7 @@ namespace XWS_Svc.Shared.BP
 		{
 			StavkaGrupnogPlacanja stavka = new StavkaGrupnogPlacanja();
 
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM sgp WHERE idstavkegrupnogplacanja = @idstavkegrupnogplacanja";
@@ -62,7 +62,7 @@ namespace XWS_Svc.Shared.BP
 		{
 			List<StavkaGrupnogPlacanja> stavke = new List<StavkaGrupnogPlacanja>();
 
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM sgp WHERE nalogzagp_idnalogazagp = @idNaloga";
@@ -111,7 +111,7 @@ namespace XWS_Svc.Shared.BP
 		//
 		public static void InsertIntoStavkaZaGrupnoPlacanje(StavkaGrupnogPlacanja sgp)
 		{
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				string sql = @"INSERT INTO [dbo].[sgp]
 													   ([idnalogazaplacanje]

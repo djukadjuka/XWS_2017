@@ -14,7 +14,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<StavkaFakture> GetAllStavkaFakture(){
 			List<StavkaFakture> stavke = new List<StavkaFakture>();
 
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM stavkafakture";
@@ -38,7 +38,7 @@ namespace XWS_Svc.Shared.BP
 		{
 			StavkaFakture stavka = new StavkaFakture();
 
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM stavkafakture WHERE idstavke = @idstavke";
@@ -61,7 +61,7 @@ namespace XWS_Svc.Shared.BP
 		{
 			List<StavkaFakture> stavke = new List<StavkaFakture>();
 
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM stavkafakture WHERE faktura_idfakture = @idFakture";
@@ -112,7 +112,7 @@ namespace XWS_Svc.Shared.BP
 		//
 		public static void InsertIntoStavkaFakture(StavkaFakture sf)
 		{
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				string sql = @"INSERT INTO [dbo].[stavkafakture]
 												   ([rednibr]

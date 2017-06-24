@@ -15,7 +15,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<PorukaOZaduzenju> GetAllPorukaOZaduzenju()
 		{
 			List<PorukaOZaduzenju> poruke = new List<PorukaOZaduzenju>();
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM porukaozaduzenju";
@@ -40,7 +40,7 @@ namespace XWS_Svc.Shared.BP
 		public static PorukaOZaduzenju GetPorukaOZaduzenju(int idPoruke)
 		{
 			PorukaOZaduzenju ret;
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM porukaozaduzenju WHERE idporukeozaduzenju = @idporukeozaduzenju";
@@ -63,7 +63,7 @@ namespace XWS_Svc.Shared.BP
 		//
 		public static void InsertIntoPorukaOZaduzenju(PorukaOZaduzenju f)
 		{
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				string sql = @"INSERT INTO [dbo].[porukaoodobrenju]
 													   ([idporuke]

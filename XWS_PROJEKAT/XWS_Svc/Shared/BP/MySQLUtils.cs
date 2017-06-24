@@ -12,6 +12,7 @@ namespace Shared.BP
 	/// </summary>
 	public class MySQLUtils
 	{
+		private static String konekcioniString;
 		/// <summary>
 		/// Konekcioni string po standardu za SQL Server Managment Studio SQLEXPRESS. Ako menjas, sacuvaj predhodni kao komentar.
 		/// </summary>
@@ -21,14 +22,38 @@ namespace Shared.BP
 			//menjaj samo XXX iz "Data Source=XXX\\SQLEXPRESS"
 			//XXX ti je ime kompa
 			//Initial Catalog je ime baze, ako se generise druga, mora da se promeni.
-			get{ return "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True"; }
+			get
+			{
+				return konekcioniString;//"Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True"; 
+			}
+
+			set 
+			{
+				konekcioniString = value;
+			}
 		}
 
-		public static SqlConnection CreateSQLConnection(){
+		private static SqlConnection CreateSQLConnection(){
 			SqlConnection connection = new SqlConnection(StandardConnectionString);
 			return connection;
 		}
 
+		public static SqlConnection NapraviBankaConn()
+		{
+			StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+			return CreateSQLConnection();
+		}
 
+		public static SqlConnection NapraviCBConn()
+		{
+			StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+			return CreateSQLConnection();
+		}
+
+		public static SqlConnection NapraviFirmaConn()
+		{
+			StandardConnectionString = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS2017;Integrated Security=True";
+			return CreateSQLConnection();
+		}
 	}
 }

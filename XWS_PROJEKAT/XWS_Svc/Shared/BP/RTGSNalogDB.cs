@@ -15,7 +15,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<RTGSNalog> GetAllRTGSNalog()
 		{
 			List<RTGSNalog> poruke = new List<RTGSNalog>();
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM rtgsnalog";
@@ -40,7 +40,7 @@ namespace XWS_Svc.Shared.BP
 		public static RTGSNalog GetRTGSNalog(int idNaloga)
 		{
 			RTGSNalog ret;
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM rtgsnalog WHERE idrtgsnaloga = @idrtgsnaloga";
@@ -63,7 +63,7 @@ namespace XWS_Svc.Shared.BP
 		//
 		public static void InsertIntoRTGSNalog(RTGSNalog f)
 		{
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				string sql = @"INSERT INTO [dbo].[rtgsnalog]
 													   ([idporuke]

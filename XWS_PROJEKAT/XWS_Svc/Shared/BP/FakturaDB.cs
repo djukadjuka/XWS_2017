@@ -15,7 +15,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<Faktura> GetAllFaktura()
 		{
 			List<Faktura> fakture = new List<Faktura>();
-			using(SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using(SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM faktura";
@@ -39,7 +39,7 @@ namespace XWS_Svc.Shared.BP
 		public static Faktura GetFaktura(int idFakutre)
 		{
 			Faktura ret;
-			using (SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM faktura WHERE idfakture = @idfakutre";
@@ -61,7 +61,8 @@ namespace XWS_Svc.Shared.BP
 
 		//
 		public static void InsertIntoFaktura(Faktura f){
-			using(SqlConnection conn = MySQLUtils.CreateSQLConnection()){
+			using(SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			{
 				string sql = @"INSERT INTO [dbo].[faktura]
 												   ([idporuke]
 												   ,[nazivdobavljaca]
@@ -137,7 +138,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<Faktura> GetByNazivKupca(string firmName)
 		{
 			List<Faktura> faktures = new List<Faktura>();
-			using(SqlConnection conn = MySQLUtils.CreateSQLConnection())
+			using(SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = "SELECT * FROM faktura where nazivkupca = @nazivKupca";
