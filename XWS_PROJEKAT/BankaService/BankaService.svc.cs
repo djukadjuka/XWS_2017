@@ -22,13 +22,14 @@ namespace BankaService
 
         public BankaService(string bankName)
 		{
-			this.banka.Naziv = bankName;
+			//this.banka.Naziv = bankName;
+			
 		}
 
 
 		public string ProveriBanku()
 		{
-			return banka.Naziv;
+			return "Krastavci!";
 		}
 
 		public void sendMessageToFirm(string firmName, string message)

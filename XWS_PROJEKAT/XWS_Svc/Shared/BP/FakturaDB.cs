@@ -6,11 +6,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XWS_Svc.Shared.Model;
 
 namespace XWS_Svc.Shared.BP
 {
 	public class FakturaDB
 	{
+
+		#region stare
 		//
 		public static List<Faktura> GetAllFaktura()
 		{
@@ -38,7 +41,7 @@ namespace XWS_Svc.Shared.BP
 		//
 		public static Faktura GetFaktura(int idFakutre)
 		{
-			Faktura ret;
+			Faktura ret = null;
 			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
@@ -81,7 +84,8 @@ namespace XWS_Svc.Shared.BP
 												   ,[oznakavalute]
 												   ,[iznoszauplatu]
 												   ,[uplatanaracun]
-												   ,[datumvalute]) output inserted.idfakture 
+												   ,[datumvalute]
+												   ,[status]) output inserted.idfakture 
 											 VALUES
 												   (@IDPoruke
 												   ,@NazivDobavljaca
@@ -100,10 +104,12 @@ namespace XWS_Svc.Shared.BP
 												   ,@OznakaValute
 												   ,@IznosZaUplatu
 												   ,@UplataNaRacun
-												   ,@DatumValute) SELECT SCOPE_IDENTITY()";
+												   ,@DatumValute
+												   ,@status) SELECT SCOPE_IDENTITY()";
 				conn.Open();
 				using(SqlCommand cmd = new SqlCommand(sql,conn))
 				{
+					Console.WriteLine(">>>>>>>>>> " + f.Status);
 					cmd.Parameters.AddWithValue("@IDPoruke", f.IDPoruke);
 					cmd.Parameters.AddWithValue("@NazivDobavljaca", f.NazivDobavljaca);
 					cmd.Parameters.AddWithValue("@AdresaDobavljaca", f.AdresaDobavljaca);
@@ -122,6 +128,7 @@ namespace XWS_Svc.Shared.BP
 					cmd.Parameters.AddWithValue("@IznosZaUplatu", f.IznosZaUplatu);
 					cmd.Parameters.AddWithValue("@UplataNaRacun", f.UplataNaRacun);
 					cmd.Parameters.AddWithValue("@DatumValute", f.DatumValute);
+					cmd.Parameters.AddWithValue("@status", f.Status);
 				    Int32 idf = (Int32)cmd.ExecuteScalar();
                     Console.Write(idf);
 
@@ -139,7 +146,7 @@ namespace XWS_Svc.Shared.BP
 		public static List<Faktura> GetByNazivKupca(string firmName)
 		{
 			List<Faktura> faktures = new List<Faktura>();
-			using(SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
 			{
 				conn.Open();
 				string sql = "SELECT * FROM faktura where nazivkupca = @nazivKupca";
@@ -147,7 +154,7 @@ namespace XWS_Svc.Shared.BP
 				{
 					cmd.Parameters.AddWithValue("@nazivKupca", firmName);
 					SqlDataReader reader = cmd.ExecuteReader();
-					while(reader.Read())
+					while (reader.Read())
 					{
 						Faktura fakt = ReadFromReader(reader);
 						faktures.Add(fakt);
@@ -181,10 +188,87 @@ namespace XWS_Svc.Shared.BP
 			ret.IznosZaUplatu = (float)(decimal)reader["iznoszauplatu"];
 			ret.UplataNaRacun = (string)reader["uplatanaracun"];
 			ret.DatumValute = (DateTime)reader["datumvalute"];
+			ret.Status = (string)reader["status"];
 
 			ret.StavkeFakture = StavkaFaktureDB.GetStavkaByFakturaId(ret.IDFakture);
 
 			return ret;
 		}
+
+		#endregion stare
+
+		#region nove
+
+		public static void SendInvoiceStatus(int idFakture)
+		{
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			{
+				conn.Open();
+				string sql = @"UPDATE [dbo].[faktura]
+									   SET [status] = '1'
+									 WHERE [dbo].[faktura].[idfakture] = @idFakture";
+				using (SqlCommand cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddWithValue("@idFakture", idFakture);
+					cmd.ExecuteNonQuery();
+				}
+				conn.Close();
+			}
+		}
+
+		public static void MakeInvoiceProfile(int idFakture)
+		{
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			{
+				conn.Open();
+				string sql = @"UPDATE [dbo].[faktura]
+									   SET [status] = '2'
+									 WHERE [dbo].[faktura].[idfakture] = @idFakture";
+				using (SqlCommand cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddWithValue("@idFakture", idFakture);
+					cmd.ExecuteNonQuery();
+				}
+				conn.Close();
+			}
+		}
+
+		public static List<Faktura> GetInvoiceByStatusAndId(Firma firma, string tip)
+		{
+			List<Faktura> fakture = new List<Faktura>();
+			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			{
+				conn.Open();
+				string sql = "";
+				string naziv = "";
+				
+				if (tip == "0")
+				{
+					sql = @"SELECT * FROM faktura WHERE nazivdobavljaca = @naziv";
+				}
+				else if(tip == "1")
+				{
+					sql = @"SELECT * FROM faktura WHERE nazivkupca = @naziv AND status = '1'";
+				}
+
+				using (SqlCommand cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddWithValue("@naziv",firma.NazivFirme);
+					SqlDataReader reader = cmd.ExecuteReader();
+					while (reader.Read())
+					{
+						Faktura ret = new Faktura();
+						ret = ReadFromReader(reader);
+						fakture.Add(ret);
+					}
+					reader.Close();
+				}
+				conn.Close();
+			}
+
+			return fakture;
+		}
+
+		#endregion nove
 	}
 }

@@ -4,6 +4,7 @@ using System.ServiceModel.Channels;
 using System;
 using Shared.Model.XSD;
 using System.Collections.Generic;
+using XWS_Svc.Shared.Model;
 
 namespace ConsoleClient
 {
@@ -13,9 +14,9 @@ namespace ConsoleClient
 		{
         }
 
-        public void AcceptFactureFromFirm(Faktura faktura, string nazivFirme)
+        public void SaveCreatedInvoice(Faktura faktura)
         {
-            Channel.AcceptFactureFromFirm(faktura, nazivFirme);
+            Channel.SaveCreatedInvoice(faktura);
         }
 
         public void AcceptMessageFromBank(string message)
@@ -42,5 +43,20 @@ namespace ConsoleClient
         {
             return Channel.SlanjeFakture(faktura, nazivFirme);
         }
-    }
+
+		public void SendCreatedInvoice(int idFakture)
+		{
+			Channel.SendCreatedInvoice(idFakture);
+		}
+
+		public void SendInvoiceProfile(Faktura sourceInvoice)
+		{
+			Channel.SendInvoiceProfile(sourceInvoice);
+		}
+
+		public List<Faktura> GetForCompanyAndStatus(Firma firma, string status)
+		{
+			return Channel.GetForCompanyAndStatus(firma, status);
+		}
+	}
 }

@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BP\FakturaDB.cs" />
+    <Compile Include="Shared\BP\FirmaDB.cs" />
     <Compile Include="Shared\BP\MySQLUtils.cs" />
     <Compile Include="Shared\GlobalConst.cs" />
     <Compile Include="Shared\Model\Banka.cs" />
@@ -80,9 +81,12 @@
     <Compile Include="Shared\BP\StavkaGrupnogPlacanjaDB.cs" />
     <Compile Include="Shared\BP\StavkaPresekaDB.cs" />
     <Compile Include="Shared\BP\ZahtevZaDobijanjeIzvodaDB.cs" />
+    <Compile Include="Shared\Model\CentralnaBanka.cs" />
+    <Compile Include="Shared\Model\Firma.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\ICentralnaBankaService.cs" />
     <Compile Include="Shared\Model\InterfejsiServisa\IFirmaService.cs" />
+    <Compile Include="Shared\Model\ObracunskiRacun.cs" />
     <Compile Include="Shared\Model\propfull.cs" />
     <Compile Include="Shared\Model\Racun.cs" />
     <Compile Include="Shared\Model\XSD\Faktura.cs">
@@ -152,7 +156,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Shared\BP\Skripte\BANKA_DDL_XWS_2017.sql" />
     <Content Include="Shared\BP\Skripte\baza_tabele.txt" />
+    <Content Include="Shared\BP\Skripte\C_DDL_XWS_2017.sql" />
     <Content Include="Shared\BP\Skripte\dbo.faktura.Table.sql" />
     <Content Include="Shared\BP\Skripte\dbo.nalogzagp.Table.sql" />
     <Content Include="Shared\BP\Skripte\dbo.nalogzaplacanje.Table.sql" />
@@ -164,6 +170,7 @@
     <Content Include="Shared\BP\Skripte\dbo.stavkafakture.Table.sql" />
     <Content Include="Shared\BP\Skripte\dbo.stavkapreseka.Table.sql" />
     <Content Include="Shared\BP\Skripte\dbo.zahtevzadobijanjeizvoda.Table.sql" />
+    <Content Include="Shared\BP\Skripte\FIRMA_DDL_XWS_2017.sql" />
     <Content Include="Shared\BP\Skripte\sveIkad.sql" />
     <Content Include="Shared\BP\Skripte\XWS2017.Database.sql" />
   </ItemGroup>

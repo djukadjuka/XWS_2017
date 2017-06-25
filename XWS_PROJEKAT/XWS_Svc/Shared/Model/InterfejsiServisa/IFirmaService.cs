@@ -3,7 +3,7 @@ using Shared.Model.XSD;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-
+using XWS_Svc.Shared.Model;
 
 namespace FirmaService
 {
@@ -24,10 +24,19 @@ namespace FirmaService
 		void AcceptMessageFromBank(string message);
 
         [OperationContract]
-        void AcceptFactureFromFirm(Faktura faktura, string nazivFirme);
+        void SaveCreatedInvoice(Faktura faktura);
 
         [OperationContract]
         void PrikaziFakture(string nazivFirme);
+
+		[OperationContract]
+		void SendCreatedInvoice(int idFakture);
+
+		[OperationContract]
+		void SendInvoiceProfile(Faktura sourceInvoice);
+
+		[OperationContract]
+		List<Faktura> GetForCompanyAndStatus(Firma firma, string status); 
     }
 
     [DataContract]

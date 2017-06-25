@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
-﻿using Shared.Model.XSD;
+using Shared.Model.XSD;
 using System.ServiceModel;
 using XWS_Svc.Shared.BP;
 using XWS_Svc.Shared.Model.InterfejsiServisa;
+using XWS_Svc.Shared.Model;
 
 namespace FirmaService
 {
@@ -29,8 +30,8 @@ namespace FirmaService
 
 		public void InsertIntoFaktura()
 		{
-			testFaktura = new Faktura(1, "Poruka", "Dobavljac1", "DobavljacAddressa1", "123-321", "Kupac1", "AddressaKupac1", "321-123", 123, DateTime.Now, 100, 100, 5, 4321, 1234, "USD", 199, "321-123", DateTime.Now);
-			FakturaDB.InsertIntoFaktura(testFaktura);
+			//testFaktura = new Faktura(1, "Poruka", "Dobavljac1", "DobavljacAddressa1", "123-321", "Kupac1", "AddressaKupac1", "321-123", 123, DateTime.Now, 100, 100, 5, 4321, 1234, "USD", 199, "321-123", DateTime.Now);
+			//FakturaDB.InsertIntoFaktura(testFaktura);
 		}
 
 		public string GetData(int value)
@@ -50,7 +51,7 @@ namespace FirmaService
             //IFirmaService fs = GetIFirmaServiceChannel(XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.FIRME_SERVICE_NAME);
             //IFirmaService fs = GetIFirmaServiceChannel("http://localhost:8080/" + nazivFirme);
 
-            AcceptFactureFromFirm(faktura, this.nazivFirme);
+            SaveCreatedInvoice(faktura);
 
             FakturaResponse fakturaResponse = new FakturaResponse();
             fakturaResponse.Success = true;
@@ -72,7 +73,7 @@ namespace FirmaService
 			return bs;
 		}
 
-        public void AcceptFactureFromFirm(Faktura faktura, string nazivFirme)
+        public void SaveCreatedInvoice(Faktura faktura)
         {
             XWS_Svc.Shared.BP.FakturaDB.InsertIntoFaktura(faktura);
             //Dictionary<int, Faktura> fakturaa = new Dictionary<int, Faktura>();
@@ -101,5 +102,20 @@ namespace FirmaService
             //}
             
         }
-    }
+
+		public void SendCreatedInvoice(int idFakture)
+		{
+			FakturaDB.SendInvoiceStatus(idFakture);
+		}
+
+		public void SendInvoiceProfile(Faktura sourceInvoice)
+		{
+			FakturaDB.MakeInvoiceProfile(sourceInvoice.IDFakture);
+		}
+
+		public List<Faktura> GetForCompanyAndStatus(Firma firma, string status)
+		{
+			return FakturaDB.GetInvoiceByStatusAndId(firma, status);
+		}
+	}
 }

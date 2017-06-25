@@ -8,47 +8,54 @@ namespace XWS_Svc.Shared.Model
 {
     class Racun
     {
-        private int idRacun;
-        private string racun;
-        private double stanje;
+		private int idRacuna;
 
-        public Racun()
-        {
+		public int IDRacuna
+		{
+			get { return idRacuna; }
+			set { idRacuna = value; }
+		}
 
-        }
+		private double predhodnoStanje;
 
-        public Racun(int idRacun, string racun, double stanje)
-        {
-            this.idRacun = idRacun;
-            this.racun = racun;
-            this.stanje = stanje;
-        }
+		public double PredhodnoStanje
+		{
+			get { return predhodnoStanje; }
+			set { predhodnoStanje = value; }
+		}
 
-        public int IdRacun
-        {
-            get { return idRacun; }
-            set
-            {
-                idRacun = value;
-            }
-        }
+		private double trenutnoStanje;
 
-        public string BrojRacun
-        {
-            get { return racun; }
-            set
-            {
-                racun = value;
-            }
-        }
+		public double TrenutnoStanje
+		{
+			get { return trenutnoStanje; }
+			set { trenutnoStanje = value; }
+		}
 
-        public double Stanje
-        {
-            get { return stanje; }
-            set
-            {
-                stanje = value;
-            }
-        }
-    }
+		private DateTime datum;
+
+		public DateTime Datum
+		{
+			get { return datum; }
+			set { datum = value; }
+		}
+
+		private int idFirme;
+
+		public int IDFirme
+		{
+			get { return idFirme; }
+			set { idFirme = value; }
+		}
+
+		private int idBanke;
+
+		public int IDBanke
+		{
+			get { return idBanke; }
+			set { idBanke = value; }
+		}
+
+
+	}
 }

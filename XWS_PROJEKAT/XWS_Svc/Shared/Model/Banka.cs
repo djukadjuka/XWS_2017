@@ -8,67 +8,45 @@ namespace XWS_Svc.Shared.Model
 {
     public class Banka
     {
-        private int idBanka;
-        private string naziv;
-        private string swift;
-        private string racun;
+		private int idBanke;
 
-        private List<Racun> racuni = new List<Racun>();
+		public int IdBanke
+		{
+			get { return idBanke; }
+			set { idBanke = value; }
+		}
 
+		private string nazivBanke;
 
-        public Banka()
-        {
+		public string NazivBanke
+		{
+			get { return nazivBanke; }
+			set { nazivBanke = value; }
+		}
 
-        }
+		private string adresaBanke;
 
-        public Banka(int idBanka, string naziv, string swift, string racun)
-        {
-            this.idBanka = idBanka;
-            this.naziv = naziv;
-            this.swift = swift;
-            this.racun = racun;
-        }
+		public string AdresaBanke
+		{
+			get { return adresaBanke; }
+			set { adresaBanke = value; }
+		}
 
-        public int IdBanka
-        {
-            get { return idBanka; }
-            set
-            {
-                idBanka = value;
-                
-            }
-        }
+		private string swiftKod;
 
-        public string Naziv
-        {
-            get { return naziv; }
-            set
-            {
-                naziv = value;
+		public string SWIFTKod
+		{
+			get { return swiftKod; }
+			set { swiftKod = value; }
+		}
 
-            }
-        }
+		private Int64 obracunskiRacun;
 
-        public string Swift
-        {
-            get { return swift; }
-            set
-            {
-                swift = value;
-               
-            }
-        }
-
-        public string Racun
-        {
-            get { return racun; }
-            set
-            {
-                racun = value;
-                
-            }
-        }
-
-
-    }
+		public Int64 ObracunskiRacun
+		{
+			get { return obracunskiRacun; }
+			set { obracunskiRacun = value; }
+		}
+		
+	}
 }
