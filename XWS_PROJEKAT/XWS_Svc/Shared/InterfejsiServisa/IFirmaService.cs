@@ -40,7 +40,10 @@ namespace XWS.Shared.Model.InterfejsiServisa
 		List<Faktura> GetForCompanyAndStatus(Firma firma, string status);
 
         [OperationContract]
-        void NapraviNalogZaPrenos(Faktura faktura);
+        void NapraviNalogZaPrenos(NalogZaPlacanje nzp);
+
+        [OperationContract]
+        void PromeniStatusFakture(int idFakture, string status);
 
     }
 

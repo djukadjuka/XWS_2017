@@ -20,7 +20,7 @@ namespace XWS.Shared.Model.InterfejsiServisa
 		void sendMessageToFirm(string firmName, string message);
 
         [OperationContract]
-        void NapraviNalogZaPrenos(Faktura faktura);
+        void NapraviNalogZaPrenos(NalogZaPlacanje nzp);
 
 
     }

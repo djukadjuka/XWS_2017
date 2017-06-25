@@ -171,21 +171,22 @@ namespace XWS.Shared.BP
 			Faktura ret = new Faktura();
 
 			ret.IDFakture = (int)reader["idfakture"];
-			ret.NazivDobavljaca = (string)reader["nazivdobavljaca"];
+            ret.IDPoruke = (string)reader["idporuke"];
+            ret.NazivDobavljaca = (string)reader["nazivdobavljaca"];
 			ret.AdresaDobavljaca = (string)reader["adresadobavljaca"];
 			ret.PIBDobavljaca = (string)reader["pibdobavljaca"];
 			ret.NazivKupca = (string)reader["nazivkupca"];
 			ret.AdresaKupca = (string)reader["adresakupca"];
 			ret.PIBKupca = (string)reader["pibkupca"];
-			ret.BrRacuna = (float)(decimal)reader["brracuna"];
+			ret.BrRacuna = (double)(decimal)reader["brracuna"];
 			ret.DatumRacuna = (DateTime)reader["datumracuna"];
-			ret.VrednostRobe = (float)(decimal)reader["vrednostrobe"];
-			ret.VrednostUsluga = (float)(decimal)reader["vrednostusluga"];
-			ret.UkupnoRobaIUsluge = (float)(decimal)reader["ukupnorobaiusluge"];
-			ret.UkupanRabat = (float)(decimal)reader["ukupanrabat"];
-			ret.UkupanPorez = (float)(decimal)reader["ukupanporez"];
+			ret.VrednostRobe = (double)(decimal)reader["vrednostrobe"];
+			ret.VrednostUsluga = (double)(decimal)reader["vrednostusluga"];
+			ret.UkupnoRobaIUsluge = (double)(decimal)reader["ukupnorobaiusluge"];
+			ret.UkupanRabat = (double)(decimal)reader["ukupanrabat"];
+			ret.UkupanPorez = (double)(decimal)reader["ukupanporez"];
 			ret.OznakaValute = (string)reader["oznakavalute"];
-			ret.IznosZaUplatu = (float)(decimal)reader["iznoszauplatu"];
+			ret.IznosZaUplatu = (double)(decimal)reader["iznoszauplatu"];
 			ret.UplataNaRacun = (string)reader["uplatanaracun"];
 			ret.DatumValute = (DateTime)reader["datumvalute"];
 			ret.Status = (string)reader["status"];
@@ -269,6 +270,24 @@ namespace XWS.Shared.BP
 			return fakture;
 		}
 
-		#endregion nove
-	}
+        public static void PromeniStatusFakture(int idFakture, string status)
+        {
+            using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+            {
+                conn.Open();
+                string sql = @"UPDATE [dbo].[faktura]
+									   SET [status] = @status
+									 WHERE [dbo].[faktura].[idfakture] = @idFakture";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idFakture", idFakture);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
+        #endregion nove
+    }
 }

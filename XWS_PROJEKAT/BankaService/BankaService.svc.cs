@@ -4,6 +4,7 @@ using System.ServiceModel;
 using XWS.Shared.Model;
 using XWS.Shared.Model.InterfejsiServisa;
 using System;
+using XWS.Shared.BP;
 
 namespace BankaService
 {
@@ -41,9 +42,10 @@ namespace BankaService
 			return fs;
 		}
 
-        public void NapraviNalogZaPrenos(Faktura faktura)
+        public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
-            Console.WriteLine(faktura);
+            NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);  
+            Console.WriteLine(nzp);
         }
 
 

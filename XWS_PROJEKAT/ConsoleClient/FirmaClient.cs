@@ -4,6 +4,7 @@ using Shared.Model.XSD;
 using System.Collections.Generic;
 using XWS.Shared.Model;
 using XWS.Shared.Model.InterfejsiServisa;
+using System;
 
 namespace ConsoleClient
 {
@@ -59,9 +60,14 @@ namespace ConsoleClient
 		}
 
         
-        public void NapraviNalogZaPrenos(Faktura faktura)
+        public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
-            Channel.NapraviNalogZaPrenos(faktura);
+            Channel.NapraviNalogZaPrenos(nzp);
+        }
+
+        public void PromeniStatusFakture(int idFakture, string status)
+        {
+            Channel.PromeniStatusFakture(idFakture, status);
         }
     }
 }

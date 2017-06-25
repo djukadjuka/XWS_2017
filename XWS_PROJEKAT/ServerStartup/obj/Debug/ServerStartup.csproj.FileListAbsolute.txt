@@ -28,21 +28,3 @@ D:\XML PROJEKAT JELA DJUKA 2017\XWS_25.06.2017_NOVA_VERZIJA\XWS_2017\XWS_PROJEKA
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_25.06.2017_NOVA_VERZIJA\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.csprojResolveAssemblyReference.cache
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_25.06.2017_NOVA_VERZIJA\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.exe
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_25.06.2017_NOVA_VERZIJA\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.pdb
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe.config
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.pdb
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.dll
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.dll
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS.dll
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.pdb
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.dll.config
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.pdb
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.dll.config
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.pdb
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll.config
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS.pdb
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS.dll.config
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.csprojResolveAssemblyReference.cache
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.exe
-C:\Users\User\Desktop\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.pdb

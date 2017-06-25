@@ -111,7 +111,8 @@ namespace ConsoleClient
 					Faktura fakt = FakturaDB.GetFaktura(id);
 					if (fakt != null)
 					{
-						client.SendCreatedInvoice(id);
+                        //client.SendCreatedInvoice(id);
+                        client.PromeniStatusFakture(fakt.IDFakture, "1");
 						break;
 					}
 				}catch(Exception e)
@@ -225,15 +226,42 @@ namespace ConsoleClient
 
             while (true)
             {
-                Console.WriteLine("Izaberi fakturu od koje hoces da napravis nalog za prenos:");
+                Console.WriteLine("Izaberi fakturu od koje hoces da napravis nalog za prenos(Q za izlaz):");
                 string id_string = Console.ReadLine();
+                if (id_string == "Q" || id_string == "q")
+                {
+                    return;
+                }
                 try
                 {
                     int id = Int32.Parse(id_string);
                     Faktura fakt = FakturaDB.GetFaktura(id);
                     if (fakt != null)
                     {
-                        client.NapraviNalogZaPrenos(fakt);
+                        while (true)
+                        {
+                            Console.WriteLine("Da li je hitno? (true/false):");
+                            string odgovor = Console.ReadLine();
+                            if (odgovor == "Q" || odgovor == "q")
+                            {
+                                return;
+                            }
+                            if(odgovor == "true" || odgovor=="TRUE" || odgovor=="false" || odgovor == "FALSE")
+                            {
+                                bool hitno;
+                                if (odgovor == "true" || odgovor == "TRUE")
+                                    hitno = true;
+                                 else
+                                    hitno = false;
+                                NalogZaPlacanje nzp = generisiNZP(sourceFirma, hitno, fakt);
+                                
+                                client.NapraviNalogZaPrenos(nzp);
+
+                                client.PromeniStatusFakture(fakt.IDFakture, "2");
+                                break;
+                            }
+                        }
+                            
                         break;
                     }
                 }
@@ -243,5 +271,38 @@ namespace ConsoleClient
                 }
             }
         }
-    }
+
+        public static NalogZaPlacanje generisiNZP(Firma sourceFirma, bool hitno, Faktura faktura)
+        {
+            Console.WriteLine("OVO JE RACUN OD FIRME: "+sourceFirma.Racun);
+            Console.WriteLine("OVO JE RACUN TO STRING OD FIRME: " + sourceFirma.Racun.ToString());
+            Console.WriteLine("OVO JE RACUN OD FAKTURE: " + faktura.BrRacuna.ToString("F0"));
+            Console.WriteLine("OVO JE RACUN TO STRING OD FAKTURE: " + faktura.BrRacuna.ToString());
+            Console.WriteLine("OVO JE FAKTURINA ID PORUKA: " + faktura.IDPoruke);
+            NalogZaPlacanje nzp = new NalogZaPlacanje();
+            nzp.Hitno = hitno;
+            nzp.DatumNaloga = DateTime.Now;
+            nzp.DatumValute = DateTime.Now;
+            nzp.Duznik = faktura.NazivKupca;
+            nzp.IDPoruke = faktura.IDPoruke;
+            nzp.Iznos = faktura.IznosZaUplatu;
+            nzp.ModelOdobrenja = 97;
+            nzp.ModelZaduzenja = 97;
+            nzp.OznakaValute = faktura.OznakaValute;
+            nzp.PozivNaBrOdobrenja = 123;
+            nzp.PozivNaBrZaduzenja = "123";
+            nzp.Primalac = faktura.NazivDobavljaca;
+            nzp.RacunPoverioca = faktura.BrRacuna.ToString();
+            nzp.RacunDuznika = faktura.UplataNaRacun;
+            nzp.Status = "0";
+            nzp.SvrhaPlacanja = "dug";
+            /*if (nzp.Iznos > 250000)
+                nzp.Status = "1";
+            else
+                nzp.Status = ""*/
+
+            Console.WriteLine(nzp);
+            return nzp;
+        }
+    }  
 }

@@ -14,7 +14,7 @@ namespace XWS.Shared.BP
 		public static NalogZaPlacanje GetNalogZaPlacanjeById(int idNaloga)
 		{
 			NalogZaPlacanje stavka = new NalogZaPlacanje();
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
 			{
 				conn.Open();
 				string sql = "SELECT * FROM nalogzaplacanje WHERE idnalogazaplacanje = @idnalogazaplacanje";
@@ -63,7 +63,7 @@ namespace XWS.Shared.BP
 		public static List<NalogZaPlacanje> GetAllNalogZaPlacanje()
 		{
 			List<NalogZaPlacanje> nalozi = new List<NalogZaPlacanje>();
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
 			{
 				conn.Open();
 				string sql = "SELECT * FROM nalogzaplacanje";
@@ -108,7 +108,7 @@ namespace XWS.Shared.BP
 
 		public static void InsertNalogZaPlacanje(NalogZaPlacanje nalogZaPlacanje)
 		{
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
 			{
 				conn.Open();
 				string sql = @"INSERT INTO [dbo].[nalogzaplacanje]
