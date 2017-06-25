@@ -41,9 +41,9 @@ namespace BankaService
 			return fs;
 		}
 
-        public void NapraviNalogZaPrenos(Firma sourceFirma)
+        public void NapraviNalogZaPrenos(Faktura faktura)
         {
-               
+            Console.WriteLine(faktura);
         }
 
 

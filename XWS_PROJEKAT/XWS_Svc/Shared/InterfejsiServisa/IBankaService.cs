@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Model.XSD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -18,7 +19,7 @@ namespace XWS.Shared.Model.InterfejsiServisa
 		void sendMessageToFirm(string firmName, string message);
 
         [OperationContract]
-        void NapraviNalogZaPrenos(Firma sourceFirma);
+        void NapraviNalogZaPrenos(Faktura faktura);
 
 
     }

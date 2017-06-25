@@ -59,9 +59,9 @@ namespace ConsoleClient
 		}
 
         
-        public void NapraviNalogZaPrenos(Firma sourceFirma)
+        public void NapraviNalogZaPrenos(Faktura faktura)
         {
-            Channel.NapraviNalogZaPrenos(sourceFirma);
+            Channel.NapraviNalogZaPrenos(faktura);
         }
     }
 }

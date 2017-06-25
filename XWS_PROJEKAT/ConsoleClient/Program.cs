@@ -221,8 +221,27 @@ namespace ConsoleClient
 
         public static void NapraviNalogZaPrenos(Firma sourceFirma, FirmaClient client)
         {
-            client.NapraviNalogZaPrenos(sourceFirma); 
+            PrikaziSveFakture(sourceFirma, client, "1");
 
+            while (true)
+            {
+                Console.WriteLine("Izaberi fakturu od koje hoces da napravis nalog za prenos:");
+                string id_string = Console.ReadLine();
+                try
+                {
+                    int id = Int32.Parse(id_string);
+                    Faktura fakt = FakturaDB.GetFaktura(id);
+                    if (fakt != null)
+                    {
+                        client.NapraviNalogZaPrenos(fakt);
+                        break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    //pass
+                }
+            }
         }
     }
 }

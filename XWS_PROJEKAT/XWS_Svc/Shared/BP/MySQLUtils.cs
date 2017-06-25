@@ -41,8 +41,8 @@ namespace Shared.BP
 		public static SqlConnection NapraviBankaConn()
 		{
 			//StandardConnectionString = XWS.Shared.GlobalConst.DJUKA_BAZA_KONEKCIONI_BANKA;
-			StandardConnectionString = XWS.Shared.GlobalConst.JELENA_BAZA_KONEKCIONI_BANKA;
-			//StandardConnectionString = XWS.Shared.GlobalConst.KUKA_BAZA_KONEKCIONI_BANKA;
+			//StandardConnectionString = XWS.Shared.GlobalConst.JELENA_BAZA_KONEKCIONI_BANKA;
+			StandardConnectionString = XWS.Shared.GlobalConst.KUKA_BAZA_KONEKCIONI_BANKA;
 
 			return CreateSQLConnection();
 		}
@@ -50,8 +50,8 @@ namespace Shared.BP
 		public static SqlConnection NapraviCBConn()
 		{
 			//StandardConnectionString = XWS.Shared.GlobalConst.DJUKA_BAZA_KONEKCIONI_CB;
-			StandardConnectionString = XWS.Shared.GlobalConst.JELENA_BAZA_KONEKCIONI_CB;
-			//StandardConnectionString = XWS.Shared.GlobalConst.KUKA_BAZA_KONEKCIONI_CB;
+			//StandardConnectionString = XWS.Shared.GlobalConst.JELENA_BAZA_KONEKCIONI_CB;
+			StandardConnectionString = XWS.Shared.GlobalConst.KUKA_BAZA_KONEKCIONI_CB;
 
 			return CreateSQLConnection();
 		}
@@ -59,8 +59,8 @@ namespace Shared.BP
 		public static SqlConnection NapraviFirmaConn()
 		{
 			//StandardConnectionString = XWS.Shared.GlobalConst.DJUKA_BAZA_KONEKCIONI_FIRMA;
-			StandardConnectionString = XWS.Shared.GlobalConst.JELENA_BAZA_KONEKCIONI_FIRMA;
-			//StandardConnectionString = XWS.Shared.GlobalConst.KUKA_BAZA_KONEKCIONI_FIRMA;
+			//StandardConnectionString = XWS.Shared.GlobalConst.JELENA_BAZA_KONEKCIONI_FIRMA;
+			StandardConnectionString = XWS.Shared.GlobalConst.KUKA_BAZA_KONEKCIONI_FIRMA;
 
 			return CreateSQLConnection();
 		}
