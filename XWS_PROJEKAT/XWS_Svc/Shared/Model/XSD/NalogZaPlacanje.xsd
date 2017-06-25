@@ -22,6 +22,7 @@
 			<xs:element name="Iznos" type="xs:double" minOccurs="0"></xs:element>
 			<xs:element name="OznakaValute" type="xs:string" minOccurs="0"></xs:element>
 			<xs:element name="Hitno" type="xs:boolean" minOccurs="0"></xs:element>
+			<xs:element name="Status" type="xs:string"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

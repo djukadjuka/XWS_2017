@@ -53,6 +53,8 @@ namespace Shared.Model.XSD
         
         private bool HitnoField;
         
+        private string StatusField;
+        
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
@@ -333,6 +335,23 @@ namespace Shared.Model.XSD
                 {
                     this.HitnoField = value;
                     this.RaisePropertyChanged("Hitno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=16)]
+        public string Status
+        {
+            get
+            {
+                return this.StatusField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.StatusField, value) != true))
+                {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
                 }
             }
         }

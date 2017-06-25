@@ -31,6 +31,35 @@ namespace XWS.Shared.BP
 			return stavka;
 		}
 
+		/// <summary>
+		/// proveri dal ga imas sa lista.size() == 0 ili lista isempty
+		/// </summary>
+		/// <param name="status"></param>
+		/// <returns></returns>
+		public static List<NalogZaPlacanje> GetNalogByStatus(string status)
+		{
+			List<NalogZaPlacanje> nalozi = new List<NalogZaPlacanje>();
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
+			{
+				conn.Open();
+				string sql = "SELECT * FROM nalogzaplacanje WHERE status = @status";
+				using (SqlCommand cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddWithValue("@status", status);
+					SqlDataReader reader = cmd.ExecuteReader();
+					while(reader.Read())
+					{
+						NalogZaPlacanje naloug = GetFromReader(reader);
+						nalozi.Add(naloug);
+					}
+					reader.Close();
+				}
+				conn.Close();
+			}
+
+			return nalozi;
+		}
+
 		public static List<NalogZaPlacanje> GetAllNalogZaPlacanje()
 		{
 			List<NalogZaPlacanje> nalozi = new List<NalogZaPlacanje>();
@@ -72,6 +101,7 @@ namespace XWS.Shared.BP
 			nalogZaPlacanje.Iznos					= (double)(decimal)reader["iznos"];
 			nalogZaPlacanje.OznakaValute			= (string)reader["oznakavalute"];
 			nalogZaPlacanje.Hitno					= (bool)reader["hitno"];
+			nalogZaPlacanje.Status					= (string)reader["status"];
 
 			return nalogZaPlacanje;
 		}
@@ -96,7 +126,8 @@ namespace XWS.Shared.BP
 													   ,[pozivnabrodobrenja]
 													   ,[iznos]
 													   ,[oznakavalute]
-													   ,[hitno])
+													   ,[hitno]
+													   ,[status])
 												 VALUES
 													   (@idporuke
 													   ,@duznik
@@ -112,7 +143,8 @@ namespace XWS.Shared.BP
 													   ,@pozivnabrodobrenja
 													   ,@iznos
 													   ,@oznakavalute
-													   ,@hitno)";
+													   ,@hitno
+													   ,@status)";
 				using (SqlCommand cmd = new SqlCommand(sql, conn))
 				{
 					cmd.Parameters.AddWithValue("@idporuke"				, nalogZaPlacanje.IDPoruke);
@@ -130,12 +162,28 @@ namespace XWS.Shared.BP
 					cmd.Parameters.AddWithValue("@iznos"				, nalogZaPlacanje.Iznos);
 					cmd.Parameters.AddWithValue("@oznakavalute"			, nalogZaPlacanje.OznakaValute);
 					cmd.Parameters.AddWithValue("@hitno"				, nalogZaPlacanje.Hitno);
+					cmd.Parameters.AddWithValue("@status"				, nalogZaPlacanje.Status);		
 
 					cmd.ExecuteNonQuery();
 				}
 				conn.Close();
 			}
+		}
 
+		public static void UpdateNalogStatus(int nalogId, string status)
+		{
+			string sql = "UPDATE nalogzaplacanje SET status = @status WHERE idnalogazaplacanje = @id";
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
+			{
+				conn.Open();
+				using (SqlCommand cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddWithValue("@status",status);
+					cmd.Parameters.AddWithValue("@id",nalogId);
+					cmd.ExecuteNonQuery();
+				}
+				conn.Close();
+			}
 		}
 	}
 }
