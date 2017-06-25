@@ -155,7 +155,7 @@ namespace ConsoleClient
 			fakt.AdresaKupca = kupac.AdresaFirme;
 			fakt.PIBKupca = kupac.PIB;
 
-			fakt.BrRacuna = kupac.Racun;
+            fakt.BrRacuna = 1;//kupac.Racun;
 			fakt.UplataNaRacun = sourceFirma.Racun.ToString();
 
 			fakt.DatumRacuna = DateTime.Now;
@@ -274,11 +274,6 @@ namespace ConsoleClient
 
         public static NalogZaPlacanje generisiNZP(Firma sourceFirma, bool hitno, Faktura faktura)
         {
-            Console.WriteLine("OVO JE RACUN OD FIRME: "+sourceFirma.Racun);
-            Console.WriteLine("OVO JE RACUN TO STRING OD FIRME: " + sourceFirma.Racun.ToString());
-            Console.WriteLine("OVO JE RACUN OD FAKTURE: " + faktura.BrRacuna.ToString("F0"));
-            Console.WriteLine("OVO JE RACUN TO STRING OD FAKTURE: " + faktura.BrRacuna.ToString());
-            Console.WriteLine("OVO JE FAKTURINA ID PORUKA: " + faktura.IDPoruke);
             NalogZaPlacanje nzp = new NalogZaPlacanje();
             nzp.Hitno = hitno;
             nzp.DatumNaloga = DateTime.Now;
@@ -292,8 +287,8 @@ namespace ConsoleClient
             nzp.PozivNaBrOdobrenja = 123;
             nzp.PozivNaBrZaduzenja = "123";
             nzp.Primalac = faktura.NazivDobavljaca;
-            nzp.RacunPoverioca = faktura.BrRacuna.ToString();
-            nzp.RacunDuznika = faktura.UplataNaRacun;
+            nzp.RacunPoverioca = faktura.UplataNaRacun;
+            nzp.RacunDuznika = sourceFirma.Racun.ToString();
             nzp.Status = "0";
             nzp.SvrhaPlacanja = "dug";
             /*if (nzp.Iznos > 250000)
