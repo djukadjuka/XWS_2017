@@ -1,14 +1,13 @@
-﻿using FirmaService;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System;
 using Shared.Model.XSD;
 using System.Collections.Generic;
-using XWS_Svc.Shared.Model;
+using XWS.Shared.Model;
+using XWS.Shared.Model.InterfejsiServisa;
 
 namespace ConsoleClient
 {
-    public class FirmaClient : ClientBase<IFirmaService>, IFirmaService
+	public class FirmaClient : ClientBase<IFirmaService>, IFirmaService
     {
         public FirmaClient(Binding binding, EndpointAddress address) : base (binding, address)
 		{

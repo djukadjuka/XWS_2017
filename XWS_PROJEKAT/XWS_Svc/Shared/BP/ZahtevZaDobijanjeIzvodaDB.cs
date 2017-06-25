@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XWS_Svc.Shared.BP
+namespace XWS.Shared.BP
 {
 	public class ZahtevZaDobijanjeIzvodaDB
 	{

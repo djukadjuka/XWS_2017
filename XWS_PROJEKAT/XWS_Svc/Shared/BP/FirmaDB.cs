@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XWS_Svc.Shared.Model;
+using XWS.Shared.Model;
 
-namespace XWS_Svc.Shared.BP
+namespace XWS.Shared.BP
 {
 	public static class FirmaDB
 	{

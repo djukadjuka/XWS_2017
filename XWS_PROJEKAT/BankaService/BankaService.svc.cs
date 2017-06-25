@@ -1,13 +1,8 @@
-﻿using FirmaService;
-using Shared.Model.XSD;
-using System;
+﻿using Shared.Model.XSD;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
-using XWS_Svc.Shared.Model;
-using XWS_Svc.Shared.Model.InterfejsiServisa;
+using XWS.Shared.Model;
+using XWS.Shared.Model.InterfejsiServisa;
 
 namespace BankaService
 {

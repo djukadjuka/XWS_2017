@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using XWS_Svc.Shared.Model.InterfejsiServisa;
+using XWS.Shared.Model.InterfejsiServisa;
 
 namespace CentralnaBankaService
 {

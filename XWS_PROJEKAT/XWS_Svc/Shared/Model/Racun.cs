@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XWS_Svc.Shared.Model
+namespace XWS.Shared.Model
 {
     class Racun
     {

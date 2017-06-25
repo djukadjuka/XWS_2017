@@ -1,10 +1,9 @@
-﻿using FirmaService;
-using Shared.Model.XSD;
+﻿using Shared.Model.XSD;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
-using XWS_Svc.Shared.BP;
-using XWS_Svc.Shared.Model;
+using XWS.Shared.BP;
+using XWS.Shared.Model;
 
 namespace ConsoleClient
 {
@@ -17,7 +16,7 @@ namespace ConsoleClient
             wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
             wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			var address = new EndpointAddress(XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.FIRME_SERVICE_NAME + "?wsdl");
+			var address = new EndpointAddress(XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.FIRME_SERVICE_NAME + "?wsdl");
 			var client = new FirmaClient(wsHttpBinding, address);
 
 			while (true)

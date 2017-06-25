@@ -60,10 +60,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FirmaService.svc" />
-    <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="FirmaService.svc.cs">
       <DependentUpon>FirmaService.svc</DependentUpon>
     </Compile>
@@ -71,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FirmaService.svc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -81,9 +83,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XWS_Svc\XWS_Svc.csproj">
+    <ProjectReference Include="..\XWS_Svc\XWS.csproj">
       <Project>{2dff45ba-fa87-4568-891d-c9b06d242bea}</Project>
-      <Name>XWS_Svc</Name>
+      <Name>XWS</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

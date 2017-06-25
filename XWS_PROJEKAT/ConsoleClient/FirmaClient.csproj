@@ -55,9 +55,9 @@
       <Project>{87b9fde1-8e90-4ec0-affd-1640fb799ba6}</Project>
       <Name>ServerStartup</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XWS_Svc\XWS_Svc.csproj">
+    <ProjectReference Include="..\XWS_Svc\XWS.csproj">
       <Project>{2dff45ba-fa87-4568-891d-c9b06d242bea}</Project>
-      <Name>XWS_Svc</Name>
+      <Name>XWS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

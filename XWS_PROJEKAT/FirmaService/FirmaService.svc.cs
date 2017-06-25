@@ -1,14 +1,14 @@
+using Shared.Model.XSD;
 using System;
 using System.Collections.Generic;
-using Shared.Model.XSD;
 using System.ServiceModel;
-using XWS_Svc.Shared.BP;
-using XWS_Svc.Shared.Model.InterfejsiServisa;
-using XWS_Svc.Shared.Model;
+using XWS.Shared.BP;
+using XWS.Shared.Model;
+using XWS.Shared.Model.InterfejsiServisa;
 
 namespace FirmaService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class FirmaService : IFirmaService
     {
         private string nazivFirme;
@@ -75,7 +75,7 @@ namespace FirmaService
 
         public void SaveCreatedInvoice(Faktura faktura)
         {
-            XWS_Svc.Shared.BP.FakturaDB.InsertIntoFaktura(faktura);
+            XWS.Shared.BP.FakturaDB.InsertIntoFaktura(faktura);
             //Dictionary<int, Faktura> fakturaa = new Dictionary<int, Faktura>();
             //fakturaa.Add(faktura.IDFakture, faktura);
             //this.fakture.Add(nazivFirme, fakturaa);

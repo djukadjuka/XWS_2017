@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
-using XWS_Svc.Shared.Model.InterfejsiServisa;
+using XWS.Shared.Model.InterfejsiServisa;
 
 namespace ServerStartup
 {
@@ -19,7 +19,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.FIRME_SERVICE_NAME;
+			string httpLocation = XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.FIRME_SERVICE_NAME;
 			FirmaService.FirmaService service = new FirmaService.FirmaService(firmName);
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 
@@ -42,7 +42,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.BANKE_SERVICE_NAME;
+			string httpLocation = XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME;
 			BankaService.BankaService service = new BankaService.BankaService(bankName);
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 
@@ -65,7 +65,7 @@ namespace ServerStartup
 			wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 			wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			string httpLocation = XWS_Svc.Shared.GlobalConst.HOST_ADDRESS + XWS_Svc.Shared.GlobalConst.CENTRALNA_BANKA_NAME;
+			string httpLocation = XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.CENTRALNA_BANKA_NAME;
 			CentralnaBankaService.CentralnaBankaService service = new CentralnaBankaService.CentralnaBankaService();
 			ServiceHost svh = new ServiceHost(service, new Uri(httpLocation));
 

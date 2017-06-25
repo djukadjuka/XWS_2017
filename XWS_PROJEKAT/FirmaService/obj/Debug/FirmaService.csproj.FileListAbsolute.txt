@@ -7,12 +7,3 @@ D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\FirmaService\bin\XWS_Svc.p
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\FirmaService\bin\XWS_Svc.dll.config
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\FirmaService\obj\Debug\FirmaService.dll
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_2017\XWS_PROJEKAT\FirmaService\obj\Debug\FirmaService.pdb
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\bin\FirmaService.dll.config
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\bin\FirmaService.dll
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\bin\FirmaService.pdb
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\bin\XWS_Svc.dll
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\bin\XWS_Svc.pdb
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\bin\XWS_Svc.dll.config
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\obj\Debug\FirmaService.csprojResolveAssemblyReference.cache
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\obj\Debug\FirmaService.dll
-C:\Users\Djuka\Desktop\XWS_2017\XWS_PROJEKAT\FirmaService\obj\Debug\FirmaService.pdb
