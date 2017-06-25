@@ -9,14 +9,13 @@ namespace XWS.Shared.Model
 	public class CentralnaBanka
 	{
 		private int idCb;
+        private string naziv;
 
-		public int IDCb
+        public int IDCb
 		{
 			get { return idCb; }
 			set { idCb = value; }
 		}
-
-		private string naziv;
 
 		public string Naziv
 		{

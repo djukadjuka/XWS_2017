@@ -16,5 +16,10 @@ namespace XWS.Shared.Model.InterfejsiServisa
 
 		[OperationContract]
 		void sendMessageToFirm(string firmName, string message);
-	}
+
+        [OperationContract]
+        void NapraviNalogZaPrenos(Firma sourceFirma);
+
+
+    }
 }

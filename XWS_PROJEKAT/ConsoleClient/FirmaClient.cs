@@ -57,5 +57,11 @@ namespace ConsoleClient
 		{
 			return Channel.GetForCompanyAndStatus(firma, status);
 		}
-	}
+
+        
+        public void NapraviNalogZaPrenos(Firma sourceFirma)
+        {
+            Channel.NapraviNalogZaPrenos(sourceFirma);
+        }
+    }
 }

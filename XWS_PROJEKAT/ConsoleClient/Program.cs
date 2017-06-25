@@ -54,6 +54,7 @@ namespace ConsoleClient
 			Console.WriteLine("2.) Prikazi Sve Kreirane Fakture\n");
 			Console.WriteLine("3.) Prikazi Sve Narucene Fakture\n");
 			Console.WriteLine("4.) Posalji Fakturu Kupcu\n");
+            Console.WriteLine("5.) Napravi nalog za prenos\n");
 		}
 
 		public static bool IzabranMeni(Firma sourceFirma,string izbor, FirmaClient client)
@@ -82,7 +83,12 @@ namespace ConsoleClient
 					PosaljiFakturuKupcu(sourceFirma, client, "0");
 					break;
 				}
-				default:
+                case "5":
+                {
+                     NapraviNalogZaPrenos(sourceFirma, client);
+                     break;
+                }
+                default:
 				{
 					Console.WriteLine("Izbor NE POSTOJI!\n");
 					return false;
@@ -212,5 +218,11 @@ namespace ConsoleClient
 				Console.WriteLine(f);
 			}
 		}
-	}
+
+        public static void NapraviNalogZaPrenos(Firma sourceFirma, FirmaClient client)
+        {
+            client.NapraviNalogZaPrenos(sourceFirma); 
+
+        }
+    }
 }

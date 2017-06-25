@@ -9,14 +9,17 @@ namespace XWS.Shared.Model
     class Racun
     {
 		private int idRacuna;
+        private double predhodnoStanje;
+        private double trenutnoStanje;
+        private DateTime datum;
+        private int idFirme;
+        private int idBanke;
 
-		public int IDRacuna
+        public int IDRacuna
 		{
 			get { return idRacuna; }
 			set { idRacuna = value; }
 		}
-
-		private double predhodnoStanje;
 
 		public double PredhodnoStanje
 		{
@@ -24,38 +27,28 @@ namespace XWS.Shared.Model
 			set { predhodnoStanje = value; }
 		}
 
-		private double trenutnoStanje;
-
 		public double TrenutnoStanje
 		{
 			get { return trenutnoStanje; }
 			set { trenutnoStanje = value; }
 		}
-
-		private DateTime datum;
-
+	
 		public DateTime Datum
 		{
 			get { return datum; }
 			set { datum = value; }
 		}
-
-		private int idFirme;
-
+		
 		public int IDFirme
 		{
 			get { return idFirme; }
 			set { idFirme = value; }
 		}
-
-		private int idBanke;
-
+		
 		public int IDBanke
 		{
 			get { return idBanke; }
 			set { idBanke = value; }
 		}
-
-
 	}
 }

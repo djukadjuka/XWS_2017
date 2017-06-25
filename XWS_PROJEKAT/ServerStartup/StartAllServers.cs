@@ -23,7 +23,7 @@ namespace ServerStartup
 				var svh_FIRMA_A = ServerStartup.ServerUtils.CreateFirmaServer("FirmaA");
 				//var svh_FIRMA_B = ServerStartup.ServerUtils.CreateFirmaServer("FirmaB");
 				var svh_CB = ServerUtils.CreateCentralnaBankaServer();
-
+              
 				svh_BANKA_A.Open();
 				//svh_BANKA_B.Open();
 				svh_FIRMA_A.Open();

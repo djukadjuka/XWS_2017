@@ -9,14 +9,16 @@ namespace XWS.Shared.Model
 	public class ObracunskiRacun
 	{
 		private int idObracunskogRacuna;
+        private double stanje;
+        private Int64 brojObracunskogRacuna;
+        private int idCentralneBanke;
+        private int idBanke;
 
-		public int IDObracunskogRacuna
+        public int IDObracunskogRacuna
 		{
 			get { return idObracunskogRacuna; }
 			set { idObracunskogRacuna = value; }
 		}
-
-		private double stanje;
 
 		public double Stanje
 		{
@@ -24,15 +26,11 @@ namespace XWS.Shared.Model
 			set { stanje = value; }
 		}
 
-		private Int64 brojObracunskogRacuna;
-
 		public Int64 BrojObracunskogRacuna
 		{
 			get { return brojObracunskogRacuna; }
 			set { brojObracunskogRacuna = value; }
 		}
-
-		private int idCentralneBanke;
 
 		public int IDCentralneBanke
 		{
@@ -40,14 +38,10 @@ namespace XWS.Shared.Model
 			set { idCentralneBanke = value; }
 		}
 
-		private int idBanke;
-
 		public int IDBanke
 		{
 			get { return idBanke; }
 			set { idBanke = value; }
 		}
-
-
 	}
 }

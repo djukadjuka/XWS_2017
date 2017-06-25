@@ -117,5 +117,11 @@ namespace FirmaService
 		{
 			return FakturaDB.GetInvoiceByStatusAndId(firma, status);
 		}
-	}
+
+        public void NapraviNalogZaPrenos(Firma sourceFirma)
+        {
+            IBankaService bs = GetIBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
+            bs.NapraviNalogZaPrenos(sourceFirma);
+        }
+    }
 }

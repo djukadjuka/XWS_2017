@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using XWS.Shared.Model;
 using XWS.Shared.Model.InterfejsiServisa;
+using System;
 
 namespace BankaService
 {
@@ -40,6 +41,10 @@ namespace BankaService
 			return fs;
 		}
 
+        public void NapraviNalogZaPrenos(Firma sourceFirma)
+        {
+               
+        }
 
 
 
@@ -61,7 +66,8 @@ namespace BankaService
 
 
 
-        
+
+
         //public void ObradiRTGS(MT103 mt103, MT910 mt910)
         //{
         //    Racun racunPrimaoca = DAO.GetRacunBrojRacuna(mt910.ObracunskiBankePoverioca);

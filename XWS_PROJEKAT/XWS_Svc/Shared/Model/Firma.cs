@@ -9,14 +9,16 @@ namespace XWS.Shared.Model
 	public class Firma
 	{
 		private int idFirme;
+        private string adresaFirme;
+        private string nazivFirme;
+        private Int64 racun;
+        private string pib;
 
-		public int IDFirme
+        public int IDFirme
 		{
 			get { return idFirme; }
 			set { idFirme = value; }
 		}
-
-		private string adresaFirme;
 
 		public string AdresaFirme
 		{
@@ -24,23 +26,17 @@ namespace XWS.Shared.Model
 			set { adresaFirme = value; }
 		}
 
-		private string nazivFirme;
-
 		public string NazivFirme
 		{
 			get { return nazivFirme; }
 			set { nazivFirme = value; }
 		}
 
-		private Int64 racun;
-
 		public Int64 Racun
 		{
 			get { return racun; }
 			set { racun = value; }
 		}
-
-		private string pib;
 
 		public string PIB
 		{

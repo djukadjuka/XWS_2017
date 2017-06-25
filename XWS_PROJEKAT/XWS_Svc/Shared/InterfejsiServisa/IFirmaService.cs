@@ -36,7 +36,11 @@ namespace XWS.Shared.Model.InterfejsiServisa
 		void SendInvoiceProfile(Faktura sourceInvoice);
 
 		[OperationContract]
-		List<Faktura> GetForCompanyAndStatus(Firma firma, string status); 
+		List<Faktura> GetForCompanyAndStatus(Firma firma, string status);
+
+        [OperationContract]
+        void NapraviNalogZaPrenos(Firma sourceFirma);
+
     }
 
     [DataContract]
