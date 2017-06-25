@@ -9,7 +9,8 @@ namespace XWS.Shared.Model.InterfejsiServisa
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ICentralnaBankaService" in both code and config file together.
 	[ServiceContract]
-	public interface ICentralnaBankaService
+    [XmlSerializerFormat(Style = OperationFormatStyle.Document, Use = OperationFormatUse.Literal)]
+    public interface ICentralnaBankaService
 	{
 		[OperationContract]
 		void doSomething();

@@ -8,6 +8,7 @@ using XWS.Shared.Model;
 namespace XWS.Shared.Model.InterfejsiServisa
 {
     [ServiceContract]
+    [XmlSerializerFormat(Style = OperationFormatStyle.Document, Use = OperationFormatUse.Literal)]
     public interface IFirmaService
     {
 
