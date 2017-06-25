@@ -283,12 +283,18 @@ namespace Shared.Model.XSD
 		{
 			string str = "";
 
-			str += "\t-----------------STAVKA:[" + this.IDStavke + "]\n";
-			str += "\tPRIPADA FAKTURI : [" + this.IDFakture + "]\n";
-			str += "\tROBA/USLUGA : [" + this.NazivRobeIliUsluge + "]\n";
+			str += "\t------------Stavka : [" + this.IDStavke + "]\n";
+			str += "\tID-FAKTURE : [" + this.IDFakture + "]\n";
+			str += "\tIZNOS-RABATA : [" + this.IznosRabata + "]\n";
+			str += "\tJEDINICA-MERE : [" + this.JedinicaMere + "]\n";
+			str += "\tJEDINICNA-CENA : [" + this.JedinicnaCena + "]\n";
 			str += "\tKOLICINA : [" + this.Kolicina + "]\n";
+			str += "\tNAZIV-ROBE-ILI-USLUGE : [" + this.NazivRobeIliUsluge + "]\n";
+			str += "\tPROCENA-RABATA : [" + this.ProcenatRabata + "]\n";
+			str += "\tREDNI-BR : [" + this.RedniBr + "]\n";
+			str += "\tUKUPAN-POREZ : [" + this.UkupanPorez + "]\n";
+			str += "\tUMANJENO-ZA-RABAT : [" + this.UmanjenoZaRabat + "]\n";
 			str += "\tVREDNOST : [" + this.Vrednost + "]\n";
-
 
 			return str;
 		}
@@ -728,13 +734,27 @@ namespace Shared.Model.XSD
 		{
 			string str = "";
 
-			str += "----------------FAKTURA : [" + IDFakture + "]\n";
-			str += "NAZIV KUPCA : [" + this.NazivKupca + "]\n";
-			str += "NAZIV DOBAVLJACA : [" + this.NazivDobavljaca + "]\n";
-			str += "PIB DOBAVLJACA : [" + this.PIBDobavljaca + "]\n";
-			str += "PIB KUPCA : [" + this.PIBKupca + "]\n";
-			str += "STATUS : ["+(this.Status=="0"?"Kreirana":(this.Status=="1"?"Poslata Kupcu":"Placeno"))+"]\n";
-			str += "UKUPNA CENA : ["+this.UkupnoRobaIUsluge+"]\n";
+			str += "---------------FAKTURA : ["+this.IDFakture+"]\n";
+			str += "ADRESA-DOBAVLJACA : [" + this.AdresaDobavljaca+ "]\n";
+			str += "ADRESA-KUPCA : [" + this.AdresaKupca+ "]\n";
+			str += "BROJ-RACUNA : [" + this.BrRacuna+ "]\n";
+			str += "DATUM-RACUNA : [" + this.DatumRacuna+ "]\n";
+			str += "DATUM-VALUTE : [" + this.DatumValute+ "]\n";
+			str += "ID-PORUKE : [" + this.IDPoruke+ "]\n";
+			str += "IZNOS-ZA-UPLATU : [" + this.IznosZaUplatu+ "]\n";
+			str += "NAZIV-DOBAVLJACA : [" + this.NazivDobavljaca+ "]\n";
+			str += "NAZIV-KUPCA : [" + this.NazivKupca+ "]\n";
+			str += "OZNAKA-VALUTE : [" + this.OznakaValute+ "]\n";
+			str += "PIB-DOBAVLJACA : [" + this.PIBDobavljaca+ "]\n";
+			str += "PIB-KUPCA : [" + this.PIBKupca+ "]\n";
+			str += "STATUS : [" + (this.Status=="0"?"Kreirana":(this.Status=="1")?"Poslata":"Placeno") + "]\n";
+			str += "UKUPAN-POREZ : [" + this.UkupanPorez+ "]\n";
+			str += "UKUPAN-RABAT : [" + this.UkupanRabat+ "]\n";
+			str += "UKUPNO-ROBA-I-USLUGE : [" + this.UkupnoRobaIUsluge+ "]\n";
+			str += "UPLATA-NA-RACUN : [" + this.UplataNaRacun+ "]\n";
+			str += "VREDNOST-ROBE : [" + this.VrednostRobe+ "]\n";
+			str += "VREDNOST-USLUGE : [" + this.VrednostUsluga+ "]\n";
+			str += "STAVKE : [\n" + this.StavkeFakture + "]\n";
 
 			str += "STAVKE : [\n";
 			foreach (var s in this.StavkeFakture)

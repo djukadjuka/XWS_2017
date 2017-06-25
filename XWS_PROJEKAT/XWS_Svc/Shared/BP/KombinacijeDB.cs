@@ -10,7 +10,7 @@ using XWS.Shared.Model;
 namespace XWS.Shared.BP
 {
 	public class KombinacijeDB
-	{	
+	{
 		// na osnovu naziva firme <- I
 		// izvlaci banku kao obj u kojoj firma ima racun
 		// trazis firmu po nazivu firme
@@ -18,12 +18,12 @@ namespace XWS.Shared.BP
 		// id banka -> vadis banku
 
 		/// <summary>
-		/// Na osnovu naziva firme trazi se objekat banke.
-		/// Banka se dobija tako sto se na osnovu [naziva firme] prvo nadje [id firme].
-		/// Sa [id firme] se trazi [id banke] u tabeli racun.
-		/// (Tabela racun ima strane kljuceve od firme i banke).
-		/// Kada se nadje [id banke], iz tabele banka se izvuku sve kolone.
-		/// Sve kolone se parsiraju i pretvore u objekat banke.
+		/// <para>Na osnovu naziva firme trazi se objekat banke.
+		/// Banka se dobija tako sto se na osnovu [naziva firme] prvo nadje [id firme].</para>
+		/// <para>Sa [id firme] se trazi [id banke] u tabeli racun.
+		/// (Tabela racun ima strane kljuceve od firme i banke).</para>
+		/// <para>Kada se nadje [id banke], iz tabele banka se izvuku sve kolone.
+		/// Sve kolone se parsiraju i pretvore u objekat banke.</para>
 		/// </summary>
 		/// <param name="firmName"></param>
 		/// <returns></returns>
