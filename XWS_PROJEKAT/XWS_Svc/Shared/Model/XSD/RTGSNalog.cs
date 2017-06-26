@@ -404,5 +404,29 @@ namespace Shared.Model.XSD
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
+
+		public override string ToString()
+		{
+			string str = "-------------------RTGS : [" + this.IDRTGSNaloga + "]\n";
+			str += "DATUM-NALOGA : [" + this.DatumNaloga+ "]\n";
+			str += "DATUM-VALUTE : [" + this.DatumValute+ "]\n";
+			str += "DUZNIK : [" + this.Duznik+ "]\n";
+			str += "ID-PORUKE : [" + this.IDPoruke+ "]\n";
+			str += "IZNOS : [" + this.Iznos+ "]\n";
+			str += "MODEL-ODOBRENJA : [" + this.ModelOdobrenja+ "]\n";
+			str += "MODEL-ZADUZENJA : [" + this.ModelZaduzenja+ "]\n";
+			str += "ORB-DUZNIKA : [" + this.ObracunskiRacunBankeDuznika+ "]\n";
+			str += "ORB-POVERIOCA : [" + this.ObracunskiRacunBankePoverioca+ "]\n";
+			str += "PNB-ODOBRENJA : [" + this.PozivNaBrOdobrenja+ "]\n";
+			str += "PNB-ZADUZENJA : [" + this.PozivNaBrZaduzenja+ "]\n";
+			str += "PRIMALAC : [" + this.Primalac+ "]\n";
+			str += "RACUN-DUZNIKA : [" + this.RacunDuznika+ "]\n";
+			str += "RACUN-POVERIOCA : [" + this.RacunPoverioca+ "]\n";
+			str += "SIFRA-VALUTE : [" + this.SifraValute+ "]\n";
+			str += "SVRHA-PLACANJA : [" + this.SvrhaPlacanja+ "]\n";
+			str += "SWIFT-BANKA-DUZNIKA : [" + this.SWIFTBankaDuznika+ "]\n";
+			str += "SWIFT-BANKA-POVERIOCA : [" + this.SWIFTBankaPoverioca+ "]\n";
+			return str;
+		}
+	}
 }

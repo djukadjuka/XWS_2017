@@ -61,9 +61,9 @@ namespace XWS.Shared.BP
 		}//
 
 		//
-		public static void InsertIntoRTGSNalog(RTGSNalog f)
+		public static RTGSNalog InsertIntoRTGSNalog(RTGSNalog f)
 		{
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviCBConn())
 			{
 				string sql = @"INSERT INTO [dbo].[rtgsnalog]
 													   ([idporuke]
@@ -102,7 +102,7 @@ namespace XWS.Shared.BP
 													   ,@modelodobrenja
 													   ,@pozivnabrodobrenja
 													   ,@iznos
-													   ,@sifravalute)";
+													   ,@sifravalute) SELECT SCOPE_IDENTITY()";
 				conn.Open();
 				using (SqlCommand cmd = new SqlCommand(sql, conn))
 				{
@@ -124,10 +124,14 @@ namespace XWS.Shared.BP
 					cmd.Parameters.AddWithValue("@pozivnabrodobrenja", f.PozivNaBrOdobrenja);
 					cmd.Parameters.AddWithValue("@iznos", f.Iznos);
 					cmd.Parameters.AddWithValue("@sifravalute", f.SifraValute);
-					cmd.ExecuteNonQuery();
+					
+					object x = cmd.ExecuteScalar();
+					f.IDRTGSNaloga = (int)(decimal)x;
+					
 				}
 				conn.Close();
 			}
+			return f;
 		}//
 
 		private static RTGSNalog ReadFromReader(SqlDataReader reader)

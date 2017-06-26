@@ -40,7 +40,7 @@ namespace XWS.Shared.BP
 				///formiraj upite
 				string sqlFirm = "SELECT idfirme FROM firma WHERE naziv = @firmName"; //nadji id firme po nazivu firme
 				string sqlRacun = "SELECT idbanke FROM racun WHERE idfirme = @idFirme"; // nadji idbanke iz racuna po idu firme
-				string sqlBanka = "SELECT * FROM banka idbanke = @idbanke"; // nadji citavu banku po idu banke
+				string sqlBanka = "SELECT * FROM banka WHERE idbanke = @idbanke"; // nadji citavu banku po idu banke
 
 				//housekeeping
 				int? idfirme = null;
@@ -96,14 +96,14 @@ namespace XWS.Shared.BP
 		/// </summary>
 		/// <param name="reader"></param>
 		/// <returns></returns>
-		public static Banka GetBankaFromReader(SqlDataReader reader)
+		private static Banka GetBankaFromReader(SqlDataReader reader)
 		{
 			Banka banka = new Banka();
 
 			banka.IdBanke = (int)reader["idbanke"];
 			banka.NazivBanke = (string)reader["naziv"];
 			banka.AdresaBanke = (string)reader["adresa"];
-			banka.ObracunskiRacun = (Int64)reader["obracunskiracun"];
+			banka.ObracunskiRacun = (long)(decimal)reader["obracunskiracun"];
 			banka.SWIFTKod = (string)reader["SWIFTkod"];
 			
 			return banka;

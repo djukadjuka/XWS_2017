@@ -754,7 +754,6 @@ namespace Shared.Model.XSD
 			str += "UPLATA-NA-RACUN : [" + this.UplataNaRacun+ "]\n";
 			str += "VREDNOST-ROBE : [" + this.VrednostRobe+ "]\n";
 			str += "VREDNOST-USLUGE : [" + this.VrednostUsluga+ "]\n";
-			str += "STAVKE : [\n" + this.StavkeFakture + "]\n";
 
 			str += "STAVKE : [\n";
 			foreach (var s in this.StavkeFakture)

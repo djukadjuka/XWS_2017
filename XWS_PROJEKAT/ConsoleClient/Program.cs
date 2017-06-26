@@ -246,16 +246,16 @@ namespace ConsoleClient
                     {
                         while (true)
                         {
-                            Console.WriteLine("Da li je hitno? (true/false):");
+                            Console.WriteLine("Da li je hitno? (y/n):");
                             string odgovor = Console.ReadLine();
                             if (odgovor == "Q" || odgovor == "q")
                             {
                                 return;
                             }
-                            if(odgovor == "true" || odgovor=="TRUE" || odgovor=="false" || odgovor == "FALSE")
+                            if(odgovor == "y" || odgovor=="Y" || odgovor=="n" || odgovor == "N")
                             {
                                 bool hitno;
-                                if (odgovor == "true" || odgovor == "TRUE")
+                                if (odgovor == "y" || odgovor == "Y")
                                     hitno = true;
                                  else
                                     hitno = false;

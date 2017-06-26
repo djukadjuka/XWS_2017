@@ -8,9 +8,21 @@ namespace XWS.Shared
 {
     public static class GlobalConst
     {
+		/// <summary>
+		/// http://localhost:9000/
+		/// </summary>
         public static readonly string HOST_ADDRESS = "http://localhost:9000/";
-        public static readonly string FIRME_SERVICE_NAME = "Firme";
-        public static readonly string BANKE_SERVICE_NAME = "Banke";
+		/// <summary>
+		/// Firme
+		/// </summary>
+		public static readonly string FIRME_SERVICE_NAME = "Firme";
+		/// <summary>
+		/// Banke
+		/// </summary>
+		public static readonly string BANKE_SERVICE_NAME = "Banke";
+		/// <summary>
+		/// CB
+		/// </summary>
         public static readonly string CENTRALNA_BANKA_NAME = "CB";
 
 		public static readonly string DJUKA_BAZA_KONEKCIONI_FIRMA = "Data Source=DJUKA_PC\\SQLEXPRESS;Initial Catalog=XWS_FIRMA_2017;Integrated Security=True";

@@ -366,5 +366,29 @@ namespace Shared.Model.XSD
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
+
+		public override string ToString()
+		{
+			string str = "";
+
+			str += "--------------------NALOG-ZA-PLACANJE : [" + this.IDNalogaZaPlacanje + "]\n";
+			str += "DATUM-NALOGA : [" + this.DatumNaloga+ "]\n";
+			str += "DATUM-VALUTE : [" + this.DatumValute+ "]\n";
+			str += "DUZNIK : [" + this.Duznik+ "]\n";
+			str += "HITNO : [" + this.Hitno+ "]\n";
+			str += "ID-PORUKE : [" + this.IDPoruke+ "]\n";
+			str += "IZNOS : [" + this.Iznos+ "]\n";
+			str += "MODEL-ODOBRENJA : [" + this.ModelOdobrenja+ "]\n";
+			str += "MODEL-ZADUZENJA : [" + this.ModelZaduzenja+ "]\n";
+			str += "OZNAKA-VALUTE : [" + this.OznakaValute+ "]\n";
+			str += "POZIV-NA-BR-ODOBRENJA : [" + this.PozivNaBrOdobrenja+ "]\n";
+			str += "POZIV-NA-BR-ZADUZENJA : [" + this.PozivNaBrZaduzenja+ "]\n";
+			str += "PRIMALAC : [" + this.Primalac+ "]\n";
+			str += "RACUN-DUZNIKA : [" + this.RacunDuznika+ "]\n";
+			str += "RACUN-POVERIOCA : [" + this.RacunPoverioca+ "]\n";
+			str += "STATUS : [" + this.Status+ "]\n";
+				
+			return str;
+		}
+	}
 }
