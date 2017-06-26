@@ -65,6 +65,11 @@ namespace ConsoleClient
             Channel.NapraviNalogZaPrenos(nzp);
         }
 
+        public void NapraviNalogZaGrupnoPlacanje()
+        {
+            Channel.NapraviNalogZaGrupnoPlacanje();
+        }
+
         public void PromeniStatusFakture(int idFakture, string status)
         {
             Channel.PromeniStatusFakture(idFakture, status);

@@ -43,6 +43,10 @@ namespace XWS.Shared.Model.InterfejsiServisa
         void NapraviNalogZaPrenos(NalogZaPlacanje nzp);
 
         [OperationContract]
+        void NapraviNalogZaGrupnoPlacanje();
+
+
+        [OperationContract]
         void PromeniStatusFakture(int idFakture, string status);
 
     }

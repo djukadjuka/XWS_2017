@@ -8,6 +8,7 @@ using Shared.Model.XSD;
 using XWS.Shared.Model.InterfejsiServisa;
 using XWS.Shared.BP;
 using XWS.Shared;
+using XWS.Shared.Model;
 
 namespace CentralnaBankaService
 {
@@ -54,15 +55,74 @@ namespace CentralnaBankaService
 			return zaduzenje;
 		}
 
-		#endregion glavno
+        public void NapraviNalogZaGrupnoPlacanje()
+        {
+            List<NalogZaPlacanje> naloziZaPlacanje;
+            List<Banka> sveBanke = KombinacijeDB.getAllBanks(-1);
+            foreach (Banka trenutnaBanka in sveBanke)
+            {
+                List<Banka> ostaleBanke = KombinacijeDB.getAllBanks(trenutnaBanka.IdBanke);
 
-		#region privatne_pomocne
-		/// <summary>
-		/// Metoda bukvalno ispisuje sta joj posaljes u konzolu sa kao prefixom da se zna da je CENTRALNA BANKA servis nesto uradila.
-		/// Mozete koristiti ovo umesto klasike
-		/// Trazis Naslov &lt;&lt;CENTRALNA_BANKA.SVC&gt;&gt;
-		/// </summary>
-		private static void CBSVCCONSOLE(string text)
+                foreach (Banka b in ostaleBanke)
+                {
+                    naloziZaPlacanje = NalogZaPlacanjeDB.GetNalogZaPlacanjeByStatusAndBankaAndPoverilacBanka(GlobalConst.STATUS_NALOGA_ZA_PLACANJE_KREIRAN, trenutnaBanka.IdBanke, b.IdBanke);
+                    NalogZaGrupnoPlacanje nalogZaGrupnoPlacanje = new NalogZaGrupnoPlacanje();
+                    nalogZaGrupnoPlacanje.Datum = DateTime.Now;
+                    nalogZaGrupnoPlacanje.DatumValute = DateTime.Now;
+                    nalogZaGrupnoPlacanje.IDPoruke = "1234";
+                    nalogZaGrupnoPlacanje.ObracunskiRacunBankeDuznika = trenutnaBanka.ObracunskiRacun + "";
+                    nalogZaGrupnoPlacanje.ObracunskiRacunBankePoverioca = b.ObracunskiRacun + "";
+                    nalogZaGrupnoPlacanje.SifraValute = "RSD";
+
+                    StavkeGrupnogPlacanja stavkeGrupnogPlacanja = new StavkeGrupnogPlacanja();
+
+                    foreach (NalogZaPlacanje nzp in naloziZaPlacanje)
+                    {
+                        StavkaGrupnogPlacanja stavkaGrupnogPlacanja = new StavkaGrupnogPlacanja();
+                        stavkaGrupnogPlacanja.SifraValute = nzp.OznakaValute;
+                        stavkaGrupnogPlacanja.SvrhaPlacanja = nzp.SvrhaPlacanja;
+                        stavkaGrupnogPlacanja.RacunPoverioca = nzp.RacunPoverioca;
+                        stavkaGrupnogPlacanja.RacunDuznika = nzp.RacunDuznika;
+                        stavkaGrupnogPlacanja.Primalac = nzp.Primalac;
+                        stavkaGrupnogPlacanja.PozivNaBrZaduzenja = nzp.PozivNaBrZaduzenja;
+                        stavkaGrupnogPlacanja.PozivNaBrOdobrenja = nzp.PozivNaBrOdobrenja + "";
+                        stavkaGrupnogPlacanja.ModelZaduzenja = nzp.ModelZaduzenja;
+                        stavkaGrupnogPlacanja.ModelOdobrenja = nzp.ModelOdobrenja;
+                        stavkaGrupnogPlacanja.Iznos = nzp.Iznos;
+                        stavkaGrupnogPlacanja.IDNalogaZaPlacanje = nzp.IDNalogaZaPlacanje + "";
+                        stavkaGrupnogPlacanja.Duznik = nzp.Duznik;
+                        stavkaGrupnogPlacanja.DatumNaloga = nzp.DatumNaloga;
+                        nalogZaGrupnoPlacanje.StavkeGrupnogPlacanja.Add(stavkaGrupnogPlacanja);
+                        nalogZaGrupnoPlacanje.UkupanIznos += nzp.Iznos;
+
+                    }
+
+                    nalogZaGrupnoPlacanje.SWIFTBankeDuznika = trenutnaBanka.SWIFTKod;
+                    nalogZaGrupnoPlacanje.SWIFTBankePoverioca = b.SWIFTKod;
+
+                    NalogZaGrupnoPlacanjeDB.InsertIntoNalogZaGrupnoPlacanje(nalogZaGrupnoPlacanje);
+
+                    foreach (NalogZaPlacanje nzp in naloziZaPlacanje)
+                    {
+                        nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_POSLAT;
+                        NalogZaPlacanjeDB.UpdateNalogStatus(nzp.IDNalogaZaPlacanje, nzp.Status);
+                    }
+
+                }
+
+            }
+
+        }
+
+        #endregion glavno
+
+        #region privatne_pomocne
+        /// <summary>
+        /// Metoda bukvalno ispisuje sta joj posaljes u konzolu sa kao prefixom da se zna da je CENTRALNA BANKA servis nesto uradila.
+        /// Mozete koristiti ovo umesto klasike
+        /// Trazis Naslov &lt;&lt;CENTRALNA_BANKA.SVC&gt;&gt;
+        /// </summary>
+        private static void CBSVCCONSOLE(string text)
 		{
 			Console.WriteLine("<<CENTRALNA_BANKA.SVC>>");
 			Console.WriteLine(">> " + text);

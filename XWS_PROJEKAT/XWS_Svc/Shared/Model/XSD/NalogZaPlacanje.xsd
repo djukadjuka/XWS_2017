@@ -14,11 +14,11 @@
 			<xs:element name="DatumNaloga" type="xs:dateTime" minOccurs="0"></xs:element>
 			<xs:element name="DatumValute" type="xs:dateTime" minOccurs="0"></xs:element>
 			<xs:element name="RacunDuznika" type="xs:string" minOccurs="0"></xs:element>
-			<xs:element name="ModelZaduzenja" type="xs:double" minOccurs="0"></xs:element>
+			<xs:element name="ModelZaduzenja" type="xs:int" minOccurs="0"></xs:element>
 			<xs:element name="PozivNaBrZaduzenja" type="xs:string" minOccurs="0"></xs:element>
 			<xs:element name="RacunPoverioca" type="xs:string" minOccurs="0"></xs:element>
-			<xs:element name="ModelOdobrenja" type="xs:double" minOccurs="0"></xs:element>
-			<xs:element name="PozivNaBrOdobrenja" type="xs:double" minOccurs="0"></xs:element>
+			<xs:element name="ModelOdobrenja" type="xs:int" minOccurs="0"></xs:element>
+			<xs:element name="PozivNaBrOdobrenja" type="xs:string" minOccurs="0"></xs:element>
 			<xs:element name="Iznos" type="xs:double" minOccurs="0"></xs:element>
 			<xs:element name="OznakaValute" type="xs:string" minOccurs="0"></xs:element>
 			<xs:element name="Hitno" type="xs:boolean" minOccurs="0"></xs:element>

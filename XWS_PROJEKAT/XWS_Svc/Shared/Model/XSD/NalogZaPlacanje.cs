@@ -37,13 +37,13 @@ namespace Shared.Model.XSD
         
         private string RacunDuznikaField;
         
-        private double ModelZaduzenjaField;
+        private int ModelZaduzenjaField;
         
         private string PozivNaBrZaduzenjaField;
         
         private string RacunPoveriocaField;
         
-        private double ModelOdobrenjaField;
+        private int ModelOdobrenjaField;
         
         private double PozivNaBrOdobrenjaField;
         
@@ -204,7 +204,7 @@ namespace Shared.Model.XSD
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=8)]
-        public double ModelZaduzenja
+        public int ModelZaduzenja
         {
             get
             {
@@ -255,7 +255,7 @@ namespace Shared.Model.XSD
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=11)]
-        public double ModelOdobrenja
+        public int ModelOdobrenja
         {
             get
             {

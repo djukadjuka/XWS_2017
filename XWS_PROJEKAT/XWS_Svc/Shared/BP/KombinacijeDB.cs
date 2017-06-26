@@ -109,5 +109,30 @@ namespace XWS.Shared.BP
 			return banka;
 		}
 
-	}
+        public static List<Banka> getAllBanks(int idBanke)
+        {
+            List<Banka> banke = new List<Banka>();
+            using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
+            {
+                conn.Open();
+                string sql = @"SELECT * FROM banka WHERE idbanke != @idBanke";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+
+                    cmd.Parameters.AddWithValue("@idBanke", idBanke);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Banka banka;
+                        banka = GetBankaFromReader(reader);
+                        banke.Add(banka);
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+
+            return banke;
+        }
+    }
 }

@@ -22,7 +22,7 @@ namespace XWS.Shared.Model.InterfejsiServisa
         [OperationContract]
         void NapraviNalogZaPrenos(NalogZaPlacanje nzp);
 
-		[OperationContract]
+        [OperationContract]
 		void PrimiPorukuOOdobrenju(PorukaOOdobrenju odobrenje);
 
 	}

@@ -31,12 +31,37 @@ namespace XWS.Shared.BP
 			return stavka;
 		}
 
-		/// <summary>
-		/// proveri dal ga imas sa lista.size() == 0 ili lista isempty
-		/// </summary>
-		/// <param name="status"></param>
-		/// <returns></returns>
-		public static List<NalogZaPlacanje> GetNalogByStatus(string status)
+        public static List<NalogZaPlacanje> GetNalogZaPlacanjeByStatusAndBanka(string status, long idBanke)
+        {
+            List<NalogZaPlacanje> nalozi = new List<NalogZaPlacanje>();
+            using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
+            {
+                conn.Open();
+                string sql = "SELECT * FROM nalogzaplacanje nzp left join racun r on nzp.racunduznika=r.idracuna WHERE status = @status and r.idbanke = @idBanke";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@idBanke", idBanke);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        NalogZaPlacanje naloug = GetFromReader(reader);
+                        nalozi.Add(naloug);
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+
+            return nalozi;
+        }
+
+        /// <summary>
+        /// proveri dal ga imas sa lista.size() == 0 ili lista isempty
+        /// </summary>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public static List<NalogZaPlacanje> GetNalogByStatus(string status)
 		{
 			List<NalogZaPlacanje> nalozi = new List<NalogZaPlacanje>();
 			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
@@ -93,10 +118,10 @@ namespace XWS.Shared.BP
 			nalogZaPlacanje.DatumNaloga				= (DateTime)reader["datumnaloga"];
 			nalogZaPlacanje.DatumValute				= (DateTime)reader["datumvalute"];
 			nalogZaPlacanje.RacunDuznika			= (string)reader["racunduznika"];
-			nalogZaPlacanje.ModelZaduzenja			= (double)(decimal)reader["modelzaduzenja"];
+			nalogZaPlacanje.ModelZaduzenja			= (int)(decimal)reader["modelzaduzenja"];
 			nalogZaPlacanje.PozivNaBrZaduzenja		= (string)reader["pozivnabrzaduzenja"];
 			nalogZaPlacanje.RacunPoverioca			= (string)reader["racunpoverioca"];
-			nalogZaPlacanje.ModelOdobrenja			= (double)(decimal)reader["modelodobrenja"];
+			nalogZaPlacanje.ModelOdobrenja			= (int)(decimal)reader["modelodobrenja"];
 			nalogZaPlacanje.PozivNaBrOdobrenja		= (double)(decimal)reader["pozivnabrodobrenja"];
 			nalogZaPlacanje.Iznos					= (double)(decimal)reader["iznos"];
 			nalogZaPlacanje.OznakaValute			= (string)reader["oznakavalute"];
@@ -186,6 +211,31 @@ namespace XWS.Shared.BP
 			}
 		}
 
+        public static List<NalogZaPlacanje> GetNalogZaPlacanjeByStatusAndBankaAndPoverilacBanka(string status, int idBanke, int bankaPoverioca)
+        {
 
-	}
+            List<NalogZaPlacanje> nalozi = new List<NalogZaPlacanje>();
+            using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
+            {
+                conn.Open();
+                string sql = "SELECT DISTINCT * FROM nalogzaplacanje nzp left join racun r on nzp.racunduznika=r.idracuna left join racun pov on pov.idracuna  WHERE status = @status and r.idbanke = @idBanke and pov.idbanke=@bankaPoverioca";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@idBanke", idBanke);
+                    cmd.Parameters.AddWithValue("@bankaPoverioca", bankaPoverioca);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        NalogZaPlacanje naloug = GetFromReader(reader);
+                        nalozi.Add(naloug);
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+
+            return nalozi;
+        }
+    }
 }

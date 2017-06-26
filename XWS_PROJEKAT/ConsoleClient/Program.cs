@@ -5,6 +5,7 @@ using System.ServiceModel;
 using XWS.Shared;
 using XWS.Shared.BP;
 using XWS.Shared.Model;
+using XWS.Shared.Model.InterfejsiServisa;
 
 namespace ConsoleClient
 {
@@ -92,7 +93,7 @@ namespace ConsoleClient
                 }
                 case "6":
                 {
-                    OdradiClearingAndSettlement(sourceFirma, client);
+                    OdradiClearingAndSettlement();
                     break;
                 }
                 default:
@@ -309,9 +310,12 @@ namespace ConsoleClient
         }
 
 
-        private static void OdradiClearingAndSettlement(Firma sourceFirma, FirmaClient client)
+        private static void OdradiClearingAndSettlement()
         {
             //ovde ide logika clearing and settlementa, prosledi jos neke parametre ako treba
+            ChannelFactory<IFirmaService> channelFactory = new ChannelFactory<IFirmaService>(new WSHttpBinding(SecurityMode.None));
+            IFirmaService fs = channelFactory.CreateChannel(new EndpointAddress(GlobalConst.HOST_ADDRESS + GlobalConst.CENTRALNA_BANKA_NAME));
+            fs.NapraviNalogZaGrupnoPlacanje(); 
         }
     }  
 }

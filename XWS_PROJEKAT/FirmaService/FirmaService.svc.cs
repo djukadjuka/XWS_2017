@@ -73,6 +73,13 @@ namespace FirmaService
 			return bs;
 		}
 
+        public static ICentralnaBankaService GetICentralnaBankaServiceChannel(string fullPathToService)
+        {
+            ChannelFactory<ICentralnaBankaService> channelFactory = new ChannelFactory<ICentralnaBankaService>(new WSHttpBinding(SecurityMode.None));
+            ICentralnaBankaService cbs = channelFactory.CreateChannel(new EndpointAddress(fullPathToService));
+            return cbs;
+        }
+
         public void SaveCreatedInvoice(Faktura faktura)
         {
             XWS.Shared.BP.FakturaDB.InsertIntoFaktura(faktura);
@@ -122,6 +129,12 @@ namespace FirmaService
         {
             IBankaService bs = GetIBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
             bs.NapraviNalogZaPrenos(nzp);
+        }
+
+        public void NapraviNalogZaGrupnoPlacanje()
+        {
+            ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
+            cbs.NapraviNalogZaGrupnoPlacanje();
         }
 
         public void PromeniStatusFakture(int idFakture, string status)
