@@ -11,9 +11,11 @@ namespace BankaService
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "BankaService" in code, svc and config file together.
 	// NOTE: In order to launch WCF Test Client for testing this service, please select BankaService.svc or BankaService.svc.cs at the Solution Explorer and start debugging.
-	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,ConcurrencyMode = ConcurrencyMode.Multiple)]
 	public class BankaService : IBankaService
 	{
+		#region staro
+
 		private Banka banka = new Banka();
         Dictionary<string, NalogZaGrupnoPlacanje> clearing = new Dictionary<string, NalogZaGrupnoPlacanje>();
 
@@ -35,13 +37,10 @@ namespace BankaService
 			IFirmaService fs = GetIFirmaServiceChannel("http://localhost:8080/" + firmName);  
 			fs.AcceptMessageFromBank(message);
 		}
+		
+		#endregion staro
 
-		public static IFirmaService GetIFirmaServiceChannel(string fullPathToService)
-		{
-			ChannelFactory<IFirmaService> channelFactory = new ChannelFactory<IFirmaService>(new WSHttpBinding(SecurityMode.None));
-			IFirmaService fs = channelFactory.CreateChannel(new EndpointAddress(fullPathToService));
-			return fs;
-		}
+		#region glavni_servisi_banke
 
         public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
@@ -60,6 +59,7 @@ namespace BankaService
 				{
 					//rtgs se salje centralnoj, centralna sacuva rtgs u bazi, i salje poruke o odobrenju/zaduzenju
 					PorukaOZaduzenju zaduzenje = PosaljiRTGSCentralnojBanci(rtgsNalog);
+					ObradiPorukuOZaduzenju(zaduzenje);
 				}
             }
 			else
@@ -68,17 +68,41 @@ namespace BankaService
 			}
         }
 
+		/// <summary>
+		/// Metoda koja izvlaci koliko novca je uplaceno na racun, i kojoj firmi, i to belezi u bazu
+		/// </summary>
+		/// <param name="odobrenje"></param>
+		public void PrimiPorukuOOdobrenju(PorukaOOdobrenju odobrenje)
+		{
+			// TODO: Odradi dodavanje love na racun firme koja je dobila odobrenje. Ime firme se nalazi u odobrenju, ako treba dodaj sta god u facu metode.
+			BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
+			BANKASVCCONSOLE(">>" + odobrenje.ToString());
+		}
+
+		#endregion glavni_servisi_banke
+
+		#region private_pomocne
+
+		/// <summary>
+		/// Salje RTGS nalog centralnoj banci i vraca poruku o zaduzenju.
+		/// </summary>
+		/// <param name="nalog"></param>
+		/// <returns></returns>
 		private PorukaOZaduzenju PosaljiRTGSCentralnojBanci(RTGSNalog nalog)
 		{
 			ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS + GlobalConst.CENTRALNA_BANKA_NAME);
 			return cbsvc.AcceptRTGSAndSendMessages(nalog);
 		}
 
-		private ICentralnaBankaService GetCBServiceChannel(string fullPathToService)
+		/// <summary>
+		/// Metoda koja izvlaci koliko se zaduzila odredjena firma iz poruke o zaduzenju
+		/// </summary>
+		/// <param name="zaduzenje"></param>
+		private void ObradiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
 		{
-			ChannelFactory<ICentralnaBankaService> centralnaBankaChannelFactory = new ChannelFactory<ICentralnaBankaService>(new WSHttpBinding(SecurityMode.None));
-			ICentralnaBankaService svc = centralnaBankaChannelFactory.CreateChannel(new EndpointAddress(fullPathToService));
-			return svc;
+			// TODO: odraditi skidanje love sa racuna firme. Trebalo bi sve da se nalazi u objektu zaduzenje. Ako ne dodaj sta god treba u argumente metode.
+			BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
+			BANKASVCCONSOLE(">> " + zaduzenje );
 		}
 
 		/// <summary>
@@ -119,32 +143,42 @@ namespace BankaService
 		}
 
 		/// <summary>
+		/// Vraca channel odn. servis od centralne banke
+		/// </summary>
+		/// <param name="fullPathToService"></param>
+		/// <returns></returns>
+		private ICentralnaBankaService GetCBServiceChannel(string fullPathToService)
+		{
+			ChannelFactory<ICentralnaBankaService> centralnaBankaChannelFactory = new ChannelFactory<ICentralnaBankaService>(new WSHttpBinding(SecurityMode.None));
+			ICentralnaBankaService svc = centralnaBankaChannelFactory.CreateChannel(new EndpointAddress(fullPathToService));
+			return svc;
+		}
+
+		/// <summary>
+		/// Vraca channel odn. servis od firme
+		/// </summary>
+		/// <param name="fullPathToService"></param>
+		/// <returns></returns>
+		private IFirmaService GetIFirmaServiceChannel(string fullPathToService)
+		{
+			ChannelFactory<IFirmaService> channelFactory = new ChannelFactory<IFirmaService>(new WSHttpBinding(SecurityMode.None));
+			IFirmaService fs = channelFactory.CreateChannel(new EndpointAddress(fullPathToService));
+			return fs;
+		}
+
+		/// <summary>
 		/// Metoda bukvalno ispisuje sta joj posaljes u konzolu sa kao prefixom da se zna da je BANKA servis nesto uradila.
 		/// Mozete koristiti ovo umesto klasike
 		/// </summary>
-		private static void BANKASVCCONSOLE(string text)
+		private void BANKASVCCONSOLE(string text)
 		{
 			Console.WriteLine("<<BANKA.SVC>>");
 			Console.WriteLine(">>" + text);
 		}
 
+		#endregion private_pomocne
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		#region komentari
 
 		//public void ObradiRTGS(MT103 mt103, MT910 mt910)
 		//{
@@ -297,5 +331,7 @@ namespace BankaService
 		//    DAO.UpdateStanjeRacuna(racunDuznika.BrojRacun, racunDuznika.Stanje - prenos.Iznos);
 		//    DAO.UpdateStanjeRacuna(racunPrimaoca.BrojRacun, racunPrimaoca.Stanje + prenos.Iznos);
 		//}
+
+		#endregion komentari
 	}
 }

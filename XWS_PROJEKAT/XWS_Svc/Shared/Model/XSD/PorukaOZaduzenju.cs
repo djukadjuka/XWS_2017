@@ -36,8 +36,22 @@ namespace Shared.Model.XSD
         private double IznosField;
         
         private string SifraValuteField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+
+		public override string ToString()
+		{
+			string str = "---------PORUKA-O-ZADUZENJU : [" + this.IDPorukeOZaduzenju + "]\n";
+			str += "ID-PORUKE : [" + this.IDPPoruke + "]\n";
+			str += "SWIFT-BANKE-DUZNIKA : [" + this.SWIFTBankeDuznika+ "]\n";
+			str += "ORB-DUZNIKA : [" + this.ObracunskiRacunBankeDuznika+ "]\n";
+			str += "ID-PORUKE-NALOGA : [" + this.IDPorukeNaloga + "]\n";
+			str += "DATUM-VALUTE : [" + this.DatumValute+ "]\n";
+			str += "IZNOS : [" + this.Iznos+ "]\n";
+			str += "SIFRA-VALUTE : [" + this.SifraValute+ "]\n";
+
+			return str;
+		}
+
+		public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
             {

@@ -22,6 +22,8 @@ namespace XWS.Shared.Model.InterfejsiServisa
         [OperationContract]
         void NapraviNalogZaPrenos(NalogZaPlacanje nzp);
 
+		[OperationContract]
+		void PrimiPorukuOOdobrenju(PorukaOOdobrenju odobrenje);
 
-    }
+	}
 }

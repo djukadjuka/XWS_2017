@@ -36,8 +36,22 @@ namespace Shared.Model.XSD
         private string SWIFTBankePoveriocaField;
         
         private string SifraValuteField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+
+		public override string ToString()
+		{
+			string str = "----------ID PORUKE ["+this.IDPorukeOOdobrenju+"]\n";
+			str += "ID-PORUKE : [" + this.IDPoruke+ "]\n";
+			str += "SWIFT-BANKE-POVERIOCA : [" + this.SWIFTBankePoverioca+ "]\n";
+			str += "ORB-POVERIOCA : [" + this.ObracunskiRacunBankePoverioca+ "]\n";
+			str += "ID-PORUKE-NALOGA : [" + this.IDPorukeNaloga+ "]\n";
+			str += "DATUM-VALUTE : [" + this.DatumValute+ "]\n";
+			str += "IZNOS : [" + this.Iznos+ "]\n";
+			str += "SIFRA-VALUTE : [" + this.SifraValute+ "]\n";
+			
+			return str;
+		}
+
+		public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
             {
