@@ -63,7 +63,7 @@ namespace XWS.Shared.BP
 		//
 		public static void InsertIntoPorukaOOdobrenju(PorukaOOdobrenju f)
 		{
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviCBConn())
 			{
 				string sql = @"INSERT INTO [dbo].[porukaoodobrenju]
 													   ([idporuke]

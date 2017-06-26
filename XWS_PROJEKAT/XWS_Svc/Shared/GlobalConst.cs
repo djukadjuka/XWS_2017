@@ -37,5 +37,26 @@ namespace XWS.Shared
 		public static readonly string JELENA_BAZA_KONEKCIONI_CB = "Data Source=KORISNIK-PC\\SQLEXPRESS;Initial Catalog=XWS_CB_2017;Integrated Security=True";
 		public static readonly string KUKA_BAZA_KONEKCIONI_CB = "Data Source=DESKTOP-560J6HB\\SQLEXPRESS;Initial Catalog=XWS_CB_2017;Integrated Security=True";
 
+		/// <summary>
+		/// 0
+		/// </summary>
+		public static readonly string STATUS_FAKTURE_KREIRANA = "0";
+		/// <summary>
+		/// 1
+		/// </summary>
+		public static readonly string STATUS_FAKTURE_POSLATA = "1";
+		/// <summary>
+		/// 2
+		/// </summary>
+		public static readonly string STATUS_FAKTURE_PLACENA = "2";
+
+		/// <summary>
+		/// 0
+		/// </summary>
+		public static readonly string STATUS_NALOGA_ZA_PLACANJE_KREIRAN = "0";
+		/// <summary>
+		/// 1
+		/// </summary>
+		public static readonly string STATUS_NALOGA_ZA_PLACANJE_POSLAT = "1";
 	}
 }

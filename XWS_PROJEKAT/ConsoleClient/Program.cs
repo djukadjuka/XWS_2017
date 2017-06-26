@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using XWS.Shared;
 using XWS.Shared.BP;
 using XWS.Shared.Model;
 
@@ -70,18 +71,18 @@ namespace ConsoleClient
 				case "2":
 				{
 					//sve kreirane fakture trazis sa 0 - one koji si TI napravio (generalno sve ikad)
-					PrikaziSveFakture(sourceFirma, client, "0");
+					PrikaziSveFakture(sourceFirma, client, GlobalConst.STATUS_FAKTURE_KREIRANA);
 					break;
 				}
 				case "3":
 				{
 					//sve narucene fakture trazis sa 1 - one koje su TEBI posalte (ti si kupac, status je 1)
-					PrikaziSveFakture(sourceFirma, client, "1");
+					PrikaziSveFakture(sourceFirma, client, GlobalConst.STATUS_FAKTURE_POSLATA);
 					break;
 				}
 				case "4":
 				{
-					PosaljiFakturuKupcu(sourceFirma, client, "0");
+					PosaljiFakturuKupcu(sourceFirma, client, GlobalConst.STATUS_FAKTURE_KREIRANA);
 					break;
 				}
                 case "5":
@@ -118,7 +119,7 @@ namespace ConsoleClient
 					if (fakt != null)
 					{
                         //client.SendCreatedInvoice(id);
-                        client.PromeniStatusFakture(fakt.IDFakture, "1");
+                        client.PromeniStatusFakture(fakt.IDFakture, GlobalConst.STATUS_FAKTURE_POSLATA);
 						break;
 					}
 				}catch(Exception e)
@@ -179,7 +180,7 @@ namespace ConsoleClient
 								fakt.UkupnoRobaIUsluge * (fakt.UkupanRabat / 100);
 
 			fakt.OznakaValute = "RSD";
-			fakt.Status = "0";
+			fakt.Status = GlobalConst.STATUS_FAKTURE_KREIRANA;
 
 			ListaStavkiFakture listaStavki = new ListaStavkiFakture();
 			StavkaFakture stavka1 = new StavkaFakture();
@@ -228,7 +229,7 @@ namespace ConsoleClient
 
         public static void NapraviNalogZaPrenos(Firma sourceFirma, FirmaClient client)
         {
-            PrikaziSveFakture(sourceFirma, client, "1");
+            PrikaziSveFakture(sourceFirma, client, GlobalConst.STATUS_FAKTURE_POSLATA);
 
             while (true)
             {
@@ -263,7 +264,8 @@ namespace ConsoleClient
                                 
                                 client.NapraviNalogZaPrenos(nzp);
 
-                                client.PromeniStatusFakture(fakt.IDFakture, "2");
+								// TODO:Da li treba ovde da se promeni na placena, ili tek kada stigne poruka o odobrenju?
+                                client.PromeniStatusFakture(fakt.IDFakture, GlobalConst.STATUS_FAKTURE_PLACENA);
                                 break;
                             }
                         }
@@ -295,7 +297,7 @@ namespace ConsoleClient
             nzp.Primalac = faktura.NazivDobavljaca;
             nzp.RacunPoverioca = faktura.UplataNaRacun;
             nzp.RacunDuznika = sourceFirma.Racun.ToString();
-            nzp.Status = "0";
+            nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_KREIRAN;
             nzp.SvrhaPlacanja = "dug";
             /*if (nzp.Iznos > 250000)
                 nzp.Status = "1";

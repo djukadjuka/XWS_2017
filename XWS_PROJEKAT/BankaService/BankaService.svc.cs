@@ -44,6 +44,7 @@ namespace BankaService
 
         public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
+			// TODO: kontam ne treba odma ovde da se sacuva? Ako ce se nalog odma poslati (hitno ili >25000), moze odma da mu se postavi status na sta god znacilo da je poslat i placen, a ne da se posle trazi i radi update
             NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
 			BANKASVCCONSOLE(" Sacuvan Nalog Za Placanje.");
 			BANKASVCCONSOLE(nzp.ToString());
@@ -75,8 +76,10 @@ namespace BankaService
 		public void PrimiPorukuOOdobrenju(PorukaOOdobrenju odobrenje)
 		{
 			// TODO: Odradi dodavanje love na racun firme koja je dobila odobrenje. Ime firme se nalazi u odobrenju, ako treba dodaj sta god u facu metode.
-			BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
-			BANKASVCCONSOLE(">>" + odobrenje.ToString());
+			//BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
+			//BANKASVCCONSOLE(">>" + odobrenje.ToString());
+			PorukaOOdobrenjuDB.InsertIntoPorukaOOdobrenju(odobrenje);
+
 		}
 
 		#endregion glavni_servisi_banke
@@ -101,8 +104,9 @@ namespace BankaService
 		private void ObradiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
 		{
 			// TODO: odraditi skidanje love sa racuna firme. Trebalo bi sve da se nalazi u objektu zaduzenje. Ako ne dodaj sta god treba u argumente metode.
-			BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
-			BANKASVCCONSOLE(">> " + zaduzenje );
+			//BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
+			//BANKASVCCONSOLE(">> " + zaduzenje );
+			PorukaOZaduzenjuDB.InsertIntoPorukaOZaduzenju(zaduzenje);
 		}
 
 		/// <summary>
