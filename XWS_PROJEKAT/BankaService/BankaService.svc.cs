@@ -45,7 +45,13 @@ namespace BankaService
         public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
             NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);  
+
+
             Console.WriteLine(nzp);
+            if(nzp.Hitno==true || nzp.Iznos > 250000)
+            {
+                //ovde krece za RTGS
+            }
         }
 
 

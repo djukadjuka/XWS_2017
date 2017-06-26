@@ -55,6 +55,7 @@ namespace ConsoleClient
 			Console.WriteLine("3.) Prikazi Sve Narucene Fakture\n");
 			Console.WriteLine("4.) Posalji Fakturu Kupcu\n");
             Console.WriteLine("5.) Napravi nalog za prenos\n");
+            Console.WriteLine("6.) Banka neka uradi CLEARING & SETTLEMENT\n");
 		}
 
 		public static bool IzabranMeni(Firma sourceFirma,string izbor, FirmaClient client)
@@ -88,6 +89,11 @@ namespace ConsoleClient
                      NapraviNalogZaPrenos(sourceFirma, client);
                      break;
                 }
+                case "6":
+                {
+                    OdradiClearingAndSettlement(sourceFirma, client);
+                    break;
+                }
                 default:
 				{
 					Console.WriteLine("Izbor NE POSTOJI!\n");
@@ -97,7 +103,7 @@ namespace ConsoleClient
 			return true;
 		}
 
-		private static void PosaljiFakturuKupcu(Firma sourceFirma, FirmaClient client, string v)
+        private static void PosaljiFakturuKupcu(Firma sourceFirma, FirmaClient client, string v)
 		{
 			PrikaziSveFakture(sourceFirma, client, v);
 
@@ -298,6 +304,12 @@ namespace ConsoleClient
 
             Console.WriteLine(nzp);
             return nzp;
+        }
+
+
+        private static void OdradiClearingAndSettlement(Firma sourceFirma, FirmaClient client)
+        {
+            //ovde ide logika clearing and settlementa, prosledi jos neke parametre ako treba
         }
     }  
 }
