@@ -27,5 +27,5 @@ namespace XWS.Shared.Model.InterfejsiServisa
 
 		[OperationContract]
 		void PrimiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje);
-	}
+    }
 }

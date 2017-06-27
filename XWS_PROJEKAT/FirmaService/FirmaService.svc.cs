@@ -133,8 +133,11 @@ namespace FirmaService
 
         public void NapraviNalogZaGrupnoPlacanje()
         {
-            ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
-            cbs.NapraviNalogZaGrupnoPlacanje();
+            //ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
+            //cbs.NapraviNalogZaGrupnoPlacanje();
+            IBankaService bs = GetIBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
+            bs.NapraviNalogZaGrupnoPlacanje();
+
         }
 
         public void PromeniStatusFakture(int idFakture, string status)

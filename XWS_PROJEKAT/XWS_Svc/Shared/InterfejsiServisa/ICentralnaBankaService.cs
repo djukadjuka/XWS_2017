@@ -21,7 +21,7 @@ namespace XWS.Shared.Model.InterfejsiServisa
 		void AcceptRTGSAndSendMessages(RTGSNalog nalog);
 
         [OperationContract]
-        void NapraviNalogZaGrupnoPlacanje();
+        void NalogZaGrupnoPlacanjeSendMessages();
 
     }
 }
