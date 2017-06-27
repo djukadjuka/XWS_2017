@@ -11,11 +11,6 @@ namespace XWS.Shared.BP
 {
 	public class KombinacijeDB
 	{
-		// na osnovu naziva firme <- I
-		// izvlaci banku kao obj u kojoj firma ima racun
-		// trazis firmu po nazivu firme
-		// id firme -> tabla racun -> iz racuna vadis id banke
-		// id banka -> vadis banku
 
 		/// <summary>
 		/// <para>Na osnovu naziva firme trazi se objekat banke.
@@ -134,5 +129,51 @@ namespace XWS.Shared.BP
 
             return banke;
         }
-    }
+
+		/// <summary>
+		/// Funkcija vrsi prenos sredstava po swiftovima i po obracunskim racunima (oracunX)
+		/// </summary>
+		/// <param name="SWIFTduznika"></param>
+		/// <param name="SWIFTpoverenika"></param>
+		/// <param name="oracunaduznika"></param>
+		/// <param name="oracunapoverenika"></param>
+		/// <param name="novac"></param>
+		public static void PrenosNovca(string SWIFTduznika, string SWIFTpoverenika, long oracunaduznika, long oracunapoverenika, double novac)
+		{
+			using (SqlConnection conn = MySQLUtils.NapraviCBConn())
+			{
+				conn.Open();
+
+				//query da napuni lovu
+				string sqlPuni = @"UPDATE obracunskiracun SET stanje = stanje + @novac
+												WHERE SWIFTkod = @SWIFTpoverenika 
+												AND brojobracunskogracuna = @oracunapoverenika";
+				//query da isprazni lovu
+				string sqlPrazni= @"UPDATE obracunskiracun SET stanje = stanje - @novac
+												WHERE SWIFTkod = @SWIFTduznika 
+												AND brojobracunskogracuna = @oracunaduznika";
+
+				//pokretanje upita za punjneje love
+				using (SqlCommand cmd = new SqlCommand(sqlPuni, conn))
+				{
+					cmd.Parameters.AddWithValue("@novac", novac);
+					cmd.Parameters.AddWithValue("@SWIFTpoverenika", SWIFTpoverenika);
+					cmd.Parameters.AddWithValue("@oracunapoverenika", oracunapoverenika);
+					cmd.ExecuteNonQuery();
+				}
+
+				//pokretanje upita za praznjenje love
+				using (SqlCommand cmd = new SqlCommand(sqlPrazni, conn))
+				{
+					cmd.Parameters.AddWithValue("@novac", novac);
+					cmd.Parameters.AddWithValue("@SWIFTduznika", SWIFTduznika);
+					cmd.Parameters.AddWithValue("@oracunaduznika", oracunaduznika);
+					cmd.ExecuteNonQuery();
+				}
+
+				conn.Close();
+			}
+		}
+
+	}
 }

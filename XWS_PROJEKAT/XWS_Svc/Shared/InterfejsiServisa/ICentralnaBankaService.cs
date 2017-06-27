@@ -18,7 +18,7 @@ namespace XWS.Shared.Model.InterfejsiServisa
 		/// <param name="nalog"></param>
 		/// <returns></returns>
 		[OperationContract]
-		PorukaOZaduzenju AcceptRTGSAndSendMessages(RTGSNalog nalog);
+		void AcceptRTGSAndSendMessages(RTGSNalog nalog);
 
         [OperationContract]
         void NapraviNalogZaGrupnoPlacanje();

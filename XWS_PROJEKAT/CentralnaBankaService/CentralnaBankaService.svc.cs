@@ -22,12 +22,20 @@ namespace CentralnaBankaService
 		/// </summary>
 		/// <param name="rtgsNalog"></param>
 		/// <returns></returns>
-		public PorukaOZaduzenju AcceptRTGSAndSendMessages(RTGSNalog rtgsNalog)
+		public void AcceptRTGSAndSendMessages(RTGSNalog rtgsNalog)
 		{
 			rtgsNalog = RTGSNalogDB.InsertIntoRTGSNalog(rtgsNalog);
 
 			CBSVCCONSOLE("VERIFIKOVAN RTGS NALOG");
 			CBSVCCONSOLE(rtgsNalog.ToString());
+
+			//promena para
+			KombinacijeDB.PrenosNovca(rtgsNalog.SWIFTBankaDuznika, 
+										rtgsNalog.SWIFTBankaPoverioca, 
+										Int64.Parse(rtgsNalog.ObracunskiRacunBankeDuznika), 
+										Int64.Parse(rtgsNalog.ObracunskiRacunBankePoverioca), 
+										rtgsNalog.Iznos);
+
 			PorukaOOdobrenju odobrenje = new PorukaOOdobrenju();
 			PorukaOZaduzenju zaduzenje = new PorukaOZaduzenju();
 
@@ -50,9 +58,8 @@ namespace CentralnaBankaService
 			zaduzenje.SifraValute = rtgsNalog.SifraValute;
 
 			IBankaService srvc = GetBankaService(GlobalConst.HOST_ADDRESS_BANKA + GlobalConst.BANKE_SERVICE_NAME);
-			srvc.PrimiPorukuOOdobrenju(odobrenje);
-
-			return zaduzenje;
+			srvc.PrimiPorukuOOdobrenjuIRTGS(odobrenje, rtgsNalog);
+			srvc.PrimiPorukuOZaduzenju(zaduzenje);
 		}
 
         public void NapraviNalogZaGrupnoPlacanje()
@@ -133,6 +140,7 @@ namespace CentralnaBankaService
 			ChannelFactory<IBankaService> channel = new ChannelFactory<IBankaService>(new WSHttpBinding(SecurityMode.None));
 			return channel.CreateChannel(new EndpointAddress(path));
 		}
+
 		#endregion privatne_pomocne
     }
 

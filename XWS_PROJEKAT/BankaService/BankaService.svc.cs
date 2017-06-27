@@ -42,7 +42,6 @@ namespace BankaService
 
         public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
-			
 			//provrea dal se odma salje ili ne
 			if(nzp.Hitno==true || nzp.Iznos > 250000)
             {
@@ -61,8 +60,7 @@ namespace BankaService
 					//rtgs se salje centralnoj, centralna sacuva rtgs u bazi, i salje poruke o odobrenju/zaduzenju
 					nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_POSLAT;
 					NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
-					PorukaOZaduzenju zaduzenje = PosaljiRTGSCentralnojBanci(rtgsNalog);
-					ObradiPorukuOZaduzenju(zaduzenje);
+					PosaljiRTGSCentralnojBanci(rtgsNalog);
 				}
             }
 			else
@@ -79,7 +77,7 @@ namespace BankaService
         /// Metoda koja izvlaci koliko novca je uplaceno na racun, i kojoj firmi, i to belezi u bazu
         /// </summary>
         /// <param name="odobrenje"></param>
-        public void PrimiPorukuOOdobrenju(PorukaOOdobrenju odobrenje)
+        public void PrimiPorukuOOdobrenjuIRTGS(PorukaOOdobrenju odobrenje, RTGSNalog nalog)
 		{
 			// TODO: Odradi dodavanje love na racun firme koja je dobila odobrenje. Ime firme se nalazi u odobrenju, ako treba dodaj sta god u facu metode.
 			//BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
@@ -92,7 +90,7 @@ namespace BankaService
 		/// Metoda koja izvlaci koliko se zaduzila odredjena firma iz poruke o zaduzenju
 		/// </summary>
 		/// <param name="zaduzenje"></param>
-		public void ObradiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
+		public void PrimiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
 		{
 			// TODO: odraditi skidanje love sa racuna firme. Trebalo bi sve da se nalazi u objektu zaduzenje. Ako ne dodaj sta god treba u argumente metode.
 			//BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
@@ -110,10 +108,10 @@ namespace BankaService
 		/// </summary>
 		/// <param name="nalog"></param>
 		/// <returns></returns>
-		private PorukaOZaduzenju PosaljiRTGSCentralnojBanci(RTGSNalog nalog)
+		private void PosaljiRTGSCentralnojBanci(RTGSNalog nalog)
 		{
 			ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS_CB + GlobalConst.CENTRALNA_BANKA_NAME);
-			return cbsvc.AcceptRTGSAndSendMessages(nalog);
+			cbsvc.AcceptRTGSAndSendMessages(nalog);
 		}
 
 

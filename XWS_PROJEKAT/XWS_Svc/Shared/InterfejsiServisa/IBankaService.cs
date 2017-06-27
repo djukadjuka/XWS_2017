@@ -23,7 +23,9 @@ namespace XWS.Shared.Model.InterfejsiServisa
         void NapraviNalogZaPrenos(NalogZaPlacanje nzp);
 
         [OperationContract]
-		void PrimiPorukuOOdobrenju(PorukaOOdobrenju odobrenje);
+		void PrimiPorukuOOdobrenjuIRTGS(PorukaOOdobrenju odobrenje, RTGSNalog nalog);
 
+		[OperationContract]
+		void PrimiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje);
 	}
 }
