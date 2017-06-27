@@ -49,7 +49,7 @@ namespace CentralnaBankaService
 			zaduzenje.Iznos = rtgsNalog.Iznos;
 			zaduzenje.SifraValute = rtgsNalog.SifraValute;
 
-			IBankaService srvc = GetBankaService(GlobalConst.HOST_ADDRESS + GlobalConst.BANKE_SERVICE_NAME);
+			IBankaService srvc = GetBankaService(GlobalConst.HOST_ADDRESS_BANKA + GlobalConst.BANKE_SERVICE_NAME);
 			srvc.PrimiPorukuOOdobrenju(odobrenje);
 
 			return zaduzenje;

@@ -243,13 +243,21 @@ namespace XWS.Shared.BP
 				string sql = "";
 				string naziv = "";
 				
-				if (tip == "0")
+				if (tip == GlobalConst.STATUS_FAKTURE_KREIRANA)
 				{
-					sql = @"SELECT * FROM faktura WHERE nazivdobavljaca = @naziv";
+					sql = @"SELECT * FROM faktura WHERE nazivdobavljaca = @naziv AND status = '0'";
 				}
-				else if(tip == "1")
+				else if(tip == GlobalConst.STATUS_FAKTURE_POSLATA)
 				{
 					sql = @"SELECT * FROM faktura WHERE nazivkupca = @naziv AND status = '1'";
+				}
+				else if(tip == GlobalConst.STATUS_FAKTURE_PLACENA)
+				{
+					sql = @"SELECT * FROM faktura WHERE nazivkupca = @naziv AND status = '2'";
+				}
+				else
+				{
+					sql = @"SELECT * FROM faktura WHERE nazivkupca = @naziv";
 				}
 
 				using (SqlCommand cmd = new SqlCommand(sql, conn))

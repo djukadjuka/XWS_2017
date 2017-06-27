@@ -18,7 +18,7 @@ namespace ConsoleClient
             wsHttpBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
             wsHttpBinding.Security.Message.EstablishSecurityContext = false;
 
-			var address = new EndpointAddress(XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.FIRME_SERVICE_NAME + "?wsdl");
+			var address = new EndpointAddress(XWS.Shared.GlobalConst.HOST_ADDRESS_FIRMA + XWS.Shared.GlobalConst.FIRME_SERVICE_NAME + "?wsdl");
 			var client = new FirmaClient(wsHttpBinding, address);
 
 			while (true)
@@ -111,8 +111,11 @@ namespace ConsoleClient
 
 			while(true)
 			{
-				Console.WriteLine("Unesite broj fakture koju zelite da posaljete kupcu.");
+				Console.WriteLine("Unesite broj fakture koju zelite da posaljete kupcu (q za izlaz):");
 				string id_string = Console.ReadLine();
+				
+				if (id_string == "q" || id_string == "Q") return;
+				
 				try
 				{
 					int id = Int32.Parse(id_string);
@@ -125,7 +128,7 @@ namespace ConsoleClient
 					}
 				}catch(Exception e)
 				{
-					//pass
+					Console.WriteLine("Pogresan unos. Probajte Ponovo! :)");
 				}
 			}
 		}
@@ -220,7 +223,7 @@ namespace ConsoleClient
 		public static void PrikaziSveFakture(Firma sourceFirma, FirmaClient client, String kreirane_narucene)
 		{
 			LinijaUkras();
-			Console.WriteLine("Sve " + kreirane_narucene + " Fakture : ");
+			Console.WriteLine("Sve " + (kreirane_narucene==GlobalConst.STATUS_FAKTURE_KREIRANA? "Kreirane" : (kreirane_narucene==GlobalConst.STATUS_FAKTURE_PLACENA? "Placene" : "Poslate")) + " Fakture : ");
 			List<Faktura> fakture = client.GetForCompanyAndStatus(sourceFirma,kreirane_narucene);
 			foreach(var f in fakture)
 			{
@@ -314,7 +317,7 @@ namespace ConsoleClient
         {
             //ovde ide logika clearing and settlementa, prosledi jos neke parametre ako treba
             ChannelFactory<IFirmaService> channelFactory = new ChannelFactory<IFirmaService>(new WSHttpBinding(SecurityMode.None));
-            IFirmaService fs = channelFactory.CreateChannel(new EndpointAddress(GlobalConst.HOST_ADDRESS + GlobalConst.CENTRALNA_BANKA_NAME));
+            IFirmaService fs = channelFactory.CreateChannel(new EndpointAddress(GlobalConst.HOST_ADDRESS_FIRMA + GlobalConst.CENTRALNA_BANKA_NAME));
             fs.NapraviNalogZaGrupnoPlacanje(); 
         }
     }  

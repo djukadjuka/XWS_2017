@@ -127,13 +127,13 @@ namespace FirmaService
 
         public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
-            IBankaService bs = GetIBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
+            IBankaService bs = GetIBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
             bs.NapraviNalogZaPrenos(nzp);
         }
 
         public void NapraviNalogZaGrupnoPlacanje()
         {
-            ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
+            ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
             cbs.NapraviNalogZaGrupnoPlacanje();
         }
 

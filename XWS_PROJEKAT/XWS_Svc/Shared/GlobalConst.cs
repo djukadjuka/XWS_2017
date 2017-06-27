@@ -11,7 +11,15 @@ namespace XWS.Shared
 		/// <summary>
 		/// http://localhost:9000/
 		/// </summary>
-        public static readonly string HOST_ADDRESS = "http://localhost:9000/";
+        public static readonly string HOST_ADDRESS_BANKA = "http://localhost:9000/";
+		/// <summary>
+		/// http://localhost:9100/
+		/// </summary>
+		public static readonly string HOST_ADDRESS_CB = "http://localhost:9100/";
+		/// <summary>
+		/// http://localhost:9200/
+		/// </summary>
+		public static readonly string HOST_ADDRESS_FIRMA = "http://localhost:9200/";
 		/// <summary>
 		/// Firme
 		/// </summary>

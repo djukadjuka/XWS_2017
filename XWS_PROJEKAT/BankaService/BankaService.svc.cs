@@ -9,8 +9,6 @@ using XWS.Shared;
 
 namespace BankaService
 {
-	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "BankaService" in code, svc and config file together.
-	// NOTE: In order to launch WCF Test Client for testing this service, please select BankaService.svc or BankaService.svc.cs at the Solution Explorer and start debugging.
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,ConcurrencyMode = ConcurrencyMode.Multiple)]
 	public class BankaService : IBankaService
 	{
@@ -44,28 +42,33 @@ namespace BankaService
 
         public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
         {
-			// TODO: kontam ne treba odma ovde da se sacuva? Ako ce se nalog odma poslati (hitno ili >25000), moze odma da mu se postavi status na sta god znacilo da je poslat i placen, a ne da se posle trazi i radi update
-            NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
-			BANKASVCCONSOLE(" Sacuvan Nalog Za Placanje.");
-			BANKASVCCONSOLE(nzp.ToString());
+			
+			//provrea dal se odma salje ili ne
 			if(nzp.Hitno==true || nzp.Iznos > 250000)
             {
+				//ako se odma salje pita se dal je ista banka
 				RTGSNalog rtgsNalog = NapraviRTGSIzNaloga(nzp);
 				BANKASVCCONSOLE(rtgsNalog.ToString());
 				if(rtgsNalog.SWIFTBankaDuznika == rtgsNalog.SWIFTBankaPoverioca)
 				{
 					//ne salje se centralnoj banci, ista banka je duznik i poverioc
+					nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_POSLAT;
+					NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
+
 				}
 				else
 				{
 					//rtgs se salje centralnoj, centralna sacuva rtgs u bazi, i salje poruke o odobrenju/zaduzenju
+					nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_POSLAT;
+					NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
 					PorukaOZaduzenju zaduzenje = PosaljiRTGSCentralnojBanci(rtgsNalog);
 					ObradiPorukuOZaduzenju(zaduzenje);
 				}
             }
 			else
 			{
-                //sacuvaj nalog
+				//sacuvaj nalog
+				nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_KREIRAN;
                 NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
 			}
         }
@@ -82,7 +85,20 @@ namespace BankaService
 			//BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
 			//BANKASVCCONSOLE(">>" + odobrenje.ToString());
 			PorukaOOdobrenjuDB.InsertIntoPorukaOOdobrenju(odobrenje);
+			BANKASVCCONSOLE(odobrenje.ToString());
+		}
 
+		/// <summary>
+		/// Metoda koja izvlaci koliko se zaduzila odredjena firma iz poruke o zaduzenju
+		/// </summary>
+		/// <param name="zaduzenje"></param>
+		public void ObradiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
+		{
+			// TODO: odraditi skidanje love sa racuna firme. Trebalo bi sve da se nalazi u objektu zaduzenje. Ako ne dodaj sta god treba u argumente metode.
+			//BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
+			//BANKASVCCONSOLE(">> " + zaduzenje );
+			PorukaOZaduzenjuDB.InsertIntoPorukaOZaduzenju(zaduzenje);
+			BANKASVCCONSOLE(zaduzenje.ToString());
 		}
 
 		#endregion glavni_servisi_banke
@@ -96,21 +112,10 @@ namespace BankaService
 		/// <returns></returns>
 		private PorukaOZaduzenju PosaljiRTGSCentralnojBanci(RTGSNalog nalog)
 		{
-			ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS + GlobalConst.CENTRALNA_BANKA_NAME);
+			ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS_CB + GlobalConst.CENTRALNA_BANKA_NAME);
 			return cbsvc.AcceptRTGSAndSendMessages(nalog);
 		}
 
-		/// <summary>
-		/// Metoda koja izvlaci koliko se zaduzila odredjena firma iz poruke o zaduzenju
-		/// </summary>
-		/// <param name="zaduzenje"></param>
-		private void ObradiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
-		{
-			// TODO: odraditi skidanje love sa racuna firme. Trebalo bi sve da se nalazi u objektu zaduzenje. Ako ne dodaj sta god treba u argumente metode.
-			//BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
-			//BANKASVCCONSOLE(">> " + zaduzenje );
-			PorukaOZaduzenjuDB.InsertIntoPorukaOZaduzenju(zaduzenje);
-		}
 
 		/// <summary>
 		/// Iz naloga izvlaci sve bitne podatke za sklapanje rtgs naloga
@@ -184,161 +189,5 @@ namespace BankaService
 		}
 
         #endregion private_pomocne
-
-        #region komentari
-
-        //public void ObradiRTGS(MT103 mt103, MT910 mt910)
-        //{
-        //    Racun racunPrimaoca = DAO.GetRacunBrojRacuna(mt910.ObracunskiBankePoverioca);
-        //    DAO.UpdateStanjeRacuna(racunPrimaoca.BrojRacun, racunPrimaoca.Stanje + mt910.Iznos);
-        //}
-
-        //public void SendNalogPrenos(NalogPrenos prenos)
-        //{
-        //    Common.Model.Banka bankaDuznika = DAO.GetBanka(prenos.RacunDuznika);
-        //    Common.Model.Banka bankaPrimaoca = DAO.GetBanka(prenos.RacunPrimalac);
-
-        //    if (bankaDuznika.IdBanka == bankaPrimaoca.IdBanka)
-        //    {
-        //        PrenosUnutarBanke(prenos, bankaDuznika);
-        //    }
-        //    else
-        //    {
-        //        if (prenos.Hitno || prenos.Iznos >= 250000)
-        //        {
-        //            RTGS(prenos, bankaDuznika, bankaPrimaoca);
-        //        }
-        //        else
-        //        {
-        //            Clearing(prenos, bankaDuznika, bankaPrimaoca);
-        //        }
-        //    }
-        //}
-
-        //private void RTGS(NalogPrenos prenos, Common.Model.Banka bankaDuznik, Common.Model.Banka bankaPrimaoca)
-        //{
-        //    Firma duznik = DAO.GetFirmaBrojRacuna(prenos.RacunDuznika);
-        //    Firma primalac = DAO.GetFirmaBrojRacuna(prenos.RacunPrimalac);
-
-        //    Racun racunDuznika = DAO.GetRacunBrojRacuna(prenos.RacunDuznika);
-        //    DAO.UpdateStanjeRacuna(racunDuznika.BrojRacun, racunDuznika.Stanje - prenos.Iznos);
-
-        //    MT103 mt103 = new MT103(
-        //        "id",
-        //        bankaDuznik.Swift,
-        //        bankaDuznik.Racun,
-        //        bankaPrimaoca.Swift,
-        //        bankaPrimaoca.Racun,
-        //        duznik.Naziv,
-        //        prenos.SvrhaPlacanja,
-        //        primalac.Naziv,
-        //        prenos.DatumNaloga,
-        //        prenos.DatumValute,
-        //        prenos.RacunDuznika,
-        //        prenos.ModelZaduzenja,
-        //        prenos.PozivNaBrZaduzenja,
-        //        prenos.RacunPrimalac,
-        //        prenos.ModelOdobrenja,
-        //        prenos.PozivNaBrOdobrenja.ToString(),
-        //        prenos.Iznos,
-        //        "RSD"
-        //    );
-
-
-        //    ChannelFactory<ICentralnaBanka> factory = new ChannelFactory<ICentralnaBanka>(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:9000/CB"));
-        //    ICentralnaBanka proxy = factory.CreateChannel();
-
-        //    MT900 mt900 = null;
-
-        //    try
-        //    {
-        //        mt900 = proxy.RTGS(mt103);
-        //    }
-        //    catch (Exception)
-        //    { }
-        //}
-
-        //private void Clearing(NalogPrenos prenos, Common.Model.Banka bankaDuznik, Common.Model.Banka bankaPrimaoca)
-        //{
-        //    Firma duznik = DAO.GetFirmaBrojRacuna(prenos.RacunDuznika);
-        //    Firma primalac = DAO.GetFirmaBrojRacuna(prenos.RacunPrimalac);
-
-        //    Racun racunDuznika = DAO.GetRacunBrojRacuna(prenos.RacunDuznika);
-        //    DAO.UpdateStanjeRacuna(racunDuznika.BrojRacun, racunDuznika.Stanje - prenos.Iznos);
-
-        //    MT102 mt102 = null;
-
-        //    clearing.TryGetValue(bankaPrimaoca.Naziv, out mt102);
-
-        //    if (mt102 == null)
-        //    {
-        //        mt102 = new MT102(
-        //        "id",
-        //        bankaDuznik.Swift,
-        //        bankaDuznik.Racun,
-        //        bankaPrimaoca.Swift,
-        //        bankaPrimaoca.Racun,
-        //        prenos.Iznos,
-        //        "RSD",
-        //        prenos.DatumNaloga,
-        //        prenos.DatumValute);
-
-        //        clearing.Add(bankaPrimaoca.Naziv, mt102);
-        //    }
-
-        //    MT102Stavka stavka = new MT102Stavka(
-        //        prenos.IdNalog.ToString(),
-        //        duznik.Naziv,
-        //        prenos.SvrhaPlacanja,
-        //        primalac.Naziv,
-        //        prenos.DatumNaloga,
-        //        racunDuznika.BrojRacun,
-        //        prenos.ModelZaduzenja,
-        //        prenos.PozivNaBrZaduzenja,
-        //        prenos.RacunPrimalac,
-        //        prenos.ModelOdobrenja,
-        //        prenos.PozivNaBrOdobrenja.ToString(),
-        //        prenos.Iznos,
-        //        "RSD"
-        //    );
-
-        //    mt102.Stavke.Add(stavka);
-        //}
-
-        //public void DoClearing()
-        //{
-        //    ChannelFactory<ICentralnaBanka> factory = new ChannelFactory<ICentralnaBanka>(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:9001/CB"));
-        //    ICentralnaBanka proxy = factory.CreateChannel();
-
-        //    try
-        //    {
-        //        proxy.Clearing(new List<MT102>(clearing.Values.ToList()));
-        //        clearing.Clear();
-        //    }
-        //    catch (Exception)
-        //    { }
-        //}
-
-        //public void ObradiClearing(MT102Stavka mt102, MT910 mt910)
-        //{
-        //    Racun racunPrimaoca = DAO.GetRacunBrojRacuna(mt102.RacunPoverioca);
-        //    DAO.UpdateStanjeRacuna(racunPrimaoca.BrojRacun, racunPrimaoca.Stanje + mt910.Iznos);
-        //}
-
-        //private void PrenosUnutarBanke(NalogPrenos prenos, Common.Model.Banka banka)
-        //{
-        //    Racun racunDuznika = DAO.GetRacunBrojRacuna(prenos.RacunDuznika);
-        //    Racun racunPrimaoca = DAO.GetRacunBrojRacuna(prenos.RacunPrimalac);
-
-        //    if (racunDuznika.Stanje < prenos.Iznos)
-        //    {
-        //        return;
-        //    }
-
-        //    DAO.UpdateStanjeRacuna(racunDuznika.BrojRacun, racunDuznika.Stanje - prenos.Iznos);
-        //    DAO.UpdateStanjeRacuna(racunPrimaoca.BrojRacun, racunPrimaoca.Stanje + prenos.Iznos);
-        //}
-
-        #endregion komentari
     }
 }
