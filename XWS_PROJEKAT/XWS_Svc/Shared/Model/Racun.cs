@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XWS.Shared.Model
 {
-    class Racun
+   public class Racun
     {
 		private int idRacuna;
         private double predhodnoStanje;

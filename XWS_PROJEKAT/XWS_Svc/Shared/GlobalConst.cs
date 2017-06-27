@@ -66,5 +66,15 @@ namespace XWS.Shared
 		/// 1
 		/// </summary>
 		public static readonly string STATUS_NALOGA_ZA_PLACANJE_POSLAT = "1";
-	}
+
+        /// <summary>
+		/// 0
+		/// </summary>
+		public static readonly string STATUS_NALOGA_ZA_GRUPNO_PLACANJE_KREIRAN = "0";
+        /// <summary>
+        /// 1
+        /// </summary>
+        public static readonly string STATUS_NALOGA_ZA_GRUPNO_PLACANJE_OBRADJEN = "1";
+
+    }
 }

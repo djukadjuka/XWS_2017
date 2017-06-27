@@ -64,8 +64,49 @@ namespace CentralnaBankaService
 
         public void NalogZaGrupnoPlacanjeSendMessages()
         {
+            List<NalogZaGrupnoPlacanje> naloziZaGrupnoPlacanje = NalogZaGrupnoPlacanjeDB.GetAllNalogZaGrupnoPlacanjeByStatus(GlobalConst.STATUS_NALOGA_ZA_GRUPNO_PLACANJE_KREIRAN);
+            foreach (NalogZaGrupnoPlacanje nzgp in naloziZaGrupnoPlacanje)
+            {
+                String obracunskiRacunDuznika = nzgp.ObracunskiRacunBankeDuznika;
+                String obracunskiRacunPoverioca = nzgp.ObracunskiRacunBankePoverioca;
 
-            
+                ObracunskiRacun orDuznika = ObracunskiRacunDB.GetObracunskiRacunByRacun(Int64.Parse(obracunskiRacunDuznika));
+                ObracunskiRacun orPoverioca = ObracunskiRacunDB.GetObracunskiRacunByRacun(Int64.Parse(obracunskiRacunPoverioca));
+
+                orDuznika.Stanje -= nzgp.UkupanIznos;
+                orPoverioca.Stanje += nzgp.UkupanIznos;
+
+                ObracunskiRacunDB.UpdateObracunskogRacunaStanje(orDuznika.IDObracunskogRacuna, orDuznika.Stanje);
+                ObracunskiRacunDB.UpdateObracunskogRacunaStanje(orPoverioca.IDObracunskogRacuna, orPoverioca.Stanje);
+
+
+                PorukaOOdobrenju odobrenje = new PorukaOOdobrenju();
+                PorukaOZaduzenju zaduzenje = new PorukaOZaduzenju();
+
+                //poruka o odobrenju
+                odobrenje.IDPoruke = nzgp.IDPoruke;
+                odobrenje.SWIFTBankePoverioca = nzgp.SWIFTBankePoverioca;
+                odobrenje.ObracunskiRacunBankePoverioca = nzgp.ObracunskiRacunBankePoverioca;
+                odobrenje.IDPorukeNaloga = "Ovo Ne Znam Sta Je";
+                odobrenje.DatumValute = nzgp.DatumValute;
+                odobrenje.Iznos = nzgp.UkupanIznos;
+                odobrenje.SifraValute = nzgp.SifraValute;
+
+                //poruka o zaduzenju
+                zaduzenje.IDPPoruke = nzgp.IDPoruke;
+                zaduzenje.SWIFTBankeDuznika = nzgp.SWIFTBankeDuznika;
+                zaduzenje.ObracunskiRacunBankeDuznika = nzgp.ObracunskiRacunBankeDuznika;
+                zaduzenje.IDPorukeNaloga = "Ovo Ne Znam Sta Je";
+                zaduzenje.DatumValute = nzgp.DatumValute;
+                zaduzenje.Iznos = nzgp.UkupanIznos;
+                zaduzenje.SifraValute = nzgp.SifraValute;
+
+                IBankaService srvc = GetBankaService(GlobalConst.HOST_ADDRESS_BANKA + GlobalConst.BANKE_SERVICE_NAME);
+                srvc.PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje(odobrenje, nzgp);
+                srvc.PrimiPorukuOZaduzenju(zaduzenje);
+            }
+
+
         }
 
         #endregion glavno

@@ -86,26 +86,40 @@ namespace BankaService
 			BANKASVCCONSOLE(odobrenje.ToString());
 		}
 
-		/// <summary>
-		/// Metoda koja izvlaci koliko se zaduzila odredjena firma iz poruke o zaduzenju
-		/// </summary>
-		/// <param name="zaduzenje"></param>
-		public void PrimiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
+        public void PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje(PorukaOOdobrenju odobrenje, NalogZaGrupnoPlacanje nzgp)
+        {
+            // TODO: Odradi dodavanje love na racun firme koja je dobila odobrenje. Ime firme se nalazi u odobrenju, ako treba dodaj sta god u facu metode.
+            //BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
+            //BANKASVCCONSOLE(">>" + odobrenje.ToString());
+            PorukaOOdobrenjuDB.InsertIntoPorukaOOdobrenju(odobrenje);
+            BANKASVCCONSOLE(odobrenje.ToString());
+            Console.WriteLine("NALOG ZA GRUPNO PLACANJE OBRADJEN, POSLAT BANCI OD CB!!!");
+            BANKASVCCONSOLE(nzgp.ToString());
+
+            foreach (StavkaGrupnogPlacanja sgp in nzgp.StavkeGrupnogPlacanja)
+            {
+                Racun racunPoverioca = RacunDB.GetRacunByRacun(Int64.Parse(sgp.RacunPoverioca));
+                racunPoverioca.TrenutnoStanje += sgp.Iznos;
+
+                RacunDB.UpdateRacunaStanje(racunPoverioca.IDRacuna, racunPoverioca.TrenutnoStanje);
+            }
+        }
+
+        /// <summary>
+        /// Metoda koja izvlaci koliko se zaduzila odredjena firma iz poruke o zaduzenju
+        /// </summary>
+        /// <param name="zaduzenje"></param>
+        public void PrimiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
 		{
 			// TODO: odraditi skidanje love sa racuna firme. Trebalo bi sve da se nalazi u objektu zaduzenje. Ako ne dodaj sta god treba u argumente metode.
 			//BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
 			//BANKASVCCONSOLE(">> " + zaduzenje );
 			PorukaOZaduzenjuDB.InsertIntoPorukaOZaduzenju(zaduzenje);
 			BANKASVCCONSOLE(zaduzenje.ToString());
+
+            Racun racun = RacunDB.GetRacunByRacun(zaduzenje.);
 		}
 
-
-        public void PosaljiNalogZaGrupnoPlacanjeCentralnojBanci()
-        {
-            ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS_CB + GlobalConst.CENTRALNA_BANKA_NAME);
-            cbsvc.NalogZaGrupnoPlacanjeSendMessages();
-
-        }
         #endregion glavni_servisi_banke
 
         #region private_pomocne
@@ -160,7 +174,7 @@ namespace BankaService
 		}
 
 
-        private NalogZaGrupnoPlacanje NapraviNalogZaGrupnoPlacanje()
+        public void NapraviNalogZaGrupnoPlacanje()
         {
             List<NalogZaPlacanje> naloziZaPlacanje;
             List<Banka> sveBanke = KombinacijeDB.getAllBanks(-1);
@@ -220,11 +234,13 @@ namespace BankaService
                    
                 }
 
-               
-               
+              
             }
 
-            return nalogZaGrupnoPlacanje;
+            ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS_CB + GlobalConst.CENTRALNA_BANKA_NAME);
+            cbsvc.NalogZaGrupnoPlacanjeSendMessages();
+
+
         }
 
 

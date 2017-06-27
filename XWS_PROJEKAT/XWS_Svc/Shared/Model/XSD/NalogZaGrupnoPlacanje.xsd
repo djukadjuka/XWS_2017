@@ -23,7 +23,8 @@
 			<xs:element minOccurs="0" name="UkupanIznos" type="xs:double"></xs:element>
 			<xs:element minOccurs="0" name="SifraValute" type="xs:string"></xs:element>
 			<xs:element minOccurs="0" name="DatumValute" type="xs:dateTime"></xs:element>
-			<xs:element minOccurs="0" name="Datum" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="Status" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="Datum" type="xs:dateTime"></xs:element>
 			<xs:element minOccurs="0" name="StavkeGrupnogPlacanja" type="tns:StavkeGrupnogPlacanja"></xs:element>
 		</xs:sequence>
 	</xs:complexType>

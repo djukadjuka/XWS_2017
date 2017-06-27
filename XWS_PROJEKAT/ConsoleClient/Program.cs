@@ -93,7 +93,7 @@ namespace ConsoleClient
                 }
                 case "6":
                 {
-                    OdradiClearingAndSettlement();
+                    OdradiClearingAndSettlement(client);
                     break;
                 }
                 default:
@@ -313,12 +313,9 @@ namespace ConsoleClient
         }
 
 
-        private static void OdradiClearingAndSettlement()
+        private static void OdradiClearingAndSettlement(FirmaClient client)
         {
-            //ovde ide logika clearing and settlementa, prosledi jos neke parametre ako treba
-            ChannelFactory<IFirmaService> channelFactory = new ChannelFactory<IFirmaService>(new WSHttpBinding(SecurityMode.None));
-            IFirmaService fs = channelFactory.CreateChannel(new EndpointAddress(GlobalConst.HOST_ADDRESS_FIRMA + GlobalConst.CENTRALNA_BANKA_NAME));
-            fs.NapraviNalogZaGrupnoPlacanje(); 
+            client.NapraviNalogZaGrupnoPlacanje(); 
         }
     }  
 }
