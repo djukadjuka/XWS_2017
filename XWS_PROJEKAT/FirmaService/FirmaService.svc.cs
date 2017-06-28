@@ -126,13 +126,13 @@ namespace FirmaService
 			return FakturaDB.GetInvoiceByStatusAndId(firma, status);
 		}
 
-        public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
+        public void NapraviNalogZaPrenosK(NalogZaPlacanje nzp)
         {
             IBankaService bs = GetIBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
             bs.NapraviNalogZaPrenos(nzp);
         }
 
-        public void NapraviNalogZaGrupnoPlacanje()
+        public void NapraviNalogZaGrupnoPlacanjeK()
         {
             /*ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
             cbs.NapraviNalogZaGrupnoPlacanje();*/

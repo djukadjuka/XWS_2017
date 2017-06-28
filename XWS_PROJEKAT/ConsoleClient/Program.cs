@@ -278,7 +278,7 @@ namespace ConsoleClient
                                     hitno = false;
                                 NalogZaPlacanje nzp = generisiNZP(sourceFirma, hitno, fakt);
                                 
-                                client.NapraviNalogZaPrenos(nzp);
+                                client.NapraviNalogZaPrenosK(nzp);
 								
                                 client.PromeniStatusFakture(fakt.IDFakture, GlobalConst.STATUS_FAKTURE_PLACENA);
                                 break;
@@ -348,7 +348,7 @@ namespace ConsoleClient
 
         private static void OdradiClearingAndSettlement(FirmaClient client)
         {
-            client.NapraviNalogZaGrupnoPlacanje();
+            client.NapraviNalogZaGrupnoPlacanjeK();
         }
     }  
 }

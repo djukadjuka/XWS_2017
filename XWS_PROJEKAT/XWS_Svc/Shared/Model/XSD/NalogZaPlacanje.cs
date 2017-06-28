@@ -8,12 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace Shared.Model.XSD
 {
     using System.Runtime.Serialization;
-    
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+	using System.Xml.Serialization;
+
+	[XmlRootAttribute]
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="NalogZaPlacanje", Namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD")]
     public partial class NalogZaPlacanje : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged

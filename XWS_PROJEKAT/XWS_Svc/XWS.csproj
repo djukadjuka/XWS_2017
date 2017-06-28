@@ -93,6 +93,8 @@
     <Compile Include="Shared\InterfejsiServisa\IFirmaService.cs" />
     <Compile Include="Shared\Model\ObracunskiRacun.cs" />
     <Compile Include="Shared\Model\Racun.cs" />
+    <Compile Include="Shared\Model\WSDLOVI\output.cs" />
+    <Compile Include="Shared\Model\WSDLOVI\xwsproj.com.cs" />
     <Compile Include="Shared\Model\XSD\Faktura.cs">
       <DependentUpon>Faktura.xsd</DependentUpon>
     </Compile>
@@ -121,6 +123,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Shared\Model\WSDLOVI\xwsproj.com.wsdl" />
+    <None Include="Shared\Model\WSDLOVI\xwsproj.com.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Shared\Model\XSD\Faktura.xsd">
       <SubType>Designer</SubType>
     </None>

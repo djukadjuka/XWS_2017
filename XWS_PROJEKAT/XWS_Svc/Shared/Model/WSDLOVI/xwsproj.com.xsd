@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://xwsproj.com/" elementFormDefault="qualified" targetNamespace="http://xwsproj.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ProveriBanku">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="ProveriBankuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ProveriBankuResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sendMessageToFirm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="firmName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="message" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sendMessageToFirmResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NapraviNalogZaPrenos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="nzp" type="tns:NalogZaPlacanje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="NalogZaPlacanje">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDNalogaZaPlacanje" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPoruke" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Duznik" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SvrhaPlacanja" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Primalac" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumNaloga" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RacunDuznika" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ModelZaduzenja" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PozivNaBrZaduzenja" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RacunPoverioca" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ModelOdobrenja" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PozivNaBrOdobrenja" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OznakaValute" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Hitno" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExtensionDataObject" />
+  <xs:element name="NapraviNalogZaPrenosResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PrimiPorukuOOdobrenjuIRTGS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="odobrenje" type="tns:PorukaOOdobrenju" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nalog" type="tns:RTGSNalog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PorukaOOdobrenju">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPoruke" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPorukeNaloga" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDPorukeOOdobrenju" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObracunskiRacunBankePoverioca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SWIFTBankePoverioca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SifraValute" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RTGSNalog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDRTGSNaloga" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPoruke" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SWIFTBankaDuznika" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObracunskiRacunBankeDuznika" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SWIFTBankaPoverioca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObracunskiRacunBankePoverioca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Duznik" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SvrhaPlacanja" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Primalac" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumNaloga" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RacunDuznika" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ModelZaduzenja" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PozivNaBrZaduzenja" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RacunPoverioca" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ModelOdobrenja" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PozivNaBrOdobrenja" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SifraValute" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrimiPorukuOOdobrenjuIRTGSResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PrimiPorukuOZaduzenju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="zaduzenje" type="tns:PorukaOZaduzenju" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PorukaOZaduzenju">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDPorukeOZaduzenju" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPPoruke" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SWIFTBankeDuznika" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObracunskiRacunBankeDuznika" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPorukeNaloga" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SifraValute" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrimiPorukuOZaduzenjuResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PredajPresekIzNaloga">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="zahtev" type="tns:ZahtevZaDobijanjeIzvoda" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ZahtevZaDobijanjeIzvoda">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDZZDI" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BrRacuna" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Datum" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RedniBrPreseka" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PredajPresekIzNalogaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="PredajPresekIzNalogaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanje">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanjeResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="odobrenje" type="tns:PorukaOOdobrenju" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nzgp" type="tns:NalogZaGrupnoPlacanje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="NalogZaGrupnoPlacanje">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDNalogaZaGrupnoPlacanje" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPoruke" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SWIFTBankeDuznika" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObracunskiRacunBankeDuznika" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SWIFTBankePoverioca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObracunskiRacunBankePoverioca" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UkupanIznos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SifraValute" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Datum" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="StavkeGrupnogPlacanja" type="tns:ArrayOfStavkaGrupnogPlacanja" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfStavkaGrupnogPlacanja">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StavkaGrupnogPlacanja" nillable="true" type="tns:StavkaGrupnogPlacanja" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StavkaGrupnogPlacanja">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDStavkeGrupnogPlacanja" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDNalogaZaPlacanje" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Duznik" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SvrhaPlacanja" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Primalac" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumNaloga" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RacunDuznika" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ModelZaduzenja" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PozivNaBrZaduzenja" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RacunPoverioca" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ModelOdobrenja" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PozivNaBrOdobrenja" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SifraValute" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDNalogaZaGrupnoPlacanje" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanjeResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="AcceptRTGSAndSendMessages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="nalog" type="tns:RTGSNalog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptRTGSAndSendMessagesResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NalogZaGrupnoPlacanjeSendMessages">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NalogZaGrupnoPlacanjeSendMessagesResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetDataResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SlanjeFakture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="faktura" type="tns:Faktura" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nazivFirme" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Faktura">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDFakture" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDPoruke" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NazivDobavljaca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AdresaDobavljaca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PIBDobavljaca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NazivKupca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AdresaKupca" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PIBKupca" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="BrRacuna" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumRacuna" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="VrednostRobe" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="VrednostUsluga" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UkupnoRobaIUsluge" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UkupanRabat" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UkupanPorez" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OznakaValute" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IznosZaUplatu" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UplataNaRacun" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="StavkeFakture" type="tns:ArrayOfStavkaFakture" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfStavkaFakture">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StavkaFakture" nillable="true" type="tns:StavkaFakture" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StavkaFakture">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDStavke" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RedniBr" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NazivRobeIliUsluge" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Kolicina" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JedinicaMere" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="JedinicnaCena" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Vrednost" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ProcenatRabata" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IznosRabata" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UmanjenoZaRabat" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UkupanPorez" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IDFakture" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SlanjeFaktureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SlanjeFaktureResult" type="tns:FakturaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="FakturaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReturnMessageFromBank">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="ReturnMessageFromBankResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ReturnMessageFromBankResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptMessageFromBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="message" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptMessageFromBankResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SaveCreatedInvoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="faktura" type="tns:Faktura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveCreatedInvoiceResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PrikaziFakture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="nazivFirme" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrikaziFaktureResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SendCreatedInvoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="idFakture" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendCreatedInvoiceResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SendInvoiceProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourceInvoice" type="tns:Faktura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendInvoiceProfileResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="GetForCompanyAndStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="firma" type="tns:Firma" />
+        <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Firma">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="IDFirme" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AdresaFirme" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NazivFirme" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Racun" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PIB" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetForCompanyAndStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetForCompanyAndStatusResult" type="tns:ArrayOfFaktura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfFaktura">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Faktura" nillable="true" type="tns:Faktura" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NapraviNalogZaPrenosK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="nzp" type="tns:NalogZaPlacanje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaPrenosKResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanjeK">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanjeKResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PromeniStatusFakture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="idFakture" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PromeniStatusFaktureResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="ZahtevZaPresek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="zahtev" type="tns:ZahtevZaDobijanjeIzvoda" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZahtevZaPresekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ZahtevZaPresekResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

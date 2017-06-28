@@ -3,6 +3,7 @@ using Shared.Model.XSD;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Web.Services;
 using XWS.Shared.Model;
 
 namespace XWS.Shared.Model.InterfejsiServisa
@@ -38,12 +39,14 @@ namespace XWS.Shared.Model.InterfejsiServisa
 
 		[OperationContract]
 		List<Faktura> GetForCompanyAndStatus(Firma firma, string status);
-
+		
+		[WebMethod]
         [OperationContract]
-        void NapraviNalogZaPrenos(NalogZaPlacanje nzp);
+        void NapraviNalogZaPrenosK(NalogZaPlacanje nzp);
 
-        [OperationContract]
-        void NapraviNalogZaGrupnoPlacanje();
+		[WebMethod]
+		[OperationContract]
+        void NapraviNalogZaGrupnoPlacanjeK();
 
 
         [OperationContract]

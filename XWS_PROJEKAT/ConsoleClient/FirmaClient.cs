@@ -60,14 +60,14 @@ namespace ConsoleClient
 		}
 
         
-        public void NapraviNalogZaPrenos(NalogZaPlacanje nzp)
+        public void NapraviNalogZaPrenosK(NalogZaPlacanje nzp)
         {
-            Channel.NapraviNalogZaPrenos(nzp);
+            Channel.NapraviNalogZaPrenosK(nzp);
         }
 
-        public void NapraviNalogZaGrupnoPlacanje()
+        public void NapraviNalogZaGrupnoPlacanjeK()
         {
-            Channel.NapraviNalogZaGrupnoPlacanje();
+            Channel.NapraviNalogZaGrupnoPlacanjeK();
         }
 
         public void PromeniStatusFakture(int idFakture, string status)
