@@ -2,6 +2,7 @@ using Shared.Model.XSD;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using XWS.Shared;
 using XWS.Shared.BP;
 using XWS.Shared.Model;
 using XWS.Shared.Model.InterfejsiServisa;
@@ -133,16 +134,22 @@ namespace FirmaService
 
         public void NapraviNalogZaGrupnoPlacanje()
         {
+            /*ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
+            cbs.NapraviNalogZaGrupnoPlacanje();*/
             //ICentralnaBankaService cbs = GetICentralnaBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
             //cbs.NapraviNalogZaGrupnoPlacanje();
             IBankaService bs = GetIBankaServiceChannel(XWS.Shared.GlobalConst.HOST_ADDRESS_BANKA + XWS.Shared.GlobalConst.BANKE_SERVICE_NAME);
             bs.NapraviNalogZaGrupnoPlacanje();
-
         }
 
         public void PromeniStatusFakture(int idFakture, string status)
         {
             FakturaDB.PromeniStatusFakture(idFakture, status);
         }
-    }
+
+		public string ZahtevZaPresek(ZahtevZaDobijanjeIzvoda zahtev)
+		{
+			return GetIBankaServiceChannel(GlobalConst.HOST_ADDRESS_BANKA + GlobalConst.BANKE_SERVICE_NAME).PredajPresekIzNaloga(zahtev);
+		}
+	}
 }

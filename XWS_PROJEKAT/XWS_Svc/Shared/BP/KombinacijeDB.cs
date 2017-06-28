@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XWS.Shared.Model;
+using Shared.Model.XSD;
 
 namespace XWS.Shared.BP
 {
@@ -175,5 +176,188 @@ namespace XWS.Shared.BP
 			}
 		}
 
+		/// <summary>
+		/// broj racuna je racun na koji se vrsi tranzakcija
+		/// novac + za dodavanje - za oduzimanje
+		/// timestamp se generise unutar metojode
+		/// </summary>
+		/// <param name="brojRacuna"></param>
+		/// <param name="novac"></param>
+		/// <returns></returns>
+		public static Racun PromeniStanjeRacunaFirme(long brojRacuna, double novac)
+		{
+			Racun r = new Racun();
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
+			{
+				conn.Open();
+
+				string sql = @"UPDATE racun SET 
+							predhodnostanje = trenutnostanje, 
+							trenutnostanje = trenutnostanje + @novac, 
+							datum = @datum WHERE brojracuna = @brojracuna; ";
+
+				string sqlNadji = @"SELECT * from racun WHERE brojracuna = @brojracuna";
+				
+				using (SqlCommand cmd = new SqlCommand(sql,conn))
+				{
+					cmd.Parameters.AddWithValue("@novac",novac);
+					cmd.Parameters.AddWithValue("@datum", DateTime.Now);
+					cmd.Parameters.AddWithValue("@brojracuna",brojRacuna);
+					cmd.ExecuteNonQuery();
+				}
+
+				//za trazenje racuna
+				using (SqlCommand cmd = new SqlCommand(sqlNadji,conn))
+				{
+					cmd.Parameters.AddWithValue("@brojracuna", brojRacuna);
+					SqlDataReader reader = cmd.ExecuteReader();
+					reader.Read();
+
+					r.IDRacuna = (int)reader["idracuna"];
+					r.PredhodnoStanje = (double)(decimal)reader["predhodnostanje"];
+					r.TrenutnoStanje = (double)(decimal)reader["trenutnostanje"];
+					r.IDBanke = (int)reader["idbanke"];
+					r.IDFirme = (int)reader["idfirme"];
+					r.BrojRacuna = (long)(decimal)reader["brojracuna"];
+					r.Datum = (DateTime)reader["datum"];
+
+					reader.Close();
+				}
+
+				conn.Close();
+			}
+
+			return r;
+		}
+
+		/// <summary>
+		/// Proverava da li postoji presek za dati racun i datum (koji izvlaci iz racuna);
+		/// <para>ako ne postoji:
+		///		kreira se novi presek sa default vrednostima u skladu sa racunom;</para>
+		///	<para>ako postoji:
+		///		updateuj presek u skladu sa racunom;</para> 
+		/// </summary>
+		/// <param name="r"></param>
+		/// <returns></returns>
+		public static Presek ProveriPresek(Racun r)
+		{
+			Presek p = null;
+
+			DateTime datumnaloga = r.Datum;
+			string brracuna = r.BrojRacuna.ToString();
+
+			using(SqlConnection conn = MySQLUtils.NapraviBankaConn())
+			{
+				conn.Open();
+				string sqlNadjiPresek = @"SELECT * FROM presek 
+											WHERE brracuna = @brracuna 
+											AND datumnaloga = @datumnaloga";
+
+				//gledas dal presek postoji
+				using (SqlCommand cmd = new SqlCommand(sqlNadjiPresek, conn))
+				{
+					cmd.Parameters.AddWithValue("@brracuna ", brracuna);
+					cmd.Parameters.AddWithValue("@datumnaloga", datumnaloga);
+					SqlDataReader reader = cmd.ExecuteReader();
+
+					if(reader.Read())
+					{
+						p = PresekDB.ReadFromReader(reader);
+					}
+					reader.Close();
+				}
+
+				//ako nisi iscitao presek, pravi novi
+				if(p == null)
+				{
+					p = new Presek();
+					p.BrRacuna = r.BrojRacuna.ToString();
+					p.DatumNaloga = r.Datum;
+					p.BrPreseka = 0;
+
+					p.BrPromenaNaTeret = 0;
+					p.BrPromenaUKorist = 0;
+					p.UkupnoNaTeret = 0;
+					p.UkupnoUKorist = 0;
+
+					if(r.PredhodnoStanje > r.TrenutnoStanje)
+					{
+						p.BrPromenaNaTeret = 1;
+						p.UkupnoNaTeret = r.PredhodnoStanje - r.TrenutnoStanje;
+					}
+					else
+					{
+						p.BrPromenaUKorist = 1;
+						p.UkupnoUKorist= r.TrenutnoStanje - r.PredhodnoStanje;
+					}
+
+					p.NovoStanje = r.TrenutnoStanje;
+					p.PrethodnoStanje = r.PredhodnoStanje;
+
+					PresekDB.InsertIntoPresek(p);
+				}
+
+				//ako si iscitao presek, updateuj ga
+				else
+				{
+					string sqlUpdate = @"UPDATE presek SET
+										prethodnostanje		= @prethodnostanje,
+										brpromenaukorist	= @brpromenaukorist,
+										ukupnoukorist		= @ukupnoukorist,
+										brpromenanateret	= @brpromenanateret ,
+										ukupnonateret		= @ukupnonateret ,
+										novostanje			= @novostanje
+										WHERE brracuna		= @brracuna 
+										AND datumnaloga		= @datumnaloga;";
+
+
+					if (r.PredhodnoStanje > r.TrenutnoStanje)
+					{
+						p.BrPromenaNaTeret += 1;
+						p.UkupnoNaTeret += r.PredhodnoStanje - r.TrenutnoStanje;
+					}
+					else
+					{
+						p.BrPromenaUKorist += 1;
+						p.UkupnoUKorist += r.TrenutnoStanje - r.PredhodnoStanje;
+					}
+
+					//updateuj postojeci
+					using (SqlCommand cmd = new SqlCommand(sqlUpdate, conn))
+					{
+						cmd.Parameters.AddWithValue("@prethodnostanje",r.PredhodnoStanje);
+						cmd.Parameters.AddWithValue("@brpromenaukorist",p.BrPromenaUKorist);
+						cmd.Parameters.AddWithValue("@ukupnoukorist",p.UkupnoUKorist);
+						cmd.Parameters.AddWithValue("@brpromenanateret",p.BrPromenaNaTeret);
+						cmd.Parameters.AddWithValue("@ukupnonateret",p.UkupnoNaTeret);
+						cmd.Parameters.AddWithValue("@novostanje",r.TrenutnoStanje);
+						cmd.Parameters.AddWithValue("@brracuna",r.BrojRacuna);
+						cmd.Parameters.AddWithValue("@datumnaloga",r.Datum);
+
+						cmd.ExecuteNonQuery();
+					}
+
+					
+				}
+
+                //uiscupaj ga ponovo, ovaj put <b>sigurno</b> postoji
+                using (SqlCommand cmd = new SqlCommand(sqlNadjiPresek, conn))
+                {
+                    cmd.Parameters.AddWithValue("@brracuna ", brracuna);
+                    cmd.Parameters.AddWithValue("@datumnaloga", datumnaloga);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    reader.Read();
+                    p = PresekDB.ReadFromReader(reader);
+                    Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n" + p.ToString() + "\n");
+                    reader.Close();
+                }
+
+                conn.Close();
+			}
+
+			return p;
+		}
+		
 	}
 }

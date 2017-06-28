@@ -49,6 +49,8 @@ namespace XWS.Shared.Model.InterfejsiServisa
         [OperationContract]
         void PromeniStatusFakture(int idFakture, string status);
 
+		[OperationContract]
+		string ZahtevZaPresek(ZahtevZaDobijanjeIzvoda zahtev);
     }
 
     [DataContract]

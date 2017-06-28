@@ -40,7 +40,7 @@ namespace XWS.Shared.BP
 		public static Presek GetPresek(int idPreseka)
 		{
 			Presek ret;
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM presek WHERE idpreseka= @idpreseka";
@@ -63,7 +63,7 @@ namespace XWS.Shared.BP
 		//
 		public static void InsertIntoPresek(Presek f)
 		{
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
 			{
 				string sql = @"INSERT INTO [dbo].[presek]
 											   ([brracuna]
@@ -103,14 +103,14 @@ namespace XWS.Shared.BP
 			}
 		}//
 
-		private static Presek ReadFromReader(SqlDataReader reader)
+		public static Presek ReadFromReader(SqlDataReader reader)
 		{
 			Presek ret = new Presek();
 
 			ret.IDPreseka					= (int)reader["idpreseka"];
 			ret.BrRacuna					= (string)reader["brracuna"];
 			ret.DatumNaloga					= (DateTime)reader["datumnaloga"];
-			ret.BrPreseka					= (double)(decimal)reader["brpreseka "];
+			ret.BrPreseka					= (double)(decimal)reader["brpreseka"];
 			ret.PrethodnoStanje				= (double)(decimal)reader["prethodnostanje"];
 			ret.BrPromenaUKorist			= (double)(decimal)reader["brpromenaukorist"];
 			ret.UkupnoUKorist				= (double)(decimal)reader["ukupnoukorist"];
@@ -118,9 +118,38 @@ namespace XWS.Shared.BP
 			ret.UkupnoNaTeret				= (double)(decimal)reader["ukupnonateret"];
 			ret.NovoStanje					= (double)(decimal)reader["novostanje"];
 
-			ret.StavkePreseka = (ListaStavkiPreseka)StavkaPresekaDB.GetAllStavkaPresekaByPresekId(ret.IDPreseka);
+            ret.StavkePreseka = StavkaPresekaDB.GetAllStavkaPresekaByPresekId(ret.IDPreseka);
 			
 			return ret;
 		}
-	}
+	
+		public static Presek GetPresekByZahtev(ZahtevZaDobijanjeIzvoda zahtev)
+		{
+			Presek p = null;
+
+			using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
+			{
+				conn.Open();
+
+				string sql = "SELECT * FROM presek WHERE datumnaloga = @datumnaloga AND brracuna = @brracuna";
+
+				using (SqlCommand cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddWithValue("@brracuna", zahtev.BrRacuna);
+					cmd.Parameters.AddWithValue("@datumnaloga", zahtev.Datum);
+
+					SqlDataReader reader = cmd.ExecuteReader();
+					if(reader.Read())
+					{
+						p = ReadFromReader(reader);
+					}
+
+					reader.Close();
+				}
+
+				conn.Close();
+			}
+			return p;
+		}
+    }
 }

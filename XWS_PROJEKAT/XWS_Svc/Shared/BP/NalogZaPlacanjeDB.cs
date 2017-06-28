@@ -125,8 +125,8 @@ namespace XWS.Shared.BP
 			nalogZaPlacanje.PozivNaBrOdobrenja		= (double)(decimal)reader["pozivnabrodobrenja"];
 			nalogZaPlacanje.Iznos					= (double)(decimal)reader["iznos"];
 			nalogZaPlacanje.OznakaValute			= (string)reader["oznakavalute"];
-			nalogZaPlacanje.Hitno					= (bool)reader["hitno"];
-			nalogZaPlacanje.Status					= (string)reader["status"];
+			nalogZaPlacanje.Hitno					= ((string)reader["hitno"] == "0" ? false : true);//(bool)reader["hitno"];
+            nalogZaPlacanje.Status					= (string)reader["status"];
 
 			return nalogZaPlacanje;
 		}
@@ -218,14 +218,14 @@ namespace XWS.Shared.BP
             using (SqlConnection conn = MySQLUtils.NapraviBankaConn())
             {
                 conn.Open();
-                string sql = "SELECT DISTINCT * FROM nalogzaplacanje nzp left join racun r on nzp.racunduznika=r.idracuna left join racun pov on pov.idracuna  WHERE status = @status and r.idbanke = @idBanke and pov.idbanke=@bankaPoverioca";
+                string sql = "SELECT DISTINCT * FROM nalogzaplacanje nzp left join racun r on nzp.racunduznika=r.brojracuna left join racun pov on  nzp.racunpoverioca=pov.brojracuna WHERE status = @status and r.idbanke = @idBanke and pov.idbanke=@bankaPoverioca";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@status", status);
                     cmd.Parameters.AddWithValue("@idBanke", idBanke);
                     cmd.Parameters.AddWithValue("@bankaPoverioca", bankaPoverioca);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                  SqlDataReader reader = cmd.ExecuteReader();
+                  while (reader.Read())
                     {
                         NalogZaPlacanje naloug = GetFromReader(reader);
                         nalozi.Add(naloug);

@@ -57,8 +57,30 @@ namespace Shared.Model.XSD
         private string SmerField;
         
         private int IDPresekaField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+
+		public override string ToString()
+		{
+			string str = "\t------------STAVKA : ["+this.IDStavkePreseka+"]\n";
+			
+			str += "\tDATUM-NALOGA : [" + this.DatumNaloga+ "]\n";
+			str += "\tDATUM-VALUTE : [" + this.DatumValute+ "]\n";
+			str += "\tDUZNIK : [" + this.Duznik+ "]\n";
+			str += "\tID-PRESEKA : [" + this.IDPreseka+ "]\n";
+			str += "\tIZNOS : [" + this.Iznos+ "]\n";
+			str += "\tMODEL-ODOBRENJA : [" + this.ModelOdobrenja+ "]\n";
+			str += "\tMODEL-ZADUZENJA : [" + this.ModelZaduzenja+ "]\n";
+			str += "\tPNB-ODOBRENJA : [" + this.PozivNaBrojOdobrenja+ "]\n";
+			str += "\tPNB-ZADUZENJA : [" + this.PozivNaBrZaduzenja+ "]\n";
+			str += "\tPRIMALAC : [" + this.Primalac+ "]\n";
+			str += "\tRACUN-DUZNIKA : [" + this.RacunDuznika+ "]\n";
+			str += "\tRACUN-POVERIOCA : [" + this.RacunPoverioca+ "]\n";
+			str += "\tSMER : [" + this.Smer+ "]\n";
+			str += "\tSVRHA-PLACANJA : [" + this.SvrhaPlacanja+ "]\n";
+			
+			return str;
+		}
+
+		public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
             {
@@ -366,8 +388,33 @@ namespace Shared.Model.XSD
         private double UkupnoNaTeretField;
         
         private double NovoStanjeField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+
+		public override string ToString()
+		{
+			string str = "---------------PRESEK: ]"+this.IDPreseka+"[\n";
+
+			str += "BR-PRESEKA : [" + this.BrPreseka+ "]\n";
+			str += "BR-PROMENA-NA-TERET : [" + this.BrPromenaNaTeret+ "]\n";
+			str += "BR-PROMENA-U-KORIST : [" + this.BrPromenaUKorist+ "]\n";
+			str += "BR-RACUNA : [" + this.BrRacuna+ "]\n";
+			str += "DATUM-NALOGA : [" + this.DatumNaloga+ "]\n";
+			str += "NOVO-STANJE : [" + this.NovoStanje+ "]\n";
+			str += "PREDHODNO-STANJE : [" + this.PrethodnoStanje+ "]\n";
+			str += "UKUPNO-NA-TERET : [" + this.UkupnoNaTeret+ "]\n";
+			str += "UKUPNO-U-KORIST : [" + this.UkupnoUKorist+ "]\n";
+			str += "STAVKE : [\n";
+
+			foreach(StavkaPreseka stavka in StavkePreseka)
+			{
+				str += stavka.ToString();
+			}
+
+			str += "]\t";
+
+			return str;
+		}
+
+		public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
             {

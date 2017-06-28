@@ -58,17 +58,17 @@ namespace XWS.Shared.BP
 			return stavka;
 		}
 
-		public static List<StavkaGrupnogPlacanja> GetStavkaByNalogZaGrupnoPlacanjeId(int nalogId)
+		public static StavkeGrupnogPlacanja GetStavkaByNalogZaGrupnoPlacanjeId(int nalogId)
 		{
-			List<StavkaGrupnogPlacanja> stavke = new List<StavkaGrupnogPlacanja>();
+            StavkeGrupnogPlacanja stavke = new StavkeGrupnogPlacanja();
 
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviCBConn())
 			{
 				conn.Open();
 				string sql = @"SELECT * FROM sgp WHERE nalogzagp_idnalogazagp = @idNaloga";
 				using (SqlCommand cmd = new SqlCommand(sql, conn))
 				{
-					cmd.Parameters.AddWithValue("@idFakture", nalogId);
+					cmd.Parameters.AddWithValue("@idNaloga", nalogId);
 
 					SqlDataReader reader = cmd.ExecuteReader();
 					while (reader.Read())

@@ -53,10 +53,10 @@ namespace XWS.Shared.BP
 			return stavke;
 		}
 
-		public static List<StavkaPreseka> GetAllStavkaPresekaByPresekId(int idPreseka)
+		public static ListaStavkiPreseka GetAllStavkaPresekaByPresekId(int idPreseka)
 		{
-			List<StavkaPreseka> stavke = new List<StavkaPreseka>();
-			using(SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			ListaStavkiPreseka stavke = new ListaStavkiPreseka();
+			using(SqlConnection conn = MySQLUtils.NapraviBankaConn())
 			{
 				conn.Open();
 				string sql = "SELECT * FROM stavkapreseka WHERE presek_idpreseka = @idPreseka";
@@ -103,7 +103,7 @@ namespace XWS.Shared.BP
 
 		public static void InsertStavkaPreseka(StavkaPreseka stavka)
 		{
-			using(SqlConnection conn = MySQLUtils.NapraviFirmaConn()){
+			using(SqlConnection conn = MySQLUtils.NapraviBankaConn()){
 				conn.Open();
 				string sql = @"INSERT INTO [dbo].[stavkapreseka]
 													   ([duznik]

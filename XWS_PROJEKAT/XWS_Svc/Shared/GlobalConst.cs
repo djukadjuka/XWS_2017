@@ -75,6 +75,5 @@ namespace XWS.Shared
         /// 1
         /// </summary>
         public static readonly string STATUS_NALOGA_ZA_GRUPNO_PLACANJE_OBRADJEN = "1";
-
     }
 }

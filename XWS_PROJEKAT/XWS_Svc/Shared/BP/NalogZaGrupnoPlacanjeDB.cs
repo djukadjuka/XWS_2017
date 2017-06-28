@@ -63,7 +63,7 @@ namespace XWS.Shared.BP
         //
         public static void InsertIntoNalogZaGrupnoPlacanje(NalogZaGrupnoPlacanje f)
         {
-            using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+            using (SqlConnection conn = MySQLUtils.NapraviCBConn())
             {
                 string sql = @"INSERT INTO [dbo].[nalogzagp]
 												   ([idporuke]
@@ -149,7 +149,7 @@ namespace XWS.Shared.BP
             ret.Datum = (DateTime)reader["datum"];
             ret.Status = (string)reader["status"];
 
-            ret.StavkeGrupnogPlacanja = (StavkeGrupnogPlacanja)StavkaGrupnogPlacanjaDB.GetStavkaByNalogZaGrupnoPlacanjeId(ret.IDNalogaZaGrupnoPlacanje);
+            ret.StavkeGrupnogPlacanja = StavkaGrupnogPlacanjaDB.GetStavkaByNalogZaGrupnoPlacanjeId(ret.IDNalogaZaGrupnoPlacanje);
 
             return ret;
         }

@@ -74,5 +74,10 @@ namespace ConsoleClient
         {
             Channel.PromeniStatusFakture(idFakture, status);
         }
-    }
+
+		public string ZahtevZaPresek(ZahtevZaDobijanjeIzvoda zahtev)
+		{
+			return Channel.ZahtevZaPresek(zahtev);
+		}
+	}
 }

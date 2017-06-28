@@ -73,6 +73,7 @@
     <Compile Include="Shared\BP\KombinacijeDB.cs" />
     <Compile Include="Shared\BP\MySQLUtils.cs" />
     <Compile Include="Shared\BP\ObracunskiRacunDB.cs" />
+    <Compile Include="Shared\BP\RacunDB.cs" />
     <Compile Include="Shared\GlobalConst.cs" />
     <Compile Include="Shared\Model\Banka.cs" />
     <Compile Include="Shared\BP\NalogZaGrupnoPlacanjeDB.cs" />
@@ -116,7 +117,6 @@
     <Compile Include="Shared\Model\XSD\ZahtevZaDobijanjeIzvoda.cs">
       <DependentUpon>ZahtevZaDobijanjeIzvoda.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Shared\RacunDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

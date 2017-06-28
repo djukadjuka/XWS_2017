@@ -24,10 +24,11 @@ namespace ConsoleClient
 			while (true)
             {
 				LinijaUkras();
-				Console.Write("Unesite Naziv Firme: ");
+				Console.Write("Unesite Naziv Firme (q za izlaz): ");
 				string firmName = Console.ReadLine();
 
 				if (firmName == "") continue;
+				if (firmName == "q" || firmName == "Q") return;
 
 				Firma firma = FirmaDB.GetFirmaByName(firmName);
 				if (firma != null)
@@ -58,6 +59,8 @@ namespace ConsoleClient
 			Console.WriteLine("4.) Posalji Fakturu Kupcu\n");
             Console.WriteLine("5.) Napravi nalog za prenos\n");
             Console.WriteLine("6.) Banka neka uradi CLEARING & SETTLEMENT\n");
+			Console.WriteLine("7.) Zatrazi Izvod za Datum\n");
+			Console.WriteLine("666.) Druga Firma.\n");
 		}
 
 		public static bool IzabranMeni(Firma sourceFirma,string izbor, FirmaClient client)
@@ -96,6 +99,15 @@ namespace ConsoleClient
                     OdradiClearingAndSettlement(client);
                     break;
                 }
+				case "7":
+				{
+						IzvodZaDatum(client, sourceFirma);
+					break;
+				}
+				case "666":
+				{
+						return false;
+				}
                 default:
 				{
 					Console.WriteLine("Izbor NE POSTOJI!\n");
@@ -267,8 +279,7 @@ namespace ConsoleClient
                                 NalogZaPlacanje nzp = generisiNZP(sourceFirma, hitno, fakt);
                                 
                                 client.NapraviNalogZaPrenos(nzp);
-
-								// TODO:Da li treba ovde da se promeni na placena, ili tek kada stigne poruka o odobrenju?
+								
                                 client.PromeniStatusFakture(fakt.IDFakture, GlobalConst.STATUS_FAKTURE_PLACENA);
                                 break;
                             }
@@ -312,10 +323,32 @@ namespace ConsoleClient
             return nzp;
         }
 
+		public static void IzvodZaDatum(FirmaClient client, Firma sourceFirma)
+		{
+			while(true)
+			{
+				Console.Write("Unesite datum za koji ocete presek (yyyy-mm-dd format) (q za izlaz) : ");
+				string datumString = Console.ReadLine();
+				if (datumString == "q" || datumString == "Q") return;
+				try{
+					DateTime datum = DateTime.Parse(datumString);
+					ZahtevZaDobijanjeIzvoda zahtevZaDobijanjeIzvoda = new ZahtevZaDobijanjeIzvoda();
+					zahtevZaDobijanjeIzvoda.Datum = datum;
+
+					zahtevZaDobijanjeIzvoda.BrRacuna = sourceFirma.Racun.ToString();
+					Console.WriteLine(client.ZahtevZaPresek(zahtevZaDobijanjeIzvoda));
+					break;
+				}
+				catch(Exception k)
+				{
+					Console.WriteLine("Pogresan unos. Molimo vas da uneste datum u formatu (yyyy-mm-dd) gde 'yyyy' oznacava godinu (npr 1969), 'mm' mesec, 'dd' datum.");
+				}
+			}
+		}
 
         private static void OdradiClearingAndSettlement(FirmaClient client)
         {
-            client.NapraviNalogZaGrupnoPlacanje(); 
+            client.NapraviNalogZaGrupnoPlacanje();
         }
     }  
 }

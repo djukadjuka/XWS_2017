@@ -57,7 +57,7 @@ namespace Shared.Model.XSD
         private string SifraValuteField;
         
         private int IDNalogaZaGrupnoPlacanjeField;
-
+        
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
@@ -364,26 +364,11 @@ namespace Shared.Model.XSD
         private System.DateTime DatumValuteField;
         
         private System.DateTime DatumField;
-
-        private string StatusField; 
+        
+        private string StatusField;
         
         private Shared.Model.XSD.StavkeGrupnogPlacanja StavkeGrupnogPlacanjaField;
-
-
-        public override string ToString()
-        {
-            string str = "----------ID NALOGA ZA GRUPNO PLACANJE [" + this.IDNalogaZaGrupnoPlacanje + "]\n";
-            str += "ID-PORUKE : [" + this.IDPoruke + "]\n";
-            str += "SWIFT-BANKE-DUZNIKA : [" + this.SWIFTBankeDuznika + "]\n";
-            str += "OBRACUNSKI RACUN BANKE DUZNIKA : [" + this.ObracunskiRacunBankeDuznika + "]\n";
-            str += "SWIFT-BANKE-POVERIOCA : [" + this.SWIFTBankePoverioca + "]\n";
-            str += "OBRACUNSKI RACUN BANKE POVERIOCA : [" + this.ObracunskiRacunBankePoverioca + "]\n";
-            str += "UKUPAN IZNOS : [" + this.UkupanIznos + "]\n";
-            str += "SIFRA-VALUTE : [" + this.SifraValute + "]\n";
-
-            return str;
-        }
-
+        
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
@@ -514,23 +499,7 @@ namespace Shared.Model.XSD
                 }
             }
         }
-
-        public string Status
-        {
-            get
-            {
-                return this.StatusField;
-            }
-            set
-            {
-                if ((this.StatusField.Equals(value) != true))
-                {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
-                }
-            }
-        }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
         public string SifraValute
         {
@@ -581,8 +550,25 @@ namespace Shared.Model.XSD
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=10)]
+        public string Status
+        {
+            get
+            {
+                return this.StatusField;
+            }
+            set
+            {
+                if ((object.ReferenceEquals(this.StatusField, value) != true))
+                {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=11)]
         public Shared.Model.XSD.StavkeGrupnogPlacanja StavkeGrupnogPlacanja
         {
             get

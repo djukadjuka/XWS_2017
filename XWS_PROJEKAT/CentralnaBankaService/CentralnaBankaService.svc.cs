@@ -101,12 +101,12 @@ namespace CentralnaBankaService
                 zaduzenje.Iznos = nzgp.UkupanIznos;
                 zaduzenje.SifraValute = nzgp.SifraValute;
 
+                NalogZaGrupnoPlacanjeDB.UpdateNalogZaGrupnoPlacanjeStatus(nzgp.IDNalogaZaGrupnoPlacanje, GlobalConst.STATUS_NALOGA_ZA_GRUPNO_PLACANJE_OBRADJEN);
+
                 IBankaService srvc = GetBankaService(GlobalConst.HOST_ADDRESS_BANKA + GlobalConst.BANKE_SERVICE_NAME);
                 srvc.PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje(odobrenje, nzgp);
                 srvc.PrimiPorukuOZaduzenju(zaduzenje);
             }
-
-
         }
 
         #endregion glavno

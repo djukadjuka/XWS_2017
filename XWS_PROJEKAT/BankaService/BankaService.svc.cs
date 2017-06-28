@@ -44,16 +44,17 @@ namespace BankaService
         {
 			//provrea dal se odma salje ili ne
 			if(nzp.Hitno==true || nzp.Iznos > 250000)
-            {
+            {	
 				//ako se odma salje pita se dal je ista banka
 				RTGSNalog rtgsNalog = NapraviRTGSIzNaloga(nzp);
-				BANKASVCCONSOLE(rtgsNalog.ToString());
-				if(rtgsNalog.SWIFTBankaDuznika == rtgsNalog.SWIFTBankaPoverioca)
+				PromenaStanjaUBanciZaFirmu(nzp.RacunDuznika, (-1) * nzp.Iznos, NapraviStavkuIzRTGSa(rtgsNalog));
+				//BANKASVCCONSOLE(rtgsNalog.ToString());
+				if (rtgsNalog.SWIFTBankaDuznika == rtgsNalog.SWIFTBankaPoverioca)
 				{
 					//ne salje se centralnoj banci, ista banka je duznik i poverioc
 					nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_POSLAT;
 					NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
-
+					PromenaStanjaUBanciZaFirmu(nzp.RacunPoverioca, nzp.Iznos, NapraviStavkuIzRTGSa(rtgsNalog));
 				}
 				else
 				{
@@ -71,26 +72,23 @@ namespace BankaService
 			}
         }
 
-
-       
-        /// <summary>
-        /// Metoda koja izvlaci koliko novca je uplaceno na racun, i kojoj firmi, i to belezi u bazu
-        /// </summary>
-        /// <param name="odobrenje"></param>
-        public void PrimiPorukuOOdobrenjuIRTGS(PorukaOOdobrenju odobrenje, RTGSNalog nalog)
+		public string PredajPresekIzNaloga(ZahtevZaDobijanjeIzvoda zahtev)
 		{
-			// TODO: Odradi dodavanje love na racun firme koja je dobila odobrenje. Ime firme se nalazi u odobrenju, ako treba dodaj sta god u facu metode.
-			//BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
-			//BANKASVCCONSOLE(">>" + odobrenje.ToString());
+			return PresekDB.GetPresekByZahtev(zahtev).ToString();
+		}
+
+		/// <summary>
+		/// Metoda koja izvlaci koliko novca je uplaceno na racun, i kojoj firmi, i to belezi u bazu
+		/// </summary>
+		/// <param name="odobrenje"></param>
+		public void PrimiPorukuOOdobrenjuIRTGS(PorukaOOdobrenju odobrenje, RTGSNalog nalog)
+		{
 			PorukaOOdobrenjuDB.InsertIntoPorukaOOdobrenju(odobrenje);
-			BANKASVCCONSOLE(odobrenje.ToString());
+			PromenaStanjaUBanciZaFirmu(nalog.RacunPoverioca, nalog.Iznos, NapraviStavkuIzRTGSa(nalog));
 		}
 
         public void PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje(PorukaOOdobrenju odobrenje, NalogZaGrupnoPlacanje nzgp)
         {
-            // TODO: Odradi dodavanje love na racun firme koja je dobila odobrenje. Ime firme se nalazi u odobrenju, ako treba dodaj sta god u facu metode.
-            //BANKASVCCONSOLE("[OBRADI ODOBRENJE] - NIJE IMPLEMENTIRANO");
-            //BANKASVCCONSOLE(">>" + odobrenje.ToString());
             PorukaOOdobrenjuDB.InsertIntoPorukaOOdobrenju(odobrenje);
             BANKASVCCONSOLE(odobrenje.ToString());
             Console.WriteLine("NALOG ZA GRUPNO PLACANJE OBRADJEN, POSLAT BANCI OD CB!!!");
@@ -98,10 +96,7 @@ namespace BankaService
 
             foreach (StavkaGrupnogPlacanja sgp in nzgp.StavkeGrupnogPlacanja)
             {
-                Racun racunPoverioca = RacunDB.GetRacunByRacun(Int64.Parse(sgp.RacunPoverioca));
-                racunPoverioca.TrenutnoStanje += sgp.Iznos;
-
-                RacunDB.UpdateRacunaStanje(racunPoverioca.IDRacuna, racunPoverioca.TrenutnoStanje);
+                PromenaStanjaUBanciZaFirmu(sgp.RacunPoverioca, sgp.Iznos, NapraviStavkuIzStavkeGrupnogPlacanja(sgp));
             }
         }
 
@@ -111,25 +106,25 @@ namespace BankaService
         /// <param name="zaduzenje"></param>
         public void PrimiPorukuOZaduzenju(PorukaOZaduzenju zaduzenje)
 		{
-			// TODO: odraditi skidanje love sa racuna firme. Trebalo bi sve da se nalazi u objektu zaduzenje. Ako ne dodaj sta god treba u argumente metode.
-			//BANKASVCCONSOLE("[OBRADI ZADUZENJE] - NIJE IMPLEMENTIRANO");
-			//BANKASVCCONSOLE(">> " + zaduzenje );
 			PorukaOZaduzenjuDB.InsertIntoPorukaOZaduzenju(zaduzenje);
 			BANKASVCCONSOLE(zaduzenje.ToString());
-
-            Racun racun = RacunDB.GetRacunByRacun(zaduzenje.);
 		}
 
-        #endregion glavni_servisi_banke
+		#endregion glavni_servisi_banke
 
-        #region private_pomocne
+		#region private_pomocne
+        public void PosaljiNalogZaGrupnoPlacanjeCentralnojBanci()
+        {
+            ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS_CB + GlobalConst.CENTRALNA_BANKA_NAME);
+            cbsvc.NalogZaGrupnoPlacanjeSendMessages();
+        }
 
-        /// <summary>
-        /// Salje RTGS nalog centralnoj banci i vraca poruku o zaduzenju.
-        /// </summary>
-        /// <param name="nalog"></param>
-        /// <returns></returns>
-        private void PosaljiRTGSCentralnojBanci(RTGSNalog nalog)
+		/// <summary>
+		/// Salje RTGS nalog centralnoj banci i vraca poruku o zaduzenju.
+		/// </summary>
+		/// <param name="nalog"></param>
+		/// <returns></returns>
+		private void PosaljiRTGSCentralnojBanci(RTGSNalog nalog)
 		{
 			ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS_CB + GlobalConst.CENTRALNA_BANKA_NAME);
 			cbsvc.AcceptRTGSAndSendMessages(nalog);
@@ -173,12 +168,11 @@ namespace BankaService
 			return rtgs;
 		}
 
-
         public void NapraviNalogZaGrupnoPlacanje()
         {
             List<NalogZaPlacanje> naloziZaPlacanje;
+            List<NalogZaGrupnoPlacanje> naloziZaGrupnoPlacanje = new List<NalogZaGrupnoPlacanje>();
             List<Banka> sveBanke = KombinacijeDB.getAllBanks(-1);
-            NalogZaGrupnoPlacanje nalogZaGrupnoPlacanje = null; 
             foreach (Banka trenutnaBanka in sveBanke)
             {
                 List<Banka> ostaleBanke = KombinacijeDB.getAllBanks(trenutnaBanka.IdBanke);
@@ -186,22 +180,20 @@ namespace BankaService
                 foreach (Banka b in ostaleBanke)
                 {
                     naloziZaPlacanje = NalogZaPlacanjeDB.GetNalogZaPlacanjeByStatusAndBankaAndPoverilacBanka(GlobalConst.STATUS_NALOGA_ZA_PLACANJE_KREIRAN, trenutnaBanka.IdBanke, b.IdBanke);
-                    nalogZaGrupnoPlacanje = new NalogZaGrupnoPlacanje();
+                    NalogZaGrupnoPlacanje nalogZaGrupnoPlacanje = new NalogZaGrupnoPlacanje();
                     nalogZaGrupnoPlacanje.Datum = DateTime.Now;
                     nalogZaGrupnoPlacanje.DatumValute = DateTime.Now;
                     nalogZaGrupnoPlacanje.IDPoruke = "1234";
-                    nalogZaGrupnoPlacanje.ObracunskiRacunBankeDuznika = trenutnaBanka.ObracunskiRacun + "";
-                    nalogZaGrupnoPlacanje.ObracunskiRacunBankePoverioca = b.ObracunskiRacun + "";
+                    nalogZaGrupnoPlacanje.ObracunskiRacunBankeDuznika = b.ObracunskiRacun.ToString();/*trenutnaBanka.ObracunskiRacun + "";*/
+                    nalogZaGrupnoPlacanje.ObracunskiRacunBankePoverioca = trenutnaBanka.ObracunskiRacun.ToString();/*b.ObracunskiRacun + "";*/
                     nalogZaGrupnoPlacanje.SifraValute = "RSD";
 
-                    StavkeGrupnogPlacanja stavkeGrupnogPlacanja = new StavkeGrupnogPlacanja();
+                    
+                    //StavkeGrupnogPlacanja stavkeGrupnogPlacanja = new StavkeGrupnogPlacanja();
+                    nalogZaGrupnoPlacanje.StavkeGrupnogPlacanja = new StavkeGrupnogPlacanja();
 
                     foreach (NalogZaPlacanje nzp in naloziZaPlacanje)
                     {
-                        if (nzp.Hitno || nzp.Iznos > 250000)
-                        {
-                            continue; 
-                        }
                         StavkaGrupnogPlacanja stavkaGrupnogPlacanja = new StavkaGrupnogPlacanja();
                         stavkaGrupnogPlacanja.SifraValute = nzp.OznakaValute;
                         stavkaGrupnogPlacanja.SvrhaPlacanja = nzp.SvrhaPlacanja;
@@ -221,8 +213,9 @@ namespace BankaService
 
                     }
 
-                    nalogZaGrupnoPlacanje.SWIFTBankeDuznika = trenutnaBanka.SWIFTKod;
-                    nalogZaGrupnoPlacanje.SWIFTBankePoverioca = b.SWIFTKod;
+                    nalogZaGrupnoPlacanje.SWIFTBankeDuznika = b.SWIFTKod;//trenutnaBanka.SWIFTKod;
+                    nalogZaGrupnoPlacanje.SWIFTBankePoverioca = trenutnaBanka.SWIFTKod;//b.SWIFTKod;
+                    nalogZaGrupnoPlacanje.Status = GlobalConst.STATUS_NALOGA_ZA_GRUPNO_PLACANJE_KREIRAN;
 
                     NalogZaGrupnoPlacanjeDB.InsertIntoNalogZaGrupnoPlacanje(nalogZaGrupnoPlacanje);
 
@@ -231,18 +224,98 @@ namespace BankaService
                         nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_POSLAT;
                         NalogZaPlacanjeDB.UpdateNalogStatus(nzp.IDNalogaZaPlacanje, nzp.Status);
                     }
-                   
-                }
 
-              
+                    naloziZaGrupnoPlacanje.Add(nalogZaGrupnoPlacanje);
+                }
+            }
+
+            foreach(NalogZaGrupnoPlacanje nzgp in naloziZaGrupnoPlacanje){
+                foreach (StavkaGrupnogPlacanja sgp in nzgp.StavkeGrupnogPlacanja)
+                {
+                    PromenaStanjaUBanciZaFirmu(sgp.RacunDuznika, (-1) * sgp.Iznos, NapraviStavkuIzStavkeGrupnogPlacanja(sgp));
+                }
             }
 
             ICentralnaBankaService cbsvc = GetCBServiceChannel(GlobalConst.HOST_ADDRESS_CB + GlobalConst.CENTRALNA_BANKA_NAME);
             cbsvc.NalogZaGrupnoPlacanjeSendMessages();
 
-
         }
 
+        /// <summary>
+        /// pogodi.
+        /// </summary>
+        /// <param name="rtgs"></param>
+        /// <returns></returns>
+        private NalogZaPlacanje NapraviNalogZaPlacanjeIzRTGS(RTGSNalog rtgs)
+		{
+			NalogZaPlacanje placanje = new NalogZaPlacanje();
+
+			placanje.DatumNaloga = rtgs.DatumNaloga;
+			placanje.DatumValute = rtgs.DatumValute;
+			placanje.Duznik = rtgs.Duznik;
+			placanje.Hitno = false;
+			placanje.IDPoruke = rtgs.IDPoruke;
+			placanje.Iznos = rtgs.Iznos;
+			placanje.ModelOdobrenja = (int)rtgs.ModelOdobrenja;
+			placanje.ModelZaduzenja = (int)rtgs.ModelZaduzenja;
+			placanje.OznakaValute = rtgs.SifraValute;
+			placanje.PozivNaBrOdobrenja = Double.Parse(rtgs.PozivNaBrOdobrenja);
+			placanje.PozivNaBrZaduzenja = rtgs.PozivNaBrZaduzenja;
+			placanje.Primalac = rtgs.Primalac;
+			placanje.RacunDuznika = rtgs.RacunDuznika;
+			placanje.RacunPoverioca = rtgs.RacunPoverioca;
+			placanje.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_KREIRAN;
+			placanje.SvrhaPlacanja = rtgs.SvrhaPlacanja;
+
+			return placanje;
+		}
+
+		/// <summary>
+		/// POTREBNO JE DODATI IDPRESEKA, POS U RTGSU NEMA
+		/// </summary>
+		/// <param name="rtgs"></param>
+		/// <returns></returns>
+		private StavkaPreseka NapraviStavkuIzRTGSa(RTGSNalog rtgs)
+		{
+			StavkaPreseka stavka = new StavkaPreseka();
+
+			stavka.DatumNaloga = rtgs.DatumNaloga;
+			stavka.DatumValute = rtgs.DatumValute;
+			stavka.Duznik = rtgs.Duznik;
+			stavka.Iznos = rtgs.Iznos;
+			stavka.ModelOdobrenja = rtgs.ModelOdobrenja;
+			stavka.ModelZaduzenja = rtgs.ModelZaduzenja;
+			stavka.PozivNaBrojOdobrenja = rtgs.PozivNaBrOdobrenja;
+			stavka.PozivNaBrZaduzenja = rtgs.PozivNaBrZaduzenja;
+			stavka.Primalac = rtgs.Primalac;
+			stavka.RacunDuznika = rtgs.RacunDuznika;
+			stavka.RacunPoverioca = rtgs.RacunPoverioca;
+			stavka.Smer = "†";
+			stavka.SvrhaPlacanja = rtgs.SvrhaPlacanja;
+
+			return stavka;
+		}
+
+        private StavkaPreseka NapraviStavkuIzStavkeGrupnogPlacanja(StavkaGrupnogPlacanja sgp)
+        {
+            StavkaPreseka stavka = new StavkaPreseka();
+
+            stavka.DatumNaloga = sgp.DatumNaloga;
+            stavka.DatumValute = sgp.DatumNaloga;
+            stavka.Duznik = sgp.Duznik;
+            stavka.Iznos = sgp.Iznos;
+            stavka.ModelOdobrenja = sgp.ModelOdobrenja;
+            stavka.ModelZaduzenja = sgp.ModelZaduzenja;
+            stavka.PozivNaBrojOdobrenja = sgp.PozivNaBrOdobrenja;
+            stavka.PozivNaBrZaduzenja = sgp.PozivNaBrZaduzenja;
+            stavka.Primalac = sgp.Primalac;
+            stavka.RacunDuznika = sgp.RacunDuznika;
+            stavka.RacunPoverioca = sgp.RacunPoverioca;
+            stavka.Smer = "†";
+            stavka.SvrhaPlacanja = sgp.SvrhaPlacanja;
+
+            return stavka;
+        }
 
         /// <summary>
         /// Vraca channel odn. servis od centralne banke
@@ -268,15 +341,36 @@ namespace BankaService
 			return fs;
 		}
 
-        /// <summary>
-        /// Metoda bukvalno ispisuje sta joj posaljes u konzolu sa kao prefixom da se zna da je BANKA servis nesto uradila.
-        /// Mozete koristiti ovo umesto klasike
-        /// </summary>
-        private void BANKASVCCONSOLE(string text)
+		/// <summary>
+		/// Metoda bukvalno ispisuje sta joj posaljes u konzolu sa kao prefixom da se zna da je BANKA servis nesto uradila.
+		/// Mozete koristiti ovo umesto klasike
+		/// </summary>
+		private void BANKASVCCONSOLE(string text)
+		{
+			Console.WriteLine("<<BANKA.SVC>>");
+			Console.WriteLine(">>" + text);
+		}
+
+		/// <summary>
+		/// Menja stanje u bankama za firme
+		/// </summary>
+		/// <param name="racun"> Racun firme odn. polje broj racuna</param>
+		/// <param name="iznos"> Iznos koji treba da se doda oduzme (-iznos ako oduzimas)</param>
+		/// <returns></returns>
+		private void PromenaStanjaUBanciZaFirmu(string racun, double iznos, StavkaPreseka stavkaPreseka)
+		{
+			Racun r = KombinacijeDB.PromeniStanjeRacunaFirme(Int64.Parse(racun), iznos);
+			Presek p = KombinacijeDB.ProveriPresek(r);
+			stavkaPreseka.IDPreseka = p.IDPreseka;
+			StavkaPresekaDB.InsertStavkaPreseka(stavkaPreseka);
+
+			BANKASVCCONSOLE(PresekDB.GetPresek(p.IDPreseka).ToString());
+		}
+
+        /*public void PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje(PorukaOOdobrenju odobrenje, NalogZaGrupnoPlacanje nzgp)
         {
-            Console.WriteLine("<<BANKA.SVC>>");
-            Console.WriteLine(">>" + text);
-        }
+            throw new NotImplementedException();
+        }*/
 
         #endregion private_pomocne
     }

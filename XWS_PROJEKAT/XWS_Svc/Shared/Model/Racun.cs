@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XWS.Shared.Model
 {
-   public class Racun
+   public  class Racun
     {
 		private int idRacuna;
         private double predhodnoStanje;
@@ -14,8 +14,15 @@ namespace XWS.Shared.Model
         private DateTime datum;
         private int idFirme;
         private int idBanke;
+		private long brojRacuna;
 
-        public int IDRacuna
+		public long BrojRacuna
+		{
+			get { return brojRacuna; }
+			set { brojRacuna = value; }
+		}
+		
+		public int IDRacuna
 		{
 			get { return idRacuna; }
 			set { idRacuna = value; }

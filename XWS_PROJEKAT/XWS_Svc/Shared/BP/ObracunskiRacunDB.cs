@@ -28,11 +28,11 @@ namespace XWS.Shared.BP
                     if (reader.Read())
                     {
                         obracunskiRacun = new ObracunskiRacun();
-                        obracunskiRacun.BrojObracunskogRacuna = (Int64)reader["brojobracunskogracuna"];
+                        obracunskiRacun.BrojObracunskogRacuna = (Int64)(decimal)reader["brojobracunskogracuna"];
                         obracunskiRacun.IDBanke = (int)reader["idbanke"];
                         obracunskiRacun.IDCentralneBanke = (int)reader["idcb"];
                         obracunskiRacun.IDObracunskogRacuna = (int)reader["idobracunskogracuna"];
-                        obracunskiRacun.Stanje = (double)reader["stanje"];
+                        obracunskiRacun.Stanje = (double)(decimal)reader["stanje"];
                     }
                     reader.Close();
                 }
