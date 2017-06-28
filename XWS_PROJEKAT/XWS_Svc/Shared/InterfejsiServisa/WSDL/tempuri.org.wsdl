@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://xwsproj.com/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" targetNamespace="http://xwsproj.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://xwsproj.com/Imports">
-      <xsd:import namespace="http://xwsproj.com/" />
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/XWS.Shared.Model.InterfejsiServisa" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/XWS.Shared.Model" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IBankaService_ProveriBanku_InputMessage">
@@ -145,106 +149,106 @@
   </wsdl:message>
   <wsdl:portType name="IBankaService">
     <wsdl:operation name="ProveriBanku">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/ProveriBanku" message="tns:IBankaService_ProveriBanku_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/ProveriBankuResponse" message="tns:IBankaService_ProveriBanku_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/ProveriBanku" message="tns:IBankaService_ProveriBanku_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/ProveriBankuResponse" message="tns:IBankaService_ProveriBanku_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="sendMessageToFirm">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/sendMessageToFirm" message="tns:IBankaService_sendMessageToFirm_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/sendMessageToFirmResponse" message="tns:IBankaService_sendMessageToFirm_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/sendMessageToFirm" message="tns:IBankaService_sendMessageToFirm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/sendMessageToFirmResponse" message="tns:IBankaService_sendMessageToFirm_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaPrenos">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/NapraviNalogZaPrenos" message="tns:IBankaService_NapraviNalogZaPrenos_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/NapraviNalogZaPrenosResponse" message="tns:IBankaService_NapraviNalogZaPrenos_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/NapraviNalogZaPrenos" message="tns:IBankaService_NapraviNalogZaPrenos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/NapraviNalogZaPrenosResponse" message="tns:IBankaService_NapraviNalogZaPrenos_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PrimiPorukuOOdobrenjuIRTGS">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/PrimiPorukuOOdobrenjuIRTGS" message="tns:IBankaService_PrimiPorukuOOdobrenjuIRTGS_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/PrimiPorukuOOdobrenjuIRTGSResponse" message="tns:IBankaService_PrimiPorukuOOdobrenjuIRTGS_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/PrimiPorukuOOdobrenjuIRTGS" message="tns:IBankaService_PrimiPorukuOOdobrenjuIRTGS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/PrimiPorukuOOdobrenjuIRTGSResponse" message="tns:IBankaService_PrimiPorukuOOdobrenjuIRTGS_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PrimiPorukuOZaduzenju">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/PrimiPorukuOZaduzenju" message="tns:IBankaService_PrimiPorukuOZaduzenju_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/PrimiPorukuOZaduzenjuResponse" message="tns:IBankaService_PrimiPorukuOZaduzenju_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/PrimiPorukuOZaduzenju" message="tns:IBankaService_PrimiPorukuOZaduzenju_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/PrimiPorukuOZaduzenjuResponse" message="tns:IBankaService_PrimiPorukuOZaduzenju_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PredajPresekIzNaloga">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/PredajPresekIzNaloga" message="tns:IBankaService_PredajPresekIzNaloga_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/PredajPresekIzNalogaResponse" message="tns:IBankaService_PredajPresekIzNaloga_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/PredajPresekIzNaloga" message="tns:IBankaService_PredajPresekIzNaloga_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/PredajPresekIzNalogaResponse" message="tns:IBankaService_PredajPresekIzNaloga_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaGrupnoPlacanje">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/NapraviNalogZaGrupnoPlacanje" message="tns:IBankaService_NapraviNalogZaGrupnoPlacanje_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/NapraviNalogZaGrupnoPlacanjeResponse" message="tns:IBankaService_NapraviNalogZaGrupnoPlacanje_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/NapraviNalogZaGrupnoPlacanje" message="tns:IBankaService_NapraviNalogZaGrupnoPlacanje_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/NapraviNalogZaGrupnoPlacanjeResponse" message="tns:IBankaService_NapraviNalogZaGrupnoPlacanje_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IBankaService/PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje" message="tns:IBankaService_PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IBankaService/PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanjeResponse" message="tns:IBankaService_PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankaService/PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje" message="tns:IBankaService_PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankaService/PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanjeResponse" message="tns:IBankaService_PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ICentralnaBankaService">
     <wsdl:operation name="AcceptRTGSAndSendMessages">
-      <wsdl:input wsaw:Action="http://xwsproj.com/ICentralnaBankaService/AcceptRTGSAndSendMessages" message="tns:ICentralnaBankaService_AcceptRTGSAndSendMessages_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/ICentralnaBankaService/AcceptRTGSAndSendMessagesResponse" message="tns:ICentralnaBankaService_AcceptRTGSAndSendMessages_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ICentralnaBankaService/AcceptRTGSAndSendMessages" message="tns:ICentralnaBankaService_AcceptRTGSAndSendMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICentralnaBankaService/AcceptRTGSAndSendMessagesResponse" message="tns:ICentralnaBankaService_AcceptRTGSAndSendMessages_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="NalogZaGrupnoPlacanjeSendMessages">
-      <wsdl:input wsaw:Action="http://xwsproj.com/ICentralnaBankaService/NalogZaGrupnoPlacanjeSendMessages" message="tns:ICentralnaBankaService_NalogZaGrupnoPlacanjeSendMessages_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/ICentralnaBankaService/NalogZaGrupnoPlacanjeSendMessagesResponse" message="tns:ICentralnaBankaService_NalogZaGrupnoPlacanjeSendMessages_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ICentralnaBankaService/NalogZaGrupnoPlacanjeSendMessages" message="tns:ICentralnaBankaService_NalogZaGrupnoPlacanjeSendMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICentralnaBankaService/NalogZaGrupnoPlacanjeSendMessagesResponse" message="tns:ICentralnaBankaService_NalogZaGrupnoPlacanjeSendMessages_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFirmaService">
     <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/GetData" message="tns:IFirmaService_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/GetDataResponse" message="tns:IFirmaService_GetData_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/GetData" message="tns:IFirmaService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/GetDataResponse" message="tns:IFirmaService_GetData_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SlanjeFakture">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/SlanjeFakture" message="tns:IFirmaService_SlanjeFakture_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/SlanjeFaktureResponse" message="tns:IFirmaService_SlanjeFakture_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/SlanjeFakture" message="tns:IFirmaService_SlanjeFakture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/SlanjeFaktureResponse" message="tns:IFirmaService_SlanjeFakture_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReturnMessageFromBank">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/ReturnMessageFromBank" message="tns:IFirmaService_ReturnMessageFromBank_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/ReturnMessageFromBankResponse" message="tns:IFirmaService_ReturnMessageFromBank_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/ReturnMessageFromBank" message="tns:IFirmaService_ReturnMessageFromBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/ReturnMessageFromBankResponse" message="tns:IFirmaService_ReturnMessageFromBank_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AcceptMessageFromBank">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/AcceptMessageFromBank" message="tns:IFirmaService_AcceptMessageFromBank_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/AcceptMessageFromBankResponse" message="tns:IFirmaService_AcceptMessageFromBank_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/AcceptMessageFromBank" message="tns:IFirmaService_AcceptMessageFromBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/AcceptMessageFromBankResponse" message="tns:IFirmaService_AcceptMessageFromBank_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveCreatedInvoice">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/SaveCreatedInvoice" message="tns:IFirmaService_SaveCreatedInvoice_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/SaveCreatedInvoiceResponse" message="tns:IFirmaService_SaveCreatedInvoice_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/SaveCreatedInvoice" message="tns:IFirmaService_SaveCreatedInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/SaveCreatedInvoiceResponse" message="tns:IFirmaService_SaveCreatedInvoice_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PrikaziFakture">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/PrikaziFakture" message="tns:IFirmaService_PrikaziFakture_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/PrikaziFaktureResponse" message="tns:IFirmaService_PrikaziFakture_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/PrikaziFakture" message="tns:IFirmaService_PrikaziFakture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/PrikaziFaktureResponse" message="tns:IFirmaService_PrikaziFakture_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendCreatedInvoice">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/SendCreatedInvoice" message="tns:IFirmaService_SendCreatedInvoice_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/SendCreatedInvoiceResponse" message="tns:IFirmaService_SendCreatedInvoice_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/SendCreatedInvoice" message="tns:IFirmaService_SendCreatedInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/SendCreatedInvoiceResponse" message="tns:IFirmaService_SendCreatedInvoice_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendInvoiceProfile">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/SendInvoiceProfile" message="tns:IFirmaService_SendInvoiceProfile_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/SendInvoiceProfileResponse" message="tns:IFirmaService_SendInvoiceProfile_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/SendInvoiceProfile" message="tns:IFirmaService_SendInvoiceProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/SendInvoiceProfileResponse" message="tns:IFirmaService_SendInvoiceProfile_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetForCompanyAndStatus">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/GetForCompanyAndStatus" message="tns:IFirmaService_GetForCompanyAndStatus_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/GetForCompanyAndStatusResponse" message="tns:IFirmaService_GetForCompanyAndStatus_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/GetForCompanyAndStatus" message="tns:IFirmaService_GetForCompanyAndStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/GetForCompanyAndStatusResponse" message="tns:IFirmaService_GetForCompanyAndStatus_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaPrenosK">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/NapraviNalogZaPrenosK" message="tns:IFirmaService_NapraviNalogZaPrenosK_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/NapraviNalogZaPrenosKResponse" message="tns:IFirmaService_NapraviNalogZaPrenosK_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/NapraviNalogZaPrenosK" message="tns:IFirmaService_NapraviNalogZaPrenosK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/NapraviNalogZaPrenosKResponse" message="tns:IFirmaService_NapraviNalogZaPrenosK_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaGrupnoPlacanjeK">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/NapraviNalogZaGrupnoPlacanjeK" message="tns:IFirmaService_NapraviNalogZaGrupnoPlacanjeK_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/NapraviNalogZaGrupnoPlacanjeKResponse" message="tns:IFirmaService_NapraviNalogZaGrupnoPlacanjeK_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/NapraviNalogZaGrupnoPlacanjeK" message="tns:IFirmaService_NapraviNalogZaGrupnoPlacanjeK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/NapraviNalogZaGrupnoPlacanjeKResponse" message="tns:IFirmaService_NapraviNalogZaGrupnoPlacanjeK_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PromeniStatusFakture">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/PromeniStatusFakture" message="tns:IFirmaService_PromeniStatusFakture_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/PromeniStatusFaktureResponse" message="tns:IFirmaService_PromeniStatusFakture_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/PromeniStatusFakture" message="tns:IFirmaService_PromeniStatusFakture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/PromeniStatusFaktureResponse" message="tns:IFirmaService_PromeniStatusFakture_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ZahtevZaPresek">
-      <wsdl:input wsaw:Action="http://xwsproj.com/IFirmaService/ZahtevZaPresek" message="tns:IFirmaService_ZahtevZaPresek_InputMessage" />
-      <wsdl:output wsaw:Action="http://xwsproj.com/IFirmaService/ZahtevZaPresekResponse" message="tns:IFirmaService_ZahtevZaPresek_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFirmaService/ZahtevZaPresek" message="tns:IFirmaService_ZahtevZaPresek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFirmaService/ZahtevZaPresekResponse" message="tns:IFirmaService_ZahtevZaPresek_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DefaultBinding_IBankaService" type="tns:IBankaService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="ProveriBanku">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/ProveriBanku" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/ProveriBanku" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -253,7 +257,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="sendMessageToFirm">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/sendMessageToFirm" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/sendMessageToFirm" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -262,7 +266,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaPrenos">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/NapraviNalogZaPrenos" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/NapraviNalogZaPrenos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -271,7 +275,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="PrimiPorukuOOdobrenjuIRTGS">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/PrimiPorukuOOdobrenjuIRTGS" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/PrimiPorukuOOdobrenjuIRTGS" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -280,7 +284,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="PrimiPorukuOZaduzenju">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/PrimiPorukuOZaduzenju" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/PrimiPorukuOZaduzenju" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -289,7 +293,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="PredajPresekIzNaloga">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/PredajPresekIzNaloga" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/PredajPresekIzNaloga" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -298,7 +302,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaGrupnoPlacanje">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/NapraviNalogZaGrupnoPlacanje" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/NapraviNalogZaGrupnoPlacanje" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -307,7 +311,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje">
-      <soap:operation soapAction="http://xwsproj.com/IBankaService/PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IBankaService/PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -319,7 +323,7 @@
   <wsdl:binding name="DefaultBinding_ICentralnaBankaService" type="tns:ICentralnaBankaService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AcceptRTGSAndSendMessages">
-      <soap:operation soapAction="http://xwsproj.com/ICentralnaBankaService/AcceptRTGSAndSendMessages" style="document" />
+      <soap:operation soapAction="http://tempuri.org/ICentralnaBankaService/AcceptRTGSAndSendMessages" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -328,7 +332,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="NalogZaGrupnoPlacanjeSendMessages">
-      <soap:operation soapAction="http://xwsproj.com/ICentralnaBankaService/NalogZaGrupnoPlacanjeSendMessages" style="document" />
+      <soap:operation soapAction="http://tempuri.org/ICentralnaBankaService/NalogZaGrupnoPlacanjeSendMessages" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -340,7 +344,7 @@
   <wsdl:binding name="DefaultBinding_IFirmaService" type="tns:IFirmaService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/GetData" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/GetData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -349,7 +353,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SlanjeFakture">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/SlanjeFakture" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/SlanjeFakture" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -358,7 +362,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReturnMessageFromBank">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/ReturnMessageFromBank" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/ReturnMessageFromBank" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -367,7 +371,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AcceptMessageFromBank">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/AcceptMessageFromBank" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/AcceptMessageFromBank" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -376,7 +380,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SaveCreatedInvoice">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/SaveCreatedInvoice" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/SaveCreatedInvoice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -385,7 +389,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="PrikaziFakture">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/PrikaziFakture" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/PrikaziFakture" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -394,7 +398,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendCreatedInvoice">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/SendCreatedInvoice" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/SendCreatedInvoice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -403,7 +407,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendInvoiceProfile">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/SendInvoiceProfile" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/SendInvoiceProfile" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -412,7 +416,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetForCompanyAndStatus">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/GetForCompanyAndStatus" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/GetForCompanyAndStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -421,7 +425,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaPrenosK">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/NapraviNalogZaPrenosK" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/NapraviNalogZaPrenosK" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -430,7 +434,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="NapraviNalogZaGrupnoPlacanjeK">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/NapraviNalogZaGrupnoPlacanjeK" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/NapraviNalogZaGrupnoPlacanjeK" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -439,7 +443,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="PromeniStatusFakture">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/PromeniStatusFakture" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/PromeniStatusFakture" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -448,7 +452,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ZahtevZaPresek">
-      <soap:operation soapAction="http://xwsproj.com/IFirmaService/ZahtevZaPresek" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IFirmaService/ZahtevZaPresek" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

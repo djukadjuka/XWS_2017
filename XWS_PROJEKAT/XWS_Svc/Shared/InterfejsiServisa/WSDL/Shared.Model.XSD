@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="NalogZaPlacanje">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDNalogaZaPlacanje" type="xs:int" />
+      <xs:element minOccurs="0" name="IDPoruke" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Duznik" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SvrhaPlacanja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Primalac" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DatumNaloga" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RacunDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModelZaduzenja" type="xs:int" />
+      <xs:element minOccurs="0" name="PozivNaBrZaduzenja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RacunPoverioca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModelOdobrenja" type="xs:int" />
+      <xs:element minOccurs="0" name="PozivNaBrOdobrenja" type="xs:double" />
+      <xs:element minOccurs="0" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" name="OznakaValute" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Hitno" type="xs:boolean" />
+      <xs:element name="Status" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NalogZaPlacanje" nillable="true" type="tns:NalogZaPlacanje" />
+  <xs:complexType name="PorukaOOdobrenju">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDPoruke" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDPorukeNaloga" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDPorukeOOdobrenju" type="xs:int" />
+      <xs:element minOccurs="0" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" name="ObracunskiRacunBankePoverioca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SWIFTBankePoverioca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SifraValute" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PorukaOOdobrenju" nillable="true" type="tns:PorukaOOdobrenju" />
+  <xs:complexType name="RTGSNalog">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDRTGSNaloga" type="xs:int" />
+      <xs:element minOccurs="0" name="IDPoruke" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SWIFTBankaDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ObracunskiRacunBankeDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SWIFTBankaPoverioca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ObracunskiRacunBankePoverioca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Duznik" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SvrhaPlacanja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Primalac" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DatumNaloga" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RacunDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModelZaduzenja" type="xs:double" />
+      <xs:element minOccurs="0" name="PozivNaBrZaduzenja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RacunPoverioca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModelOdobrenja" type="xs:double" />
+      <xs:element minOccurs="0" name="PozivNaBrOdobrenja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" name="SifraValute" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RTGSNalog" nillable="true" type="tns:RTGSNalog" />
+  <xs:complexType name="PorukaOZaduzenju">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDPorukeOZaduzenju" type="xs:int" />
+      <xs:element minOccurs="0" name="IDPPoruke" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SWIFTBankeDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ObracunskiRacunBankeDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IDPorukeNaloga" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" name="SifraValute" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PorukaOZaduzenju" nillable="true" type="tns:PorukaOZaduzenju" />
+  <xs:complexType name="ZahtevZaDobijanjeIzvoda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDZZDI" type="xs:int" />
+      <xs:element minOccurs="0" name="BrRacuna" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Datum" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RedniBrPreseka" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZahtevZaDobijanjeIzvoda" nillable="true" type="tns:ZahtevZaDobijanjeIzvoda" />
+  <xs:complexType name="NalogZaGrupnoPlacanje">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDNalogaZaGrupnoPlacanje" type="xs:int" />
+      <xs:element minOccurs="0" name="IDPoruke" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SWIFTBankeDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ObracunskiRacunBankeDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SWIFTBankePoverioca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ObracunskiRacunBankePoverioca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UkupanIznos" type="xs:double" />
+      <xs:element minOccurs="0" name="SifraValute" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Datum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StavkeGrupnogPlacanja" nillable="true" type="tns:StavkeGrupnogPlacanja">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NalogZaGrupnoPlacanje" nillable="true" type="tns:NalogZaGrupnoPlacanje" />
+  <xs:complexType name="StavkeGrupnogPlacanja">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Stavke" nillable="true" type="tns:StavkaGrupnogPlacanja" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StavkeGrupnogPlacanja" nillable="true" type="tns:StavkeGrupnogPlacanja" />
+  <xs:complexType name="StavkaGrupnogPlacanja">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDStavkeGrupnogPlacanja" type="xs:int" />
+      <xs:element minOccurs="0" name="IDNalogaZaPlacanje" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Duznik" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SvrhaPlacanja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Primalac" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DatumNaloga" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RacunDuznika" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModelZaduzenja" type="xs:int" />
+      <xs:element minOccurs="0" name="PozivNaBrZaduzenja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RacunPoverioca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModelOdobrenja" type="xs:int" />
+      <xs:element minOccurs="0" name="PozivNaBrOdobrenja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Iznos" type="xs:double" />
+      <xs:element minOccurs="0" name="SifraValute" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IDNalogaZaGrupnoPlacanje" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StavkaGrupnogPlacanja" nillable="true" type="tns:StavkaGrupnogPlacanja" />
+  <xs:complexType name="Faktura">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDFakture" type="xs:int" />
+      <xs:element minOccurs="0" name="IDPoruke" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="NazivDobavljaca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AdresaDobavljaca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PIBDobavljaca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="NazivKupca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AdresaKupca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PIBKupca" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BrRacuna" type="xs:double" />
+      <xs:element minOccurs="0" name="DatumRacuna" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VrednostRobe" type="xs:double" />
+      <xs:element minOccurs="0" name="VrednostUsluga" type="xs:double" />
+      <xs:element minOccurs="0" name="UkupnoRobaIUsluge" type="xs:double" />
+      <xs:element minOccurs="0" name="UkupanRabat" type="xs:double" />
+      <xs:element minOccurs="0" name="UkupanPorez" type="xs:double" />
+      <xs:element minOccurs="0" name="OznakaValute" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IznosZaUplatu" type="xs:double" />
+      <xs:element minOccurs="0" name="UplataNaRacun" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DatumValute" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StavkeFakture" nillable="true" type="tns:ListaStavkiFakture">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Faktura" nillable="true" type="tns:Faktura" />
+  <xs:complexType name="ListaStavkiFakture">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Stavke" nillable="true" type="tns:StavkaFakture" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaStavkiFakture" nillable="true" type="tns:ListaStavkiFakture" />
+  <xs:complexType name="StavkaFakture">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDStavke" type="xs:int" />
+      <xs:element minOccurs="0" name="RedniBr" type="xs:double" />
+      <xs:element minOccurs="0" name="NazivRobeIliUsluge" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Kolicina" type="xs:double" />
+      <xs:element minOccurs="0" name="JedinicaMere" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="JedinicnaCena" type="xs:double" />
+      <xs:element minOccurs="0" name="Vrednost" type="xs:double" />
+      <xs:element minOccurs="0" name="ProcenatRabata" type="xs:double" />
+      <xs:element minOccurs="0" name="IznosRabata" type="xs:double" />
+      <xs:element minOccurs="0" name="UmanjenoZaRabat" type="xs:double" />
+      <xs:element minOccurs="0" name="UkupanPorez" type="xs:double" />
+      <xs:element minOccurs="0" name="IDFakture" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StavkaFakture" nillable="true" type="tns:StavkaFakture" />
+  <xs:complexType name="ArrayOfFaktura">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Faktura" nillable="true" type="tns:Faktura" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFaktura" nillable="true" type="tns:ArrayOfFaktura" />
+</xs:schema>

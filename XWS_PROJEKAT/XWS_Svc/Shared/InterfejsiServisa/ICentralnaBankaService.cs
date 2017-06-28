@@ -9,8 +9,9 @@ using System.Text;
 namespace XWS.Shared.Model.InterfejsiServisa
 {
 	[ServiceContract]
-    [XmlSerializerFormat(Style = OperationFormatStyle.Document, Use = OperationFormatUse.Literal)]
-    public interface ICentralnaBankaService
+	[XmlSerializerFormat(Style = OperationFormatStyle.Document,
+Use = OperationFormatUse.Literal)]
+	public interface ICentralnaBankaService
 	{
 		/// <summary>
 		/// Prima RTGS nalog, salje Poruku O Odobrenju banci primaoca, a vraca Poruku o zaduzenju banci koja salje nalog (duzniku)

@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/XWS.Shared.Model.InterfejsiServisa" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/XWS.Shared.Model" />
+  <xs:element name="ProveriBanku">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProveriBankuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProveriBankuResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sendMessageToFirm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="firmName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sendMessageToFirmResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaPrenos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nzp" nillable="true" xmlns:q1="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q1:NalogZaPlacanje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaPrenosResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrimiPorukuOOdobrenjuIRTGS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="odobrenje" nillable="true" xmlns:q2="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q2:PorukaOOdobrenju" />
+        <xs:element minOccurs="0" name="nalog" nillable="true" xmlns:q3="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q3:RTGSNalog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrimiPorukuOOdobrenjuIRTGSResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrimiPorukuOZaduzenju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zaduzenje" nillable="true" xmlns:q4="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q4:PorukaOZaduzenju" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrimiPorukuOZaduzenjuResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PredajPresekIzNaloga">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zahtev" nillable="true" xmlns:q5="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q5:ZahtevZaDobijanjeIzvoda" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PredajPresekIzNalogaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PredajPresekIzNalogaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanje">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanjeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="odobrenje" nillable="true" xmlns:q6="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q6:PorukaOOdobrenju" />
+        <xs:element minOccurs="0" name="nzgp" nillable="true" xmlns:q7="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q7:NalogZaGrupnoPlacanje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanjeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptRTGSAndSendMessages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nalog" nillable="true" xmlns:q8="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q8:RTGSNalog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptRTGSAndSendMessagesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NalogZaGrupnoPlacanjeSendMessages">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NalogZaGrupnoPlacanjeSendMessagesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SlanjeFakture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="faktura" nillable="true" xmlns:q9="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q9:Faktura" />
+        <xs:element minOccurs="0" name="nazivFirme" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SlanjeFaktureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SlanjeFaktureResult" nillable="true" xmlns:q10="http://schemas.datacontract.org/2004/07/XWS.Shared.Model.InterfejsiServisa" type="q10:FakturaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnMessageFromBank">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnMessageFromBankResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReturnMessageFromBankResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptMessageFromBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptMessageFromBankResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveCreatedInvoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="faktura" nillable="true" xmlns:q11="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q11:Faktura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveCreatedInvoiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrikaziFakture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nazivFirme" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrikaziFaktureResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendCreatedInvoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idFakture" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendCreatedInvoiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendInvoiceProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sourceInvoice" nillable="true" xmlns:q12="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q12:Faktura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendInvoiceProfileResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetForCompanyAndStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="firma" nillable="true" xmlns:q13="http://schemas.datacontract.org/2004/07/XWS.Shared.Model" type="q13:Firma" />
+        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetForCompanyAndStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetForCompanyAndStatusResult" nillable="true" xmlns:q14="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q14:ArrayOfFaktura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaPrenosK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nzp" nillable="true" xmlns:q15="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q15:NalogZaPlacanje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaPrenosKResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanjeK">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NapraviNalogZaGrupnoPlacanjeKResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PromeniStatusFakture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idFakture" type="xs:int" />
+        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PromeniStatusFaktureResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZahtevZaPresek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zahtev" nillable="true" xmlns:q16="http://schemas.datacontract.org/2004/07/Shared.Model.XSD" type="q16:ZahtevZaDobijanjeIzvoda" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZahtevZaPresekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ZahtevZaPresekResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

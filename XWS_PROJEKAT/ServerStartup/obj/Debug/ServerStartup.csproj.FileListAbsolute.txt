@@ -46,3 +46,21 @@ D:\XML PROJEKAT JELA DJUKA 2017\XWS_27.06.2017\XWS_2017\XWS_PROJEKAT\ServerStart
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_27.06.2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.csprojResolveAssemblyReference.cache
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_27.06.2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.exe
 D:\XML PROJEKAT JELA DJUKA 2017\XWS_27.06.2017\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.pdb
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe.config
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.exe
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\ServerStartup.pdb
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.dll
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.dll
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS.dll
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.pdb
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\BankaService.dll.config
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.pdb
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\CentralnaBankaService.dll.config
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.pdb
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\FirmaService.dll.config
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS.pdb
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\bin\Debug\XWS.dll.config
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.csprojResolveAssemblyReference.cache
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.exe
+C:\Users\Djuka\Desktop\OkoTigrovo\XWS_2017\XWS_PROJEKAT\ServerStartup\obj\Debug\ServerStartup.pdb

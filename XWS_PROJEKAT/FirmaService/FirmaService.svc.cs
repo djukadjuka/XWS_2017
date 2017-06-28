@@ -10,8 +10,8 @@ using XWS.Shared.Model.InterfejsiServisa;
 namespace FirmaService
 {
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class FirmaService : IFirmaService
-    {
+    public class FirmaService : XWS.Shared.Model.InterfejsiServisa.IFirmaService
+	{
         private string nazivFirme;
 		private string bankMessage;
         Dictionary<string, Dictionary<int, Faktura>> fakture = new Dictionary<string, Dictionary<int, Faktura>>();  
@@ -45,7 +45,7 @@ namespace FirmaService
 			return "Message from bank: ["+this.bankMessage+"]";
 		}
 
-		public FakturaResponse SlanjeFakture(Faktura faktura, string nazivFirme)
+		public XWS.Shared.Model.InterfejsiServisa.FakturaResponse SlanjeFakture(Faktura faktura, string nazivFirme)
         {
             Console.WriteLine("Slanje fakture od " + this.nazivFirme + "  firmi : " + nazivFirme + "   Faktura ID je: " + faktura.IDFakture);
 
@@ -121,7 +121,7 @@ namespace FirmaService
 			FakturaDB.MakeInvoiceProfile(sourceInvoice.IDFakture);
 		}
 
-		public List<Faktura> GetForCompanyAndStatus(Firma firma, string status)
+		public List<Faktura> GetForCompanyAndStatus(XWS.Shared.Model.Firma firma, string status)
 		{
 			return FakturaDB.GetInvoiceByStatusAndId(firma, status);
 		}
