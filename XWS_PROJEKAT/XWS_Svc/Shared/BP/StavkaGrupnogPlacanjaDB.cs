@@ -96,10 +96,10 @@ namespace XWS.Shared.BP
 			sgp.Primalac					= (string)reader["primalac"];
 			sgp.DatumNaloga					= (DateTime)reader["datumnaloga"];
 			sgp.RacunDuznika				= (string)reader["racunduznika"];
-			sgp.ModelZaduzenja				= (int)reader["modelzaduzenja"];
+			sgp.ModelZaduzenja				= (int)(decimal)reader["modelzaduzenja"];
 			sgp.PozivNaBrZaduzenja			= (string)reader["pozivnabrzaduzenja"];
 			sgp.RacunPoverioca				= (string)reader["racunpoverioca"];
-			sgp.ModelOdobrenja				= (int)reader["modelodobrenja"];
+			sgp.ModelOdobrenja				= (int)(decimal)reader["modelodobrenja"];
 			sgp.PozivNaBrOdobrenja			= (string)reader["pozivnabrodobrenja"];
 			sgp.Iznos						= (double)(decimal)reader["iznos"];
 			sgp.SifraValute					= (string)reader["sifravalute"];
@@ -111,7 +111,7 @@ namespace XWS.Shared.BP
 		//
 		public static void InsertIntoStavkaZaGrupnoPlacanje(StavkaGrupnogPlacanja sgp)
 		{
-			using (SqlConnection conn = MySQLUtils.NapraviFirmaConn())
+			using (SqlConnection conn = MySQLUtils.NapraviCBConn())
 			{
 				string sql = @"INSERT INTO [dbo].[sgp]
 													   ([idnalogazaplacanje]

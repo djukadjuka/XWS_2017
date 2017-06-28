@@ -111,6 +111,7 @@ namespace XWS.Shared.BP
 		{
 			NalogZaPlacanje nalogZaPlacanje = new NalogZaPlacanje();
 
+			nalogZaPlacanje.IDNalogaZaPlacanje = (int)reader["idnalogazaplacanje"];
 			nalogZaPlacanje.IDPoruke				= (string)reader["idporuke"];
 			nalogZaPlacanje.Duznik					= (string)reader["duznik"];
 			nalogZaPlacanje.SvrhaPlacanja			= (string)reader["svrhaplacanja"];

@@ -75,7 +75,7 @@ namespace XWS.Shared.BP
 												   ,[sifravalute]
 												   ,[datumvalute]
 												   ,[datum]
-                                                   ,[status])
+                                                   ,[status]) output inserted.idnzgp  
 											 VALUES
 												    (@idporuke
 												   ,@swiftbankeduznika
@@ -86,7 +86,7 @@ namespace XWS.Shared.BP
 												   ,@sifravalute
 												   ,@datumvalute
 												   ,@datum
-                                                   ,@status)";
+                                                   ,@status) SELECT SCOPE_IDENTITY()";
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -101,7 +101,14 @@ namespace XWS.Shared.BP
                     cmd.Parameters.AddWithValue("@datum", f.Datum);
                     cmd.Parameters.AddWithValue("@status", f.Status);
 
-                    cmd.ExecuteNonQuery();
+					Int32 idf = (Int32)cmd.ExecuteScalar();
+					
+					foreach(var stavka in f.StavkeGrupnogPlacanja)
+					{
+						stavka.IDNalogaZaGrupnoPlacanje = idf;
+						StavkaGrupnogPlacanjaDB.InsertIntoStavkaZaGrupnoPlacanje(stavka);
+					}
+
                 }
                 conn.Close();
             }

@@ -68,7 +68,17 @@ namespace BankaService
 			{
 				//sacuvaj nalog
 				nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_KREIRAN;
-                NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
+
+				RTGSNalog rtgs = NapraviRTGSIzNaloga(nzp);
+
+				if (rtgs.SWIFTBankaDuznika == rtgs.SWIFTBankaPoverioca)
+				{
+					PromenaStanjaUBanciZaFirmu(rtgs.RacunDuznika, (-1) * rtgs.Iznos, NapraviStavkuIzRTGSa(rtgs));
+					PromenaStanjaUBanciZaFirmu(rtgs.RacunPoverioca, rtgs.Iznos, NapraviStavkuIzRTGSa(rtgs));
+					nzp.Status = GlobalConst.STATUS_NALOGA_ZA_PLACANJE_POSLAT;
+				}
+
+				NalogZaPlacanjeDB.InsertNalogZaPlacanje(nzp);
 			}
         }
 
@@ -210,8 +220,8 @@ namespace BankaService
                         stavkaGrupnogPlacanja.DatumNaloga = nzp.DatumNaloga;
                         nalogZaGrupnoPlacanje.StavkeGrupnogPlacanja.Add(stavkaGrupnogPlacanja);
                         nalogZaGrupnoPlacanje.UkupanIznos += nzp.Iznos;
-
-                    }
+						
+					}
 
                     nalogZaGrupnoPlacanje.SWIFTBankeDuznika = b.SWIFTKod;//trenutnaBanka.SWIFTKod;
                     nalogZaGrupnoPlacanje.SWIFTBankePoverioca = trenutnaBanka.SWIFTKod;//b.SWIFTKod;
@@ -366,11 +376,6 @@ namespace BankaService
 
 			BANKASVCCONSOLE(PresekDB.GetPresek(p.IDPreseka).ToString());
 		}
-
-        /*public void PrimiPorukuOOdobrenjuINalogZaGrupnoPlacanje(PorukaOOdobrenju odobrenje, NalogZaGrupnoPlacanje nzgp)
-        {
-            throw new NotImplementedException();
-        }*/
 
         #endregion private_pomocne
     }
